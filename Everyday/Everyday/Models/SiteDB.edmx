@@ -1,0 +1,751 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="EverydayDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="idCateg" />
+          </Key>
+          <Property Name="idCateg" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nameCateg" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="createdAt" Type="date" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="idClient" />
+          </Key>
+          <Property Name="idClient" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nameClient" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="lastnameClient" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="nitClient" Type="int" Nullable="false" />
+          <Property Name="addressClient" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="phone" Type="int" Nullable="false" />
+          <Property Name="idUser" Type="int" Nullable="false" />
+          <Property Name="createdAt" Type="date" />
+        </EntityType>
+        <EntityType Name="DetallesVenta">
+          <Key>
+            <PropertyRef Name="idDetail" />
+          </Key>
+          <Property Name="idDetail" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idVent" Type="int" Nullable="false" />
+          <Property Name="iProd" Type="int" Nullable="false" />
+          <Property Name="price" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="quantity" Type="int" Nullable="false" />
+          <Property Name="subTotal" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="createdAt" Type="date" />
+        </EntityType>
+        <EntityType Name="Marca">
+          <Key>
+            <PropertyRef Name="idMarc" />
+          </Key>
+          <Property Name="idMarc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nameMarc" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="createdAt" Type="date" />
+        </EntityType>
+        <EntityType Name="Pago">
+          <Key>
+            <PropertyRef Name="idPay" />
+          </Key>
+          <Property Name="idPay" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idUser" Type="int" Nullable="false" />
+          <Property Name="quantity" Type="int" Nullable="false" />
+          <Property Name="createdAt" Type="date" />
+        </EntityType>
+        <EntityType Name="Producto">
+          <Key>
+            <PropertyRef Name="idProd" />
+          </Key>
+          <Property Name="idProd" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="imagen" Type="image" />
+          <Property Name="nameProd" Type="varchar" MaxLength="300" />
+          <Property Name="description" Type="varchar(max)" />
+          <Property Name="quantity" Type="int" Nullable="false" />
+          <Property Name="price" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="stock" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="idMarc" Type="int" Nullable="false" />
+          <Property Name="idCateg" Type="int" Nullable="false" />
+          <Property Name="createdAt" Type="date" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Tarjeta">
+          <Key>
+            <PropertyRef Name="idTarjet" />
+          </Key>
+          <Property Name="idTarjet" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="numTarjet" Type="int" Nullable="false" />
+          <Property Name="codeTarjet" Type="int" Nullable="false" />
+          <Property Name="cvv" Type="int" Nullable="false" />
+          <Property Name="nameTarjet" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="saldo" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="createdAt" Type="date" />
+          <Property Name="expireDate" Type="date" Nullable="false" />
+          <Property Name="state" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="idUser" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tipo">
+          <Key>
+            <PropertyRef Name="idType" />
+          </Key>
+          <Property Name="idType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nameType" Type="varchar" MaxLength="300" />
+          <Property Name="idProd" Type="int" Nullable="false" />
+          <Property Name="createdAt" Type="date" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="idUser" />
+          </Key>
+          <Property Name="idUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="photo" Type="varchar(max)" />
+          <Property Name="nameUser" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="gender" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="keyUser" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="roleUser" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="createdAt" Type="date" />
+          <Property Name="state" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Venta">
+          <Key>
+            <PropertyRef Name="idVent" />
+          </Key>
+          <Property Name="idVent" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idClient" Type="int" Nullable="false" />
+          <Property Name="total" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="createdAt" Type="date" />
+        </EntityType>
+        <Association Name="FK__Cliente__idUser__3A81B327">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetallesV__idVen__48CFD27E">
+          <End Role="Venta" Type="Self.Venta" Multiplicity="1" />
+          <End Role="DetallesVenta" Type="Self.DetallesVenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Venta">
+              <PropertyRef Name="idVent" />
+            </Principal>
+            <Dependent Role="DetallesVenta">
+              <PropertyRef Name="idVent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetallesV__iProd__49C3F6B7">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="DetallesVenta" Type="Self.DetallesVenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="idProd" />
+            </Principal>
+            <Dependent Role="DetallesVenta">
+              <PropertyRef Name="iProd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pago__idUser__4D94879B">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Pago" Type="Self.Pago" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="Pago">
+              <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Producto__idCate__30F848ED">
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="idCateg" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="idCateg" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Producto__idMarc__300424B4">
+          <End Role="Marca" Type="Self.Marca" Multiplicity="1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marca">
+              <PropertyRef Name="idMarc" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="idMarc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tarjeta__idUser__4222D4EF">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Tarjeta" Type="Self.Tarjeta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="Tarjeta">
+              <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tipo__idProd__34C8D9D1">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="Tipo" Type="Self.Tipo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="idProd" />
+            </Principal>
+            <Dependent Role="Tipo">
+              <PropertyRef Name="idProd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Venta__idClient__44FF419A">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="idClient" />
+            </Principal>
+            <Dependent Role="Venta">
+              <PropertyRef Name="idClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EverydayDBModelStoreContainer">
+          <EntitySet Name="Categoria" EntityType="Self.Categoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetallesVenta" EntityType="Self.DetallesVenta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Marca" EntityType="Self.Marca" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pago" EntityType="Self.Pago" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Producto" EntityType="Self.Producto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tarjeta" EntityType="Self.Tarjeta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tipo" EntityType="Self.Tipo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Venta" EntityType="Self.Venta" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Cliente__idUser__3A81B327" Association="Self.FK__Cliente__idUser__3A81B327">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetallesV__idVen__48CFD27E" Association="Self.FK__DetallesV__idVen__48CFD27E">
+            <End Role="Venta" EntitySet="Venta" />
+            <End Role="DetallesVenta" EntitySet="DetallesVenta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetallesV__iProd__49C3F6B7" Association="Self.FK__DetallesV__iProd__49C3F6B7">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="DetallesVenta" EntitySet="DetallesVenta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pago__idUser__4D94879B" Association="Self.FK__Pago__idUser__4D94879B">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Pago" EntitySet="Pago" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Producto__idCate__30F848ED" Association="Self.FK__Producto__idCate__30F848ED">
+            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="Producto" EntitySet="Producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Producto__idMarc__300424B4" Association="Self.FK__Producto__idMarc__300424B4">
+            <End Role="Marca" EntitySet="Marca" />
+            <End Role="Producto" EntitySet="Producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tarjeta__idUser__4222D4EF" Association="Self.FK__Tarjeta__idUser__4222D4EF">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Tarjeta" EntitySet="Tarjeta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tipo__idProd__34C8D9D1" Association="Self.FK__Tipo__idProd__34C8D9D1">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="Tipo" EntitySet="Tipo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Venta__idClient__44FF419A" Association="Self.FK__Venta__idClient__44FF419A">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Venta" EntitySet="Venta" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EverydayDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="idCateg" />
+          </Key>
+          <Property Name="idCateg" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nameCateg" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="createdAt" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Producto" Relationship="Self.FK__Producto__idCate__30F848ED" FromRole="Categoria" ToRole="Producto" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="idClient" />
+          </Key>
+          <Property Name="idClient" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nameClient" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lastnameClient" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nitClient" Type="Int32" Nullable="false" />
+          <Property Name="addressClient" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="phone" Type="Int32" Nullable="false" />
+          <Property Name="idUser" Type="Int32" Nullable="false" />
+          <Property Name="createdAt" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Cliente__idUser__3A81B327" FromRole="Cliente" ToRole="Usuario" />
+          <NavigationProperty Name="Venta" Relationship="Self.FK__Venta__idClient__44FF419A" FromRole="Cliente" ToRole="Venta" />
+        </EntityType>
+        <EntityType Name="DetallesVenta">
+          <Key>
+            <PropertyRef Name="idDetail" />
+          </Key>
+          <Property Name="idDetail" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idVent" Type="Int32" Nullable="false" />
+          <Property Name="iProd" Type="Int32" Nullable="false" />
+          <Property Name="price" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="quantity" Type="Int32" Nullable="false" />
+          <Property Name="subTotal" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="createdAt" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Venta" Relationship="Self.FK__DetallesV__idVen__48CFD27E" FromRole="DetallesVenta" ToRole="Venta" />
+          <NavigationProperty Name="Producto" Relationship="Self.FK__DetallesV__iProd__49C3F6B7" FromRole="DetallesVenta" ToRole="Producto" />
+        </EntityType>
+        <EntityType Name="Marca">
+          <Key>
+            <PropertyRef Name="idMarc" />
+          </Key>
+          <Property Name="idMarc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nameMarc" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="createdAt" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Producto" Relationship="Self.FK__Producto__idMarc__300424B4" FromRole="Marca" ToRole="Producto" />
+        </EntityType>
+        <EntityType Name="Pago">
+          <Key>
+            <PropertyRef Name="idPay" />
+          </Key>
+          <Property Name="idPay" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idUser" Type="Int32" Nullable="false" />
+          <Property Name="quantity" Type="Int32" Nullable="false" />
+          <Property Name="createdAt" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Pago__idUser__4D94879B" FromRole="Pago" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Producto">
+          <Key>
+            <PropertyRef Name="idProd" />
+          </Key>
+          <Property Name="idProd" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="imagen" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="nameProd" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="quantity" Type="Int32" Nullable="false" />
+          <Property Name="price" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="stock" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idMarc" Type="Int32" Nullable="false" />
+          <Property Name="idCateg" Type="Int32" Nullable="false" />
+          <Property Name="createdAt" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Categoria" Relationship="Self.FK__Producto__idCate__30F848ED" FromRole="Producto" ToRole="Categoria" />
+          <NavigationProperty Name="DetallesVenta" Relationship="Self.FK__DetallesV__iProd__49C3F6B7" FromRole="Producto" ToRole="DetallesVenta" />
+          <NavigationProperty Name="Marca" Relationship="Self.FK__Producto__idMarc__300424B4" FromRole="Producto" ToRole="Marca" />
+          <NavigationProperty Name="Tipo" Relationship="Self.FK__Tipo__idProd__34C8D9D1" FromRole="Producto" ToRole="Tipo" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Tarjeta">
+          <Key>
+            <PropertyRef Name="idTarjet" />
+          </Key>
+          <Property Name="idTarjet" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="numTarjet" Type="Int32" Nullable="false" />
+          <Property Name="codeTarjet" Type="Int32" Nullable="false" />
+          <Property Name="cvv" Type="Int32" Nullable="false" />
+          <Property Name="nameTarjet" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="saldo" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="createdAt" Type="DateTime" Precision="0" />
+          <Property Name="expireDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="state" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idUser" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Tarjeta__idUser__4222D4EF" FromRole="Tarjeta" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Tipo">
+          <Key>
+            <PropertyRef Name="idType" />
+          </Key>
+          <Property Name="idType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nameType" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="idProd" Type="Int32" Nullable="false" />
+          <Property Name="createdAt" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Producto" Relationship="Self.FK__Tipo__idProd__34C8D9D1" FromRole="Tipo" ToRole="Producto" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="idUser" />
+          </Key>
+          <Property Name="idUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="nameUser" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="keyUser" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="roleUser" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="createdAt" Type="DateTime" Precision="0" />
+          <Property Name="state" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK__Cliente__idUser__3A81B327" FromRole="Usuario" ToRole="Cliente" />
+          <NavigationProperty Name="Pago" Relationship="Self.FK__Pago__idUser__4D94879B" FromRole="Usuario" ToRole="Pago" />
+          <NavigationProperty Name="Tarjeta" Relationship="Self.FK__Tarjeta__idUser__4222D4EF" FromRole="Usuario" ToRole="Tarjeta" />
+        </EntityType>
+        <EntityType Name="Venta">
+          <Key>
+            <PropertyRef Name="idVent" />
+          </Key>
+          <Property Name="idVent" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idClient" Type="Int32" Nullable="false" />
+          <Property Name="total" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="createdAt" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK__Venta__idClient__44FF419A" FromRole="Venta" ToRole="Cliente" />
+          <NavigationProperty Name="DetallesVenta" Relationship="Self.FK__DetallesV__idVen__48CFD27E" FromRole="Venta" ToRole="DetallesVenta" />
+        </EntityType>
+        <Association Name="FK__Producto__idCate__30F848ED">
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="idCateg" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="idCateg" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cliente__idUser__3A81B327">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Venta__idClient__44FF419A">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="idClient" />
+            </Principal>
+            <Dependent Role="Venta">
+              <PropertyRef Name="idClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetallesV__idVen__48CFD27E">
+          <End Role="Venta" Type="Self.Venta" Multiplicity="1" />
+          <End Role="DetallesVenta" Type="Self.DetallesVenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Venta">
+              <PropertyRef Name="idVent" />
+            </Principal>
+            <Dependent Role="DetallesVenta">
+              <PropertyRef Name="idVent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetallesV__iProd__49C3F6B7">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="DetallesVenta" Type="Self.DetallesVenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="idProd" />
+            </Principal>
+            <Dependent Role="DetallesVenta">
+              <PropertyRef Name="iProd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Producto__idMarc__300424B4">
+          <End Role="Marca" Type="Self.Marca" Multiplicity="1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marca">
+              <PropertyRef Name="idMarc" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="idMarc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pago__idUser__4D94879B">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Pago" Type="Self.Pago" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="Pago">
+              <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tipo__idProd__34C8D9D1">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="Tipo" Type="Self.Tipo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="idProd" />
+            </Principal>
+            <Dependent Role="Tipo">
+              <PropertyRef Name="idProd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tarjeta__idUser__4222D4EF">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Tarjeta" Type="Self.Tarjeta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="Tarjeta">
+              <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EverydayDB" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Categoria" EntityType="Self.Categoria" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" />
+          <EntitySet Name="DetallesVenta" EntityType="Self.DetallesVenta" />
+          <EntitySet Name="Marca" EntityType="Self.Marca" />
+          <EntitySet Name="Pago" EntityType="Self.Pago" />
+          <EntitySet Name="Producto" EntityType="Self.Producto" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Tarjeta" EntityType="Self.Tarjeta" />
+          <EntitySet Name="Tipo" EntityType="Self.Tipo" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+          <EntitySet Name="Venta" EntityType="Self.Venta" />
+          <AssociationSet Name="FK__Producto__idCate__30F848ED" Association="Self.FK__Producto__idCate__30F848ED">
+            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="Producto" EntitySet="Producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cliente__idUser__3A81B327" Association="Self.FK__Cliente__idUser__3A81B327">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Venta__idClient__44FF419A" Association="Self.FK__Venta__idClient__44FF419A">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Venta" EntitySet="Venta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetallesV__idVen__48CFD27E" Association="Self.FK__DetallesV__idVen__48CFD27E">
+            <End Role="Venta" EntitySet="Venta" />
+            <End Role="DetallesVenta" EntitySet="DetallesVenta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetallesV__iProd__49C3F6B7" Association="Self.FK__DetallesV__iProd__49C3F6B7">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="DetallesVenta" EntitySet="DetallesVenta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Producto__idMarc__300424B4" Association="Self.FK__Producto__idMarc__300424B4">
+            <End Role="Marca" EntitySet="Marca" />
+            <End Role="Producto" EntitySet="Producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pago__idUser__4D94879B" Association="Self.FK__Pago__idUser__4D94879B">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Pago" EntitySet="Pago" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tipo__idProd__34C8D9D1" Association="Self.FK__Tipo__idProd__34C8D9D1">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="Tipo" EntitySet="Tipo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tarjeta__idUser__4222D4EF" Association="Self.FK__Tarjeta__idUser__4222D4EF">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Tarjeta" EntitySet="Tarjeta" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EverydayDBModelStoreContainer" CdmEntityContainer="EverydayDB">
+          <EntitySetMapping Name="Categoria">
+            <EntityTypeMapping TypeName="EverydayDBModel.Categoria">
+              <MappingFragment StoreEntitySet="Categoria">
+                <ScalarProperty Name="idCateg" ColumnName="idCateg" />
+                <ScalarProperty Name="nameCateg" ColumnName="nameCateg" />
+                <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cliente">
+            <EntityTypeMapping TypeName="EverydayDBModel.Cliente">
+              <MappingFragment StoreEntitySet="Cliente">
+                <ScalarProperty Name="idClient" ColumnName="idClient" />
+                <ScalarProperty Name="nameClient" ColumnName="nameClient" />
+                <ScalarProperty Name="lastnameClient" ColumnName="lastnameClient" />
+                <ScalarProperty Name="nitClient" ColumnName="nitClient" />
+                <ScalarProperty Name="addressClient" ColumnName="addressClient" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+                <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetallesVenta">
+            <EntityTypeMapping TypeName="EverydayDBModel.DetallesVenta">
+              <MappingFragment StoreEntitySet="DetallesVenta">
+                <ScalarProperty Name="idDetail" ColumnName="idDetail" />
+                <ScalarProperty Name="idVent" ColumnName="idVent" />
+                <ScalarProperty Name="iProd" ColumnName="iProd" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="subTotal" ColumnName="subTotal" />
+                <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Marca">
+            <EntityTypeMapping TypeName="EverydayDBModel.Marca">
+              <MappingFragment StoreEntitySet="Marca">
+                <ScalarProperty Name="idMarc" ColumnName="idMarc" />
+                <ScalarProperty Name="nameMarc" ColumnName="nameMarc" />
+                <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pago">
+            <EntityTypeMapping TypeName="EverydayDBModel.Pago">
+              <MappingFragment StoreEntitySet="Pago">
+                <ScalarProperty Name="idPay" ColumnName="idPay" />
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Producto">
+            <EntityTypeMapping TypeName="EverydayDBModel.Producto">
+              <MappingFragment StoreEntitySet="Producto">
+                <ScalarProperty Name="idProd" ColumnName="idProd" />
+                <ScalarProperty Name="imagen" ColumnName="imagen" />
+                <ScalarProperty Name="nameProd" ColumnName="nameProd" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="stock" ColumnName="stock" />
+                <ScalarProperty Name="idMarc" ColumnName="idMarc" />
+                <ScalarProperty Name="idCateg" ColumnName="idCateg" />
+                <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="EverydayDBModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tarjeta">
+            <EntityTypeMapping TypeName="EverydayDBModel.Tarjeta">
+              <MappingFragment StoreEntitySet="Tarjeta">
+                <ScalarProperty Name="idTarjet" ColumnName="idTarjet" />
+                <ScalarProperty Name="numTarjet" ColumnName="numTarjet" />
+                <ScalarProperty Name="codeTarjet" ColumnName="codeTarjet" />
+                <ScalarProperty Name="cvv" ColumnName="cvv" />
+                <ScalarProperty Name="nameTarjet" ColumnName="nameTarjet" />
+                <ScalarProperty Name="saldo" ColumnName="saldo" />
+                <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+                <ScalarProperty Name="expireDate" ColumnName="expireDate" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tipo">
+            <EntityTypeMapping TypeName="EverydayDBModel.Tipo">
+              <MappingFragment StoreEntitySet="Tipo">
+                <ScalarProperty Name="idType" ColumnName="idType" />
+                <ScalarProperty Name="nameType" ColumnName="nameType" />
+                <ScalarProperty Name="idProd" ColumnName="idProd" />
+                <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="EverydayDBModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+                <ScalarProperty Name="photo" ColumnName="photo" />
+                <ScalarProperty Name="nameUser" ColumnName="nameUser" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="keyUser" ColumnName="keyUser" />
+                <ScalarProperty Name="roleUser" ColumnName="roleUser" />
+                <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+                <ScalarProperty Name="state" ColumnName="state" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Venta">
+            <EntityTypeMapping TypeName="EverydayDBModel.Venta">
+              <MappingFragment StoreEntitySet="Venta">
+                <ScalarProperty Name="idVent" ColumnName="idVent" />
+                <ScalarProperty Name="idClient" ColumnName="idClient" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

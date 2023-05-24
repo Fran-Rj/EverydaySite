@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Everyday.Models.Tarjeta>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.numTarjet)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.codeTarjet)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cvv)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nameTarjet)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.saldo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.createdAt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.expireDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.state)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Usuario.photo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.numTarjet)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.codeTarjet)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cvv)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nameTarjet)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.saldo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.createdAt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.expireDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.state)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Usuario.photo)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idTarjet }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idTarjet }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idTarjet })
+        </td>
+    </tr>
+}
+
+</table>

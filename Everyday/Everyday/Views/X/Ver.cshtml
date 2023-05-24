@@ -1,0 +1,26 @@
+﻿@model List < Everyday.Models.Categoria>
+
+@{
+    Layout = null;
+}
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+</style>
+
+<div style="display: flex; flex-wrap:wrap; padding:20px; background-color:transparent; overflow: auto; width: 100%; height: 90%; margin:0; padding:0;">
+    @foreach (var item in Model)
+	{
+        <div style="background-color: transparent; width: 100%; height: 300px;">
+            <img src="~/Image/ropa.jpg" alt="..." id="imgUser" style="width:200px; height:100px;"/>
+                <div>
+                    <ul>
+                        <li>@item.nameCateg</li>
+                    </ul>
+                </div>
+        </div>
+	}
+</div>

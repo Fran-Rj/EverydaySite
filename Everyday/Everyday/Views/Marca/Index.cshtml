@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Everyday.Models.Marca>
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    .body-content {
+        margin: auto 10px;
+        padding: 0;
+    }
+</style>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+@*<br />*@
+
+<div style="display: flex; flex-wrap: wrap; width: 1280px; background-color: transparent; overflow: auto;">
+    @foreach (var item in Model)
+    {
+
+        <div style="margin-left: 20px; margin-top: 10px;">
+           <ul>
+               <li>
+                   <h4>
+                       @Html.DisplayFor(modelItem => item.nameMarc)
+                   </h4>
+               </li>
+           </ul>
+        </div>
+
+        @*<td>
+                @Html.DisplayFor(modelItem => item.createdAt)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.idMarc }) |
+                @Html.ActionLink("Details", "Details", new { id=item.idMarc }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.idMarc })
+            </td>*@
+
+    }
+</div>

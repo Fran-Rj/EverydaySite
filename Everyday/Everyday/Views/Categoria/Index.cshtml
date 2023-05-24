@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Everyday.Models.Categoria>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nameCateg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.createdAt)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in ViewBag.DatosTabla) {
+    <tr>
+        <td>
+            @item.nameCateg)
+        </td>
+        <td>
+            @item.createdAt)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idCateg }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idCateg }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idCateg })
+        </td>
+    </tr>
+}
+
+</table>
