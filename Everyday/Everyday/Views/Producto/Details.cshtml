@@ -12,17 +12,15 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            <label>Imagen</label>
+            @Html.DisplayNameFor(model => model.imagen)
         </dt>
 
         <dd>
-            <img src="@Url.Action("MostrarImagen", "Producto", new { Id = Model.idProd })" alt="..." style="width:200px; height:200px;" id="imgUser" />
-            @Html.ValidationMessageFor(model => model.imagen, "", new { @class = "text-danger" })
-
+            @Html.DisplayFor(model => model.imagen)
         </dd>
 
         <dt>
-            <label>Nombre</label>
+            @Html.DisplayNameFor(model => model.nameProd)
         </dt>
 
         <dd>
@@ -30,7 +28,7 @@
         </dd>
 
         <dt>
-            <label>Descripción</label>
+            @Html.DisplayNameFor(model => model.description)
         </dt>
 
         <dd>
@@ -38,15 +36,7 @@
         </dd>
 
         <dt>
-            <label>Cantidad</label>
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.quantity)
-        </dd>
-
-        <dt>
-            <label>Precio</label>
+            @Html.DisplayNameFor(model => model.price)
         </dt>
 
         <dd>
@@ -54,7 +44,7 @@
         </dd>
 
         <dt>
-            <label>Stock</label>
+            @Html.DisplayNameFor(model => model.stock)
         </dt>
 
         <dd>
@@ -62,7 +52,15 @@
         </dd>
 
         <dt>
-            <label>Registrado</label>
+            @Html.DisplayNameFor(model => model.state)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.state)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.createdAt)
         </dt>
 
         <dd>
@@ -70,7 +68,7 @@
         </dd>
 
         <dt>
-            <label>Categoria</label>
+            @Html.DisplayNameFor(model => model.Categoria.nameCateg)
         </dt>
 
         <dd>
@@ -78,11 +76,19 @@
         </dd>
 
         <dt>
-            <label>Marca</label>
+            @Html.DisplayNameFor(model => model.Marca.nameMarc)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Marca.nameMarc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tipo.nameType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tipo.nameType)
         </dd>
 
     </dl>

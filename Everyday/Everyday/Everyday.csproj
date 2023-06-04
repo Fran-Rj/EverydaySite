@@ -171,65 +171,84 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AccounController.cs" />
+    <Compile Include="Controllers\CarritoController.cs" />
     <Compile Include="Controllers\CategoriaController.cs" />
+    <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MarcaController.cs" />
+    <Compile Include="Controllers\ProdController.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
     <Compile Include="Controllers\TarjetaController.cs" />
+    <Compile Include="Controllers\TiendaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Carrito.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CarritoItem.cs" />
     <Compile Include="Models\Categoria.cs">
-      <DependentUpon>SiteDB.tt</DependentUpon>
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Ciudad.cs">
+      <DependentUpon>DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Cliente.cs">
-      <DependentUpon>SiteDB.tt</DependentUpon>
+      <DependentUpon>DB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DetallesVenta.cs">
-      <DependentUpon>SiteDB.tt</DependentUpon>
+    <Compile Include="Models\DB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Departamento.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DetalleVenta.cs">
+      <DependentUpon>DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Marca.cs">
-      <DependentUpon>SiteDB.tt</DependentUpon>
+      <DependentUpon>DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Pago.cs">
-      <DependentUpon>SiteDB.tt</DependentUpon>
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Pais.cs">
+      <DependentUpon>DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Producto.cs">
-      <DependentUpon>SiteDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\SiteDB.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SiteDB.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\SiteDB.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SiteDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\SiteDB.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SiteDB.edmx</DependentUpon>
+      <DependentUpon>DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>SiteDB.tt</DependentUpon>
+      <DependentUpon>DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Tarjeta.cs">
-      <DependentUpon>SiteDB.tt</DependentUpon>
+      <DependentUpon>DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Tipo.cs">
-      <DependentUpon>SiteDB.tt</DependentUpon>
+      <DependentUpon>DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Usuario.cs">
-      <DependentUpon>SiteDB.tt</DependentUpon>
+      <DependentUpon>DB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Utilities.cs" />
     <Compile Include="Models\Venta.cs">
-      <DependentUpon>SiteDB.tt</DependentUpon>
+      <DependentUpon>DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -251,35 +270,35 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
-    <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Image\carro-de-la-compra.png" />
     <Content Include="Image\Home.jpeg" />
     <Content Include="Image\Logo.png" />
     <Content Include="Image\ropa.jpg" />
+    <Content Include="Models\DB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DB.edmx</DependentUpon>
+      <LastGenOutput>DB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\DB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DB.edmx</DependentUpon>
+      <LastGenOutput>DB.cs</LastGenOutput>
+    </Content>
     <Content Include="Models\JavaScript.js" />
-    <Content Include="Models\SiteDB.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SiteDB.edmx</DependentUpon>
-      <LastGenOutput>SiteDB.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\SiteDB.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SiteDB.edmx</DependentUpon>
-      <LastGenOutput>SiteDB.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\SiteDB.edmx">
+    <EntityDeploy Include="Models\DB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>SiteDB.Designer.cs</LastGenOutput>
+      <LastGenOutput>DB.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\SiteDB.edmx.diagram">
-      <DependentUpon>SiteDB.edmx</DependentUpon>
+    <Content Include="Models\DB.edmx.diagram">
+      <DependentUpon>DB.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -305,18 +324,18 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\ConfirmEmail.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\ForgotPassword.cshtml" />
-    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\ResetPassword.cshtml" />
-    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\SendCode.cshtml" />
-    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Accoun\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Accoun\ConfirmEmail.cshtml" />
+    <Content Include="Views\Accoun\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Accoun\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Accoun\ForgotPassword.cshtml" />
+    <Content Include="Views\Accoun\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Accoun\Login.cshtml" />
+    <Content Include="Views\Accoun\Register.cshtml" />
+    <Content Include="Views\Accoun\ResetPassword.cshtml" />
+    <Content Include="Views\Accoun\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Accoun\SendCode.cshtml" />
+    <Content Include="Views\Accoun\VerifyCode.cshtml" />
     <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
     <Content Include="Views\Manage\ChangePassword.cshtml" />
     <Content Include="Views\Manage\Index.cshtml" />
@@ -333,30 +352,53 @@
     <Content Include="Views\Marca\Index.cshtml" />
     <Content Include="Views\Home\Home.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Producto\Create.cshtml" />
-    <Content Include="Views\Producto\Delete.cshtml" />
-    <Content Include="Views\Producto\Details.cshtml" />
-    <Content Include="Views\Producto\Edit.cshtml" />
-    <Content Include="Views\Producto\Index.cshtml" />
+    <Content Include="Views\Prod\Create.cshtml" />
+    <Content Include="Views\Prod\Delete.cshtml" />
+    <Content Include="Views\Prod\Details.cshtml" />
+    <Content Include="Views\Prod\Edit.cshtml" />
+    <Content Include="Views\Prod\Index.cshtml" />
     <Content Include="Views\Categoria\Create.cshtml" />
     <Content Include="Views\Categoria\Delete.cshtml" />
     <Content Include="Views\Categoria\Details.cshtml" />
     <Content Include="Views\Categoria\Edit.cshtml" />
     <Content Include="Views\Categoria\Index.cshtml" />
     <Content Include="Views\Categoria\Show.cshtml" />
-    <Content Include="Views\Categoria\Camisas.cshtml" />
-    <Content Include="Views\Categoria\Pantalones.cshtml" />
+    <Content Include="Views\Categoria\See.cshtml" />
+    <Content Include="Views\X\Pantalones.cshtml" />
     <Content Include="Views\Shared\_LayoutPartial.cshtml" />
     <Content Include="Views\Shared\Design.cshtml" />
     <Content Include="Views\Categoria\Description.cshtml" />
-    <Content Include="Views\Categoria\Shirts.cshtml" />
-    <Content Include="Views\Categoria\Pants.cshtml" />
+    <Content Include="Views\X\Shirts.cshtml" />
+    <Content Include="Views\X\Pants.cshtml" />
     <Content Include="Views\Tarjeta\Create.cshtml" />
     <Content Include="Views\Tarjeta\Delete.cshtml" />
     <Content Include="Views\Tarjeta\Details.cshtml" />
     <Content Include="Views\Tarjeta\Edit.cshtml" />
     <Content Include="Views\Tarjeta\Index.cshtml" />
-    <Content Include="Views\Tarjeta\Pago.cshtml" />
+    <Content Include="Views\Tarjeta\Pagos.cshtml" />
+    <Content Include="Views\Carrito\Create.cshtml" />
+    <Content Include="Views\Carrito\Delete.cshtml" />
+    <Content Include="Views\Carrito\Details.cshtml" />
+    <Content Include="Views\Carrito\Edit.cshtml" />
+    <Content Include="Views\Carrito\Carrito.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\SignUp.cshtml" />
+    <Content Include="Views\Prod\Carrito.cshtml" />
+    <Content Include="Views\Prod\FinalizarCompra.cshtml" />
+    <Content Include="Views\Carrito\Index.cshtml" />
+    <Content Include="Views\Tienda\Description.cshtml" />
+    <Content Include="Views\Producto\Create.cshtml" />
+    <Content Include="Views\Producto\Delete.cshtml" />
+    <Content Include="Views\Producto\Details.cshtml" />
+    <Content Include="Views\Producto\Edit.cshtml" />
+    <Content Include="Views\Producto\Index.cshtml" />
+    <Content Include="Views\Marca\Show.cshtml" />
+    <Content Include="Views\Shared\_LayoutPartial - Copia.cshtml" />
+    <Content Include="Views\Cliente\Create.cshtml" />
+    <Content Include="Views\Cliente\Delete.cshtml" />
+    <Content Include="Views\Cliente\Details.cshtml" />
+    <Content Include="Views\Cliente\Edit.cshtml" />
+    <Content Include="Views\Cliente\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

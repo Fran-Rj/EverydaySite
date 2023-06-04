@@ -58,11 +58,11 @@ namespace Everyday
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "379852093483-k991edvo2tg6fmdroc6gidhij43ftabo.apps.googleusercontent.com",
+                ClientSecret = "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"
+            });
         }
     }
 }

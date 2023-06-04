@@ -16,8 +16,8 @@ namespace Everyday.Models
     {
         public int idPay { get; set; }
         public int idUser { get; set; }
-        public int quantity { get; set; }
-        public Nullable<System.DateTime> createdAt { get; set; }
+        public decimal quantity { get; set; }
+        public System.DateTime createdAt { get; set; }
     
         public virtual Usuario Usuario { get; set; }
     }

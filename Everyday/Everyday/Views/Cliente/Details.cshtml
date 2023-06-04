@@ -1,0 +1,99 @@
+﻿@model Everyday.Models.Cliente
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Cliente</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nameClient)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nameClient)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lastnameClient)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lastnameClient)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nitClient)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nitClient)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.addressClient)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.addressClient)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.createdAt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.createdAt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ciudad.nameCity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ciudad.nameCity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Departamento.nameDepa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Departamento.nameDepa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pais.namePais)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pais.namePais)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usuario.photo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usuario.photo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idClient }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -14,37 +14,35 @@ namespace Everyday.Controllers
     {
         private EverydayDB db = new EverydayDB();
 
-        public ActionResult Camisas()
+        public ActionResult See(int id)
         {
-            var producto = db.Producto.Where(p => p.nameProd == "Camisa");
-            ViewBag.vistaActual = "Camisas";
+            var producto = db.Producto.Where(p => p.idCateg == id);
+
+            string cmd = string.Format("select nameCateg from Categoria where idCateg = '{0}'", id);
+            DataSet ds = Utilities.Ejecutar(cmd);
+
+            ViewBag.Categoria = ds.Tables[0].Rows[0][0].ToString();
             return View(producto.ToList());
         }
 
         public ActionResult Shirts()
         {
-            var producto = db.Producto.Where(p => p.nameProd == "Camisa");
+            var producto = db.Producto.Where(p => p.idType == 1);
             ViewBag.vistaActual = "Shirts";
-            return View(producto.ToList());
-        }
-
-        public ActionResult Pantalones()
-        {
-            var producto = db.Producto.Where(p => p.nameProd == "Pantalon");
-            ViewBag.vistaActual = "Pantalones";
             return View(producto.ToList());
         }
 
         public ActionResult Pants()
         {
-            var producto = db.Producto.Where(p => p.nameProd == "Pantalon");
+            var producto = db.Producto.Where(p => p.idType == 2);
             return View(producto.ToList());
         }
 
         public ActionResult Show()
         {
-            ViewBag.vistaActual = "Show";
-            return View();
+            var producto = db.Producto.ToList();
+
+            return View(producto);
         }
 
         public ActionResult Index()
@@ -72,7 +70,8 @@ namespace Everyday.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Login", "Account");
             }
             Producto categoria = db.Producto.Find(id);
             if (categoria == null)
@@ -95,6 +94,8 @@ namespace Everyday.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "idCateg,nameCateg,createdAt")] Categoria categoria)
         {
+            categoria.createdAt = DateTime.Now;
+
             if (ModelState.IsValid)
             {
                 db.Categoria.Add(categoria);

@@ -21,8 +21,9 @@ namespace Everyday.Models
         }
     
         public int idMarc { get; set; }
+        public byte[] imagen { get; set; }
         public string nameMarc { get; set; }
-        public Nullable<System.DateTime> createdAt { get; set; }
+        public System.DateTime createdAt { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Producto> Producto { get; set; }

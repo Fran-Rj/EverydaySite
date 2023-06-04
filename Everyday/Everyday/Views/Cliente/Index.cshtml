@@ -1,0 +1,88 @@
+﻿@model IEnumerable<Everyday.Models.Cliente>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nameClient)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lastnameClient)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nitClient)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.addressClient)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.createdAt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ciudad.nameCity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Departamento.nameDepa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pais.namePais)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Usuario.photo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nameClient)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lastnameClient)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nitClient)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.addressClient)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.createdAt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ciudad.nameCity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Departamento.nameDepa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pais.namePais)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Usuario.photo)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idClient }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idClient }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idClient })
+        </td>
+    </tr>
+}
+
+</table>

@@ -13,8 +13,7 @@ namespace Everyday.Controllers
 
         public ActionResult Home()
         {
-            ViewBag.vistaActual = "Home";
-            return View();
+            return View(db.Marca.ToList());
         }
 
         public ActionResult Index()

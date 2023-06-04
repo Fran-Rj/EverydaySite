@@ -1,0 +1,35 @@
+﻿@model Everyday.Models.Carrito
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Carrito</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Producto.nameProd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Producto.nameProd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usuario.photo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usuario.photo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idCarrito }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

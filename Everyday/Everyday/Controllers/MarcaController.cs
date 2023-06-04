@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using Everyday.Models;
 
@@ -18,6 +19,23 @@ namespace Everyday.Controllers
         public ActionResult Index()
         {
             return View(db.Marca.ToList());
+        }
+
+        public ActionResult Show(int id)
+        {
+            var producto = db.Producto.Where(p => p.idMarc == id);
+            return View(producto.ToList());
+        }
+
+        public ActionResult MostrarImagen(int Id)
+        {
+            using (EverydayDB db = new EverydayDB())
+            {
+                var imagen = (from Marca in db.Marca
+                              where Marca.idMarc == Id
+                              select Marca.imagen).FirstOrDefault();
+                return File(imagen, "png");
+            }
         }
 
         // GET: Marca/Details/5
@@ -46,10 +64,17 @@ namespace Everyday.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "idMarc,nameMarc,createdAt")] Marca marca)
+        public ActionResult Create([Bind(Include = "idMarc,nameMarc,createdAt")] Marca marca, HttpPostedFileBase File)
         {
-            if (ModelState.IsValid)
+            if (File.ContentLength > 0)
             {
+                WebImage image = new WebImage(File.InputStream);
+                marca.imagen = image.GetBytes();
+            } 
+
+            if (marca != null)
+            {
+                marca.createdAt = DateTime.Now;
                 db.Marca.Add(marca);
                 db.SaveChanges();
                 return RedirectToAction("Index");

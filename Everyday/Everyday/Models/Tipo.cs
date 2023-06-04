@@ -14,11 +14,17 @@ namespace Everyday.Models
     
     public partial class Tipo
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Tipo()
+        {
+            this.Producto = new HashSet<Producto>();
+        }
+    
         public int idType { get; set; }
         public string nameType { get; set; }
-        public int idProd { get; set; }
-        public Nullable<System.DateTime> createdAt { get; set; }
+        public System.DateTime createdAt { get; set; }
     
-        public virtual Producto Producto { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Producto> Producto { get; set; }
     }
 }

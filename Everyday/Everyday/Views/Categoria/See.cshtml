@@ -1,0 +1,42 @@
+﻿@model List<Everyday.Models.Producto>
+
+@{
+    ViewBag.Title = "See";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    a {
+        font-size: 20px;
+        font-weight: bold;
+        text-decoration: none;
+        color: black;
+    }
+
+    a:hover {
+        text-decoration: none;
+        color: blue;
+    }
+</style>
+
+<br />
+<div style="display: flex; justify-content: space-between;">
+    <h3 style="margin-left: 30px;">@ViewBag.Categoria</h3>
+    @Html.ActionLink("Volver", "Home", "Home", null, new { @class = "btn btn-warning" })
+</div>
+<div style="display: flex; flex-wrap: wrap; background-color: transparent; overflow: auto; margin: auto; justify-content: space-between; width: 1280px; height: 550px;">
+    <br />
+    @foreach (var item in Model)
+    {
+        <div style="background-color: transparent; justify-content: space-between; margin: auto;">
+            <div style="text-align:center; background-color: transparent; width: 100%; height: 250px;">        
+                <a href="@Url.Action("Description", "Categoria", new { Id = item.idProd })">
+                    <img src="@Url.Action("MostrarImagen", "Producto", new { Id = item.idProd })" alt="..." id="imgUser" style="width:200px; height:200px; border-radius:10px;" />
+                </a>
+                <br /><br />
+                @Html.ActionLink(item.nameProd, "Description", new { Id = item.idProd })
+            </div>
+        </div>
+    }
+</div>
+<br />

@@ -1,59 +1,35 @@
 ﻿
 <style>
-    #menuDesple:focus {
+    #menuDesplegable:focus {
         outline: none;
         border: none;
         text-decoration: none;
     }
 </style>
 
-@{
-    string vistaActual = ViewBag.vistaActual;
-}
-
 <ul class="navbar-nav" style="margin-top: 8px; text-decoration:none; border:none;">
-    <li style="color: black; font-size: 20px;">
-        @*@if (vistaActual == "Show" || vistaActual == "Camisas" || vistaActual == "Pantalones")
-        {*@
-            <input id="btnCategorias" style="background-color: transparent; font-size: 20px; border: none;" type="button" value="Categorias" />
-            
-            <select id="menuDesplegable" style="background-color: transparent; width: 15px; border: none; text-decoration: none;">
-                <option style="display:none; background-color: #DCDCDC;" value="">Categorias</option>
-                @{
-                    using (Everyday.Models.EverydayDB db = new Everyday.Models.EverydayDB())
+    <li style="background-color:transparent; color: black; font-size: 20px;">
+        <input id="btnCategorias" style="background-color: transparent; font-size: 20px; border: none;" type="button" value="Categorias" />
+        <select onchange="location = this.value;" id="menuDesplegable" style="background-color: transparent; width: 15px; border: none; text-decoration: none;">
+            <option style="display: none; background-color: rgba(240, 240, 240, 0.5);" value="">Categorias</option>
+            @{
+                using (Everyday.Models.EverydayDB db = new Everyday.Models.EverydayDB())
+                {
+                    foreach (var item in db.Categoria)
                     {
-                        foreach (var item in db.Categoria)
-                        {
-                            <option style="background-color: #DCDCDC;" value="@item.idCateg">@item.nameCateg</option>
-                        }
+                        <option style="background-color: rgba(240, 240, 240, 0.5);" value="@Url.Action("See", "Categoria", new { Id = item.idCateg })">@item.nameCateg</option>
                     }
                 }
-            </select>
-
-            <script>
-                // REDIRECCIONAR
-                var menu = document.getElementById("menuDesplegable");
-                menu.style.outline = "none";
-
-                menu.addEventListener("change", function () {
-                    var selectedOption = menu.options[menu.selectedIndex].value;
-
-                    if (selectedOption === "1") {
-                        window.location.href = "https://localhost:44344/Categoria/Camisas";
-                    }
-                    else if (selectedOption === "2") {
-                        window.location.href = "https://localhost:44344/Categoria/Pantalones";
-                    } else if (selectedOption === "3") {
-                        window.location.href = "https://i.pinimg.com/736x/68/92/f2/6892f2e4b730eb58502d8fbd3ccc4609.jpg";
-                    }
-                })
-            </script>
-        @*}
-        else
-        {
-            <input id="btnCategorias" style="background-color: transparent; font-size: 20px; border: none;" type="button" value="Categorias" />
-        }*@
+            }
+        </select>
     </li>
 </ul>
 
-<script src="~/Models/JavaScript.js"></script>
+<script>
+    // TODAS LAS CATEGORIAS
+    var boton = document.getElementById("btnCategorias");
+
+    boton.addEventListener("click", function () {
+        window.location.href = "https://localhost:44344/Categoria/Show";
+    });
+</script>

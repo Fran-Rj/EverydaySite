@@ -6,45 +6,28 @@
     Layout = "~/Views/Shared/_MyLayout.cshtml";
 }
 
-<style>
-    body {
-        margin: 0;
-        padding: 0;
-    }
 
-    .body-content {
-        margin: auto 10px;
-        padding: 0;
-    }
-</style>
-
-@*<p>
-    @Html.ActionLink("Create New", "Create")
-</p>*@
-@*<br />*@
-
-<div style="display: flex; flex-wrap: wrap; width: 1280px; background-color: transparent; overflow: auto;">
+<div class="container" style="display: flex; flex-wrap: wrap; width: 100%; background-color: transparent; justify-content: space-between; overflow: auto;">
     @foreach (var item in Model)
-    {
-
-        <div style="margin-left: 20px; margin-top: 10px;">
-           <ul>
-               <li>
-                   <h4>
-                       @Html.DisplayFor(modelItem => item.nameMarc)
-                   </h4>
-               </li>
-           </ul>
+    { 
+        <div style="margin-top: 10px;">
+            <ul>
+                <a style="cursor:pointer;" href="@Url.Action("Show", "Marca", new { Id = item.idMarc })">
+                    <img style="margin-left:-30px;" src="@Url.Action("MostrarImagen", "Marca", new { Id = item.idMarc })" alt="None..." />
+                </a>
+            </ul>
         </div>
-
-        @*<td>
-                @Html.DisplayFor(modelItem => item.createdAt)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.idMarc }) |
-                @Html.ActionLink("Details", "Details", new { id=item.idMarc }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.idMarc })
-            </td>*@
-
     }
 </div>
+@*<div>
+    @Html.ActionLink("Create", "Create", null, new { @class = "btn btn-success" })
+</div>*@
+
+@*<script>
+    // REDIRECCIONAR
+var menu = document.getElementById("menuDesple");
+var urlBase = "https://localhost:44344/Marca/";
+
+    menu.addEventListener("change", function () {
+    window.location.href = urlBase + opcionSeleccionada;
+</script>*@

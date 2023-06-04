@@ -1,21 +1,21 @@
-﻿// MOSTRAR IMAGEN
-function mostrarimagen(input) {
-    if (input.files && input.files[0]) {
-        var leer = new FileReader();
-        leer.onload = function (e) {
-            document.getElementsByTagName("img")[0].setAttribute("src", e.target.result);
-        }
-        leer.readAsDataURL(input.files[0]);
-    }
-}
+﻿//// MOSTRAR IMAGEN
+//function mostrarimagen(input) {
+//    if (input.files && input.files[0]) {
+//        var leer = new FileReader();
+//        leer.onload = function (e) {
+//            document.getElementsByTagName("img")[0].setAttribute("src", e.target.result);
+//        }
+//        leer.readAsDataURL(input.files[0]);
+//    }
+//}
 
 
 // TODAS LAS CATEGORIAS
-var boton = document.getElementById("btnCategorias");
+//var boton = document.getElementById("btnCategorias");
 
-boton.addEventListener("click", function () {
-    window.location.href = "https://localhost:44344/Categoria/Show";
-});
+//boton.addEventListener("click", function () {
+//    window.location.href = "https://localhost:44344/Categoria/Show";
+//});
 
 
 //MOSTRAR MENU
@@ -30,9 +30,10 @@ boton.addEventListener("click", function () {
 
 
 //MOSTRAR CATEGORIAS
-function desplegar() {
-    window.location.href = "https://localhost:44344/Categoria/Show";
-}
+//function desplegar() {
+//    window.location.href = "https://localhost:44344/Categoria/Show";
+//}
+
 
 
 // REDIRECCIONAR

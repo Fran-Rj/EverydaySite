@@ -17,6 +17,7 @@ namespace Everyday.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Usuario()
         {
+            this.Carrito = new HashSet<Carrito>();
             this.Cliente = new HashSet<Cliente>();
             this.Pago = new HashSet<Pago>();
             this.Tarjeta = new HashSet<Tarjeta>();
@@ -29,9 +30,11 @@ namespace Everyday.Models
         public string email { get; set; }
         public string keyUser { get; set; }
         public string roleUser { get; set; }
-        public Nullable<System.DateTime> createdAt { get; set; }
+        public System.DateTime createdAt { get; set; }
         public string state { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Carrito> Carrito { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cliente> Cliente { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

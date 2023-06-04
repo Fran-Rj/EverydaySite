@@ -20,7 +20,7 @@ namespace Everyday.Models
         public int cvv { get; set; }
         public string nameTarjet { get; set; }
         public decimal saldo { get; set; }
-        public Nullable<System.DateTime> createdAt { get; set; }
+        public System.DateTime createdAt { get; set; }
         public System.DateTime expireDate { get; set; }
         public string state { get; set; }
         public int idUser { get; set; }

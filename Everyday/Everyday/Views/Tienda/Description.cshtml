@@ -1,0 +1,140 @@
+﻿@model Everyday.Models.Producto
+
+@{
+    ViewBag.Title = "Description";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<style>
+    body {
+        background-color: transparent;
+        margin: 0;
+        padding: 0;
+    }
+
+    #img {
+        width: 290px;
+        height: 300px;
+        border-radius: 10px;
+        margin: 3px 2px auto;
+    }
+
+    .box-image {
+        width: 295px;
+        height: 305px;
+        background-color: transparent;
+    }
+
+    .box-datos {
+        padding: 15px;
+        background-color: transparent;
+        font-size: 20px;
+        width: 350px;
+        margin-left: 40px;
+        height: 305px;
+    }
+
+    #btnLink {
+        text-decoration: none;
+        color: black;
+        font-size: 20px;
+        background-color: rebeccapurple;
+    }
+
+    #btnLink:hover {
+        text-decoration: none;
+        color: dodgerblue;
+    }
+
+    /*VIEW SUPERPUESTA*/
+    #popup {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: none;
+    }
+
+    #popup-content {
+        background-color: transparent;
+        width: 650px;
+        padding: 10px;
+        margin: 50px auto;
+        text-align: center;
+    }
+
+    #btnCerrar {
+        border: none;
+        top: 15%;
+        left: 70%;
+        position: absolute;
+        transform: translate(-15% -70%);
+        background-color: transparent;
+        font-weight: bold;
+        color: red;
+    }
+</style>
+
+
+<div id="x" style="display: flex; width:100%; height:585px; background-color: transparent; margin:0; padding:0;">
+    <div style="background-color: transparent; margin-left:145px; text-align:center; display:block;">
+        <label style="margin-top:50%; font-weight:bold; font-size: 70px">TUS</label>
+        <br /><br />
+        <label style="font-weight:bold; font-size: 70px">PRENDAS</label>
+    </div>
+    <div class="box-image" style="background-color: transparent; margin-left: 145px; margin-top: 7%; text-align: center;">
+        <img src="@Url.Action("MostrarImagen", "Producto", new { Id = Model.idProd })" alt="None..." id="img" />
+        <br /><br />
+        <label style="font-size: 30px">@Html.DisplayFor(p => p.nameProd)</label>
+    </div>
+    <div class="box-datos" style="margin-top: 7%;">
+        <label style="font-weight: bold;">Descripción</label>
+        <br />
+        @Html.DisplayFor(p => p.description)
+        <br /><br />
+        <label style="font-weight: bold;">Precio</label>
+        <br />
+        $ @Html.DisplayFor(p => p.price)
+        <br /><br />
+        <label style="font-weight: bold;">Marca</label>
+        <br />
+        @Html.DisplayFor(p => p.Marca.nameMarc)
+        <br /><br />
+        <div style="display:flex;">
+            <button id="btnComprar" style="width:250px; height:40px; border:none; border-radius: 5px; background-color: black; color: white;">Comprar</button>   
+            <form action="@Url.Action("AddToCarrito", "Tienda", new { Id = Model.idProd})" method="get" style="width:500px;">
+                <button style="height: 40px; margin-left:20px;" class="btn btn-success" type="submit">
+                    Añadir al carrito
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="popup">
+    <div id="popup-content">
+        <button id="btnCerrar">X</button>
+        <iframe src="https://localhost:44344/Tarjeta/Pago" style="width: 100%; height: 500px; padding: 5px;"></iframe>
+    </div>
+</div>
+
+<script>
+    // SUPERPONER VIEW
+    document.getElementById("btnComprar").addEventListener("click", function () {
+        document.getElementById("popup").style.display = "block";
+    });
+
+    document.getElementById("btnCerrar").addEventListener("click", function () {
+        document.getElementById("popup").style.display = "none";
+    });
+</script>
+
+@*<a id="btnLink" href="https://localhost:44344/Categoria/Show">
+        <input id="btn" type="button" value="Regresar" />
+    </a>
+    <a id="btnLink" href="https://localhost:44344/Categoria/Show">
+        <input id="btn" type="button" value="Back" />
+    </a>*@

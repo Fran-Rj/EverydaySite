@@ -14,11 +14,157 @@ namespace Everyday.Controllers
     {
         private EverydayDB db = new EverydayDB();
 
-        public ActionResult Pago()
+
+        [HttpGet]
+        public ActionResult Pagos()
         {
-            ViewBag.Direccion = new SelectList(db.Cliente, "addressClient");
             return View();
         }
+
+        [HttpPost]
+        public ActionResult Pagos(Tarjeta t)
+        {
+            Pago p = new Pago();
+            Venta v = new Venta();
+            DetalleVenta d = new DetalleVenta();
+
+            if (Session["user"] != null)
+            {
+                string cmd = "";
+                DataSet ds; ;
+
+                // VALIDAR DATOS TARJETA
+                cmd = string.Format("select count(*) from Tarjeta where idUser = '{0}'", Session["user"]);
+                ds = Utilities.Ejecutar(cmd);
+
+                int filas = (int)ds.Tables[0].Rows[0][0];
+
+                if (filas > 0)
+                {
+                    cmd = string.Format("select * from Tarjeta where idUser = '{0}'", Session["user"]);
+                    ds = Utilities.Ejecutar(cmd);
+
+                    int numTarjeta = (int)ds.Tables[0].Rows[0]["numTarjet"];
+                    int cvv = (int)ds.Tables[0].Rows[0]["cvv"];
+                    string expire = ds.Tables[0].Rows[0]["expireDate"].ToString();
+                    decimal saldo = (decimal)ds.Tables[0].Rows[0]["saldo"];                
+
+                    if (t.numTarjet == numTarjeta && t.cvv == cvv && t.expireDate.ToString() == expire)
+                    {
+                        // TOTAL VENTA/PAGO
+                        cmd = string.Format("select sum(subTotal) from Carrito where idUser = '{0}'", Session["user"]);
+                        ds = Utilities.Ejecutar(cmd);
+                        v.total = (decimal)ds.Tables[0].Rows[0][0];
+
+                        if (v.total <= saldo)
+                        {
+                            // DATOS PAGO
+                            p.idUser = int.Parse(Session["user"].ToString());
+                            p.quantity = (decimal)ds.Tables[0].Rows[0][0];
+                            p.createdAt = DateTime.Now;
+
+                            if (p != null)
+                            {
+                                db.Pago.Add(p);
+                                db.SaveChanges();
+
+                                saldo = saldo - v.total;
+                                cmd = string.Format("update Tarjeta set saldo = '{0}' where idUser = '{1}'", saldo, Session["user"]);
+                                Utilities.Ejecutar(cmd);
+
+                                // DATOS VENTA
+                                v.createdAt = DateTime.Now;
+                                cmd = string.Format("select idClient from Cliente where idUser = '{0}'", Session["user"]);
+                                ds = Utilities.Ejecutar(cmd);
+                                v.idClient = (int)ds.Tables[0].Rows[0][0];
+
+                                if (v != null)
+                                {
+                                    db.Venta.Add(v);
+                                    db.SaveChanges();
+                                }
+
+                                // DATOS DETALLE - VENTA
+                                cmd = string.Format("select idVent from Venta where idClient = '{0}'", v.idClient);
+                                ds = Utilities.Ejecutar(cmd);
+                                int venta = (int)ds.Tables[0].Rows[0][0];
+
+                                cmd = string.Format("select * from Carrito where idUser = '{0}'", Session["user"]);
+                                ds = Utilities.Ejecutar(cmd);
+
+                                int idProd = (int)ds.Tables[0].Rows[0]["idProd"];
+                                int cantidad = d.quantity = (int)ds.Tables[0].Rows[0]["quantity"];
+                                decimal subTotal = (decimal)ds.Tables[0].Rows[0]["subTotal"];
+
+                                cmd = string.Format("select price from Producto where idProd = '{0}'", idProd);
+                                ds = Utilities.Ejecutar(cmd);
+
+                                d.idVent = venta;
+                                d.iProd = idProd;
+                                d.price = (decimal)ds.Tables[0].Rows[0][0];
+                                d.quantity = cantidad;
+                                d.subTotal = subTotal;
+                                d.createdAt = DateTime.Now;
+
+                                if (d != null)
+                                {
+                                    db.DetalleVenta.Add(d);
+                                    db.SaveChanges();
+                                }
+
+                                // Disminuir stock
+                                cmd = string.Format("select stock from Producto where idProd = '{0}'", idProd);
+                                ds = Utilities.Ejecutar(cmd);
+
+                                int stock = (int)ds.Tables[0].Rows[0][0];
+                                stock = stock - cantidad;
+
+                                cmd = string.Format("update Producto set stock = '{0}' where idProd = '{1}'", stock, idProd);
+                                Utilities.Ejecutar(cmd);
+
+                                // Eliminar productos vendidos - carrito
+                                cmd = string.Format("delete from Carrito where idUser = '{0}'", Session["user"]);
+                                Utilities.Ejecutar(cmd);
+
+                                return RedirectToAction("Home", "Home");
+                            }
+
+                            ViewBag.Error = "Error de pago";
+                            return View();
+                        }
+                        else
+                        {
+                            ViewBag.Error = "No tienes suficiente dinero :(";
+                            return View();
+                        }
+                    }
+                    else if (t.numTarjet.ToString() != "" && t.cvv.ToString() != "" && t.expireDate.ToString() != "")
+                    {
+                        ViewBag.Error = "Ingresa tus datos";
+                        return View();
+                    }
+                    else
+                    {
+                        ViewBag.Error = "Tus credenciales no coinciden";
+                        return View();
+                    }
+                }
+                else
+                {
+                    ViewBag.Error = "Tus credenciales no existen";
+                    return View();
+                }
+            }
+            else
+            {
+                ViewBag.Error = "Inicia sesión";
+                return View();
+            }
+        }
+
+
+
+
 
         // GET: Tarjeta
         public ActionResult Index()

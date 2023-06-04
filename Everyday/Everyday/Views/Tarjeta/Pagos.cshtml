@@ -1,0 +1,76 @@
+﻿@model Everyday.Models.Tarjeta
+
+@{
+    ViewBag.Title = "Pagos";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+
+<style>
+    body {
+        background-color: transparent;
+    }
+
+    #box-Tarjeta {
+        width: 600px;
+        height: 450px;
+        background-color: silver;
+        border-radius: 15px;
+        text-align: center;
+        margin: 20px auto;
+    }
+
+    #btnDirec, #numTarjet, #expireDate, #cvv {
+        width: 400px;
+        height: 50px;
+        border: none;
+        border-radius: 5px;
+        text-align: center;
+        box-shadow: 6px 8px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    #btnDirec, #expireDate, #numTarjet, #cvv:focus {
+        outline:none;
+    }
+
+    #expireDate, #cvv {
+        width: 200px;
+        margin-left: 65px;
+    }
+
+    input, select, textarea {
+        max-width: 400px;
+    }
+</style>
+
+
+@using (Html.BeginForm("Pagos", "Tarjeta", FormMethod.Post))
+ {
+    <div id="box-Tarjeta">
+        <label style="margin-top: 20px; font-weight:bold; font-size: 30px;">Ya casi...</label>
+        <br /><br />
+        <label style="font-size: 20px;">Método de pago</label>
+        <br /><br />
+        @Html.TextBoxFor(t => t.numTarjet, new { placeholder = "0000000" })
+        <br /><br /><br />
+        <div style="display: flex; text-align: center;">
+            @Html.TextBoxFor(t => t.expireDate, new { placeholder = "2024-01-01" })
+
+            @Html.TextBoxFor(t => t.cvv, new { placeholder = "234" })
+        </div>
+        <br />
+        <span style="font-weight:bold;" class="text-danger">
+            @ViewBag.Error
+        </span>
+        <br /><br />
+        <input type="submit" value="Aceptar" style="font-size: 20px; border:none; border-radius:5px; width: 200px; height: 50px; background-color: dodgerblue;" />
+        @Html.ActionLink("Volver", "Index", "Carrito", null, new { @class = "btn btn-warning" })
+    </div>
+ }
+
+<script>
+    //function close() {
+    //    document.getElementById("btnCerrar").addEventListener("click", function () {
+    //        document.getElementById("popup").style.display = "none";
+    //    });
+    //}
+</script>

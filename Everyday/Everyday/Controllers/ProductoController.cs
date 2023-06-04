@@ -18,7 +18,7 @@ namespace Everyday.Controllers
         // GET: Producto
         public ActionResult Index()
         {
-            var producto = db.Producto.Include(p => p.Categoria).Include(p => p.Marca);
+            var producto = db.Producto.Include(p => p.Categoria).Include(p => p.Marca).Include(p => p.Tipo);
             return View(producto.ToList());
         }
 
@@ -42,6 +42,7 @@ namespace Everyday.Controllers
         {
             ViewBag.idCateg = new SelectList(db.Categoria, "idCateg", "nameCateg");
             ViewBag.idMarc = new SelectList(db.Marca, "idMarc", "nameMarc");
+            ViewBag.idType = new SelectList(db.Tipo, "idType", "nameType");
             return View();
         }
 
@@ -50,13 +51,15 @@ namespace Everyday.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "idProd,imagen,nameProd,description,quantity,price,stock,idMarc,idCateg,createdAt")] Producto producto, HttpPostedFileBase File)
+        public ActionResult Create([Bind(Include = "idProd,imagen,nameProd,description,price,stock,state,idType,idMarc,idCateg,createdAt")] Producto producto, HttpPostedFileBase File)
         {
             if (File.ContentLength > 0)
             {
                 WebImage image = new WebImage(File.InputStream);
                 producto.imagen = image.GetBytes();
             }
+
+            producto.createdAt = DateTime.Now;
 
             if (ModelState.IsValid)
             {
@@ -67,7 +70,20 @@ namespace Everyday.Controllers
 
             ViewBag.idCateg = new SelectList(db.Categoria, "idCateg", "nameCateg", producto.idCateg);
             ViewBag.idMarc = new SelectList(db.Marca, "idMarc", "nameMarc", producto.idMarc);
+            ViewBag.idType = new SelectList(db.Tipo, "idType", "nameType", producto.idType);
             return View(producto);
+        }
+
+        [HttpGet]
+        public ActionResult MostrarImagen(int Id)
+        {
+            using (EverydayDB db = new EverydayDB())
+            {
+                var imagen = (from Producto in db.Producto
+                              where Producto.idProd == Id
+                              select Producto.imagen).FirstOrDefault();
+                return File(imagen, "png");
+            }
         }
 
         // GET: Producto/Edit/5
@@ -84,20 +100,8 @@ namespace Everyday.Controllers
             }
             ViewBag.idCateg = new SelectList(db.Categoria, "idCateg", "nameCateg", producto.idCateg);
             ViewBag.idMarc = new SelectList(db.Marca, "idMarc", "nameMarc", producto.idMarc);
+            ViewBag.idType = new SelectList(db.Tipo, "idType", "nameType", producto.idType);
             return View(producto);
-        }
-
-        // MOSTRAR IMAGEN
-        [HttpGet]
-        public ActionResult MostrarImagen(int Id)
-        {
-            using (EverydayDB db = new EverydayDB())
-            {
-                var imagen = (from Producto in db.Producto
-                              where Producto.idProd == Id
-                              select Producto.imagen).FirstOrDefault();
-                return File(imagen, "png");
-            }
         }
 
         // POST: Producto/Edit/5
@@ -105,8 +109,16 @@ namespace Everyday.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "idProd,imagen,nameProd,description,quantity,price,stock,idMarc,idCateg,createdAt")] Producto producto)
+        public ActionResult Edit([Bind(Include = "idProd,imagen,nameProd,description,price,stock,state,idType,idMarc,idCateg,createdAt")] Producto producto, HttpPostedFileBase File)
         {
+            if (File.ContentLength > 0)
+            {
+                WebImage image = new WebImage(File.InputStream);
+                producto.imagen = image.GetBytes();
+            }
+
+            producto.createdAt = DateTime.Now;
+
             if (ModelState.IsValid)
             {
                 db.Entry(producto).State = EntityState.Modified;
@@ -115,6 +127,7 @@ namespace Everyday.Controllers
             }
             ViewBag.idCateg = new SelectList(db.Categoria, "idCateg", "nameCateg", producto.idCateg);
             ViewBag.idMarc = new SelectList(db.Marca, "idMarc", "nameMarc", producto.idMarc);
+            ViewBag.idType = new SelectList(db.Tipo, "idType", "nameType", producto.idType);
             return View(producto);
         }
 

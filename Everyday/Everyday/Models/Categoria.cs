@@ -22,7 +22,7 @@ namespace Everyday.Models
     
         public int idCateg { get; set; }
         public string nameCateg { get; set; }
-        public Nullable<System.DateTime> createdAt { get; set; }
+        public System.DateTime createdAt { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Producto> Producto { get; set; }

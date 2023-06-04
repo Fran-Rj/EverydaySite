@@ -26,9 +26,15 @@ namespace Everyday.Models
         public int nitClient { get; set; }
         public string addressClient { get; set; }
         public int phone { get; set; }
+        public int idPais { get; set; }
+        public int idDepa { get; set; }
+        public int idCity { get; set; }
         public int idUser { get; set; }
-        public Nullable<System.DateTime> createdAt { get; set; }
+        public System.DateTime createdAt { get; set; }
     
+        public virtual Ciudad Ciudad { get; set; }
+        public virtual Departamento Departamento { get; set; }
+        public virtual Pais Pais { get; set; }
         public virtual Usuario Usuario { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Venta> Venta { get; set; }

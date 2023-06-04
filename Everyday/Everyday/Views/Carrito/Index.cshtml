@@ -1,0 +1,207 @@
+﻿@model Everyday.Models.Carrito
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    #btnCant {
+        border: none;
+        width: 150px;
+        height: 40px;
+        border-radius: 5px;
+        background-color: silver;
+        text-align:center;
+    }
+
+    #btnCant:focus {
+        outline: none;
+    }
+
+    #box-desc {
+        font-size: 20px;
+        margin-left: 10px;
+        width: 500px;
+        height: 100px;
+        background-color: transparent;
+        display: flex;
+        align-items: center;
+        overflow: auto;
+        flex-wrap: wrap;
+    }
+
+    #box-precio, #box-cantidad {
+        font-size: 20px;
+        width: 100px;
+        background-color: transparent;
+    }
+
+    #box-Tarjeta {
+        width: 100%;
+        height: 100%;
+        border-radius: 15px;
+        text-align: center;
+        margin: 20px auto;    
+    }
+
+    #quantity {
+        width: 100px;
+    }
+
+    #quantity:focus {
+        outline:none;
+    }
+</style>
+<br />
+<div class="card-body " style="display: flex; width:1200px; box-sizing: border-box; background-color: transparent; margin: auto">
+    <div style="background-color: transparent; border-radius:5px; margin: auto;" class="card mb-2 card-producto">
+        <div style="padding: 20px; width: 1140px; background-color: transparent; border-radius:5px;" class="product-details mr-2">
+            <div class="d-flex justify-content-between">
+                <div>
+                    <br />
+                    <h4>Detalles - Compra</h4>
+                    <br />
+                    <div>
+                        @Html.ActionLink("Volver", "Show", "Categoria", null, htmlAttributes: new { @class = "btn btn-warning" })
+                    </div>
+                </div>
+                @if (Session["user"] != null)
+                {
+                    decimal total = 0;
+
+                    string cmd = string.Format("select count(*) from Carrito where idUser = '{0}'", Session["user"]);
+                    System.Data.DataSet ds = Everyday.Models.Utilities.Ejecutar(cmd);
+                    int filas = (int)ds.Tables[0].Rows[0][0];
+
+                    if (filas > 0)
+                    {
+                        cmd = string.Format("select sum(subTotal) from Carrito where idUser = '{0}'", Session["user"]);
+                        ds = Everyday.Models.Utilities.Ejecutar(cmd);
+                        total = (decimal)ds.Tables[0].Rows[0][0];
+
+                        <div class="card bg-light" style="width: 400px; height: 150px;">
+                            <div>
+                                <form action="@Url.Action("Create", "Cliente", null)" method="get">
+                                    <div id="box-Tarjeta" style="background-color: transparent;">
+                                        <div style="display: flex;">
+                                            <label style="font-size: 20px; text-align: left; font-weight:bold; margin-left: 20px;">Total a pagar: </label>
+                                            <label style="font-size:20px; margin-left: 10px;">@String.Format("{0:C}", total)</label>
+                                        </div>
+                                        <br />
+                                        <input type="submit" value="Finalizar compra" style="font-size: 20px; border:none; border-radius:5px; width: 200px; height: 50px; background-color: springgreen;" />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+            <hr />
+            @{
+                int numProd = 0;
+
+                if (Session["user"] != null)
+                {
+                    string cmd = "SELECT COUNT(*) FROM Carrito WHERE idUser=" + Session["user"] + "";
+                    System.Data.DataSet ds = Everyday.Models.Utilities.Ejecutar(cmd);
+                    numProd = int.Parse(ds.Tables[0].Rows[0][0].ToString());
+
+                }
+
+                <span style="font-size: 20px;">
+                    Tienes @numProd artículo(s) en tu carrito
+                </span>
+                <br /><br />
+            }
+            @{
+                if (Session["user"] != null)
+                {
+                    int idUsuario = int.Parse(Session["user"].ToString());    
+
+                    Everyday.Models.EverydayDB db = new Everyday.Models.EverydayDB();
+                    var product = db.Carrito.Where(c => c.idUser == idUsuario);
+
+                    foreach (var item in product.ToList())
+                    {
+                        <div class="card mb-2 card-producto" style="background-color: transparent;">
+                            <div style="display: flex; justify-content:space-between; align-items:center;">
+                                <div style="display:flex;">
+                                    <div>
+                                        <img src="@Url.Action("MostrarImagen", "Producto", new { Id = item.idProd })" alt="None..." style="border-radius: 5px; width: 100px; height:100px;" />
+                                    </div>
+                                    <div id="box-desc">
+                                        @item.Producto.description
+                                    </div>
+                                    <div id="box-precio" style="margin-left: 50px;">
+                                        <label style="margin-top: 20px; font-weight: bold;">Precio</label>
+                                        <br />
+                                        $ @item.Producto.price
+                                    </div>
+                                    <div id="box-cantidad" style="margin-left: 50px;">
+                                        <label style="margin-top: 20px; font-weight: bold;">Cantidad: </label>
+                                        <br />
+                                        @Html.TextBoxFor(c => c.quantity, new { @type = "number", min = "1", Value = item.quantity, style = "text-align: center;" })
+                                    </div>
+                                </div>
+                                <div>
+                                    <div style="display:flex;">
+                                        <div style="margin-left: 15px; margin-right: 10px;">
+                                            <form action="@Url.Action("Delete", "Carrito", new { Id = item.idCarrito })">
+                                                <button class="btn btn-outline-danger btn-eliminar" type="submit" style="width: 40px; height: 40px;">
+                                                    <svg style="margin-top: -5px;" class="svg-inline--fa fa-trash-alt fa-w-14" aria-hidden="true" focusable="false" data-prefix="far" data-icon="trash-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M268 416h24a12 12 0 0 0 12-12V188a12 12 0 0 0-12-12h-24a12 12 0 0 0-12 12v216a12 12 0 0 0 12 12zM432 80h-82.41l-34-56.7A48 48 0 0 0 274.41 0H173.59a48 48 0 0 0-41.16 23.3L98.41 80H16A16 16 0 0 0 0 96v16a16 16 0 0 0 16 16h16v336a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128h16a16 16 0 0 0 16-16V96a16 16 0 0 0-16-16zM171.84 50.91A6 6 0 0 1 177 48h94a6 6 0 0 1 5.15 2.91L293.61 80H154.39zM368 464H80V128h288zm-212-48h24a12 12 0 0 0 12-12V188a12 12 0 0 0-12-12h-24a12 12 0 0 0-12 12v216a12 12 0 0 0 12 12z"></path></svg>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            }
+        </div>        
+    </div>
+</div>
+
+
+@*<table class="table table-bordered">
+    <tbody>
+        <tr>
+            <th>Descripción</th>
+            <th>Precio</th>
+        </tr>
+        @{
+            double total = 0;
+        }
+
+        @foreach (var item in Model)
+        {
+            total += (double)(item.Producto.price);
+            <tr>
+                <td>
+                    @item.Producto.description
+                </td>
+                <td>
+                    @item.Producto.price
+                </td>
+                <td>
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.idCarrito })
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <th colspan="1">Total</th>
+            <th>@String.Format("{0:C}", total )</th>
+        </tr>
+    </tfoot>
+</table>*@
+
+@*<form action="@Url.Action("Venta", "Tienda", new { model => model.Producto.idProd })" method="post">
+    <button type="submit">
+        Finalizar compra
+    </button>
+</form>*@
+
