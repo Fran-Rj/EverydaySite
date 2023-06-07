@@ -1,0 +1,36 @@
+﻿@model List<Everyday.Models.Producto>
+
+@{
+    ViewBag.Title = "Show";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    ul {
+        list-style-type: none;
+    }
+</style>
+
+<br />
+<div class="container" style="display: flex; margin:auto; width: 100%; background-color: transparent; justify-content: space-between; overflow: auto;">
+    @{
+        foreach (var item in Model)
+        {
+            <div style="margin-top: 10px;">
+                <ul>
+                    <li>
+                        <div>
+                            <img id="imgProd" src="@Url.Action("MostrarImagen",  "Producto", new { Id = item.idProd })" style="width: 200px; height:200px; border-radius: 5px;" alt="None..." />
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        }
+    }
+</div>
+<div>
+    <span>
+        @ViewBag.Data
+    </span>
+</div>
+

@@ -1,12 +1,12 @@
 ﻿@model Everyday.Models.Cliente
 
 @{
-    ViewBag.Title = "Register";
+    ViewBag.Title = "Registrar";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 
-@using (Html.BeginForm("Register", "Cliente", FormMethod.Post))
+@using (Html.BeginForm("Registrar", "Client", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
     <div style="margin:auto;" class="container">

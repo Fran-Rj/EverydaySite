@@ -7,23 +7,32 @@
     }
 </style>
 
-<ul class="navbar-nav" style="margin-top: 8px; text-decoration:none; border:none;">
-    <li style="background-color:transparent; color: black; font-size: 20px;">
-        <input id="btnCategorias" style="background-color: transparent; font-size: 20px; border: none;" type="button" value="Tienda" />
-        <select onchange="location = this.value;" id="menuDesplegable" style="background-color: transparent; width: 15px; border: none; text-decoration: none;">
-            <option style="display: none; background-color: rgba(240, 240, 240, 0.5);" value="">Categorias</option>
-            @{
-                using (Everyday.Models.EverydayDB db = new Everyday.Models.EverydayDB())
-                {
-                    foreach (var item in db.Categoria)
-                    {
-                        <option style="background-color: rgba(240, 240, 240, 0.5);" value="@Url.Action("See", "Categoria", new { Id = item.idCateg })">@item.nameCateg</option>
+@{
+    string cmd = "SELECT roleUser FROM Usuario WHERE idUser=" + Session["user"] + "";
+    System.Data.DataSet ds = Everyday.Models.Utilities.Ejecutar(cmd);
+    string rol = ds.Tables[0].Rows[0][0].ToString();
+
+    if (rol != "Admin")
+    {
+        <ul class="navbar-nav" style="margin-top: 8px; text-decoration:none; border:none;">
+            <li style="background-color:transparent; color: black; font-size: 20px;">
+                <input id="btnCategorias" style="background-color: transparent; font-size: 20px; border: none;" type="button" value="Tienda" />
+                <select onchange="location = this.value;" id="menuDesplegable" style="background-color: transparent; width: 15px; border: none; text-decoration: none;">
+                    <option style="display: none; background-color: rgba(240, 240, 240, 0.5);" value="">Categorias</option>
+                    @{
+                        using (Everyday.Models.EverydayDB db = new Everyday.Models.EverydayDB())
+                        {
+                            foreach (var item in db.Categoria)
+                            {
+                                <option style="background-color: rgba(240, 240, 240, 0.5);" value="@Url.Action("See", "Categoria", new { Id = item.idCateg })">@item.nameCateg</option>
+                            }
+                        }
                     }
-                }
-            }
-        </select>
-    </li>
-</ul>
+                </select>
+            </li>
+        </ul>
+    }
+}
 
 <script>
     // TODAS LAS CATEGORIAS
@@ -31,5 +40,5 @@
 
     boton.addEventListener("click", function () {
         window.location.href = "https://localhost:44378/Categoria/Show";
-    });    
+    });
 </script>

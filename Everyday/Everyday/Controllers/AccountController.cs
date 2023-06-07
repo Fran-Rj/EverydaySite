@@ -18,8 +18,6 @@ namespace Everyday.Controllers
 
         public ActionResult Profil(int? id)
         {
-            id = (int)Session["user"];
-
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -34,17 +32,20 @@ namespace Everyday.Controllers
 
         [HttpPost]
         public ActionResult Profil(Usuario usuario) 
-        { 
-            if (usuario != null)
+        {
+            if (Session["user"] != null)
             {
-                using (EverydayDB db = new EverydayDB())
+                if (usuario != null)
                 {
-                    Usuario user = db.Usuario.Find(usuario.idUser);
-                    user.nameUser = usuario.nameUser;
-                    user.gender = usuario.gender;
-                    user.email = usuario.email;
-                    user.keyUser = usuario.keyUser;
-                    db.SaveChanges();
+                    using (EverydayDB db = new EverydayDB())
+                    {
+                        Usuario user = db.Usuario.Find(usuario.idUser);
+                        user.nameUser = usuario.nameUser;
+                        user.gender = usuario.gender;
+                        user.email = usuario.email;
+                        user.keyUser = usuario.keyUser;
+                        db.SaveChanges();
+                    }
                 }
             }
 
@@ -115,6 +116,16 @@ namespace Everyday.Controllers
                     if (LogUser != null)
                     {
                         Session["user"] = LogUser.idUser;
+
+                        string cmd = string.Format("select roleUser from Usuario where idUser = '{0}'", Session["user"]);
+                        DataSet ds = Utilities.Ejecutar(cmd);
+                        string rol = ds.Tables[0].Rows[0][0].ToString();
+
+                        if (rol == "Admin")
+                        {
+                            return RedirectToAction("Everyday", "Home");
+                        }
+
                         return RedirectToAction("Home", "Home");
                     }
                     else
@@ -133,7 +144,7 @@ namespace Everyday.Controllers
         public ActionResult LogOff()
         {
             Session.Remove("user");
-            return RedirectToAction("Home", "Home");
+            return RedirectToAction("Login");
         }
 
 

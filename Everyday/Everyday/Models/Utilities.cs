@@ -25,5 +25,6 @@ namespace Everyday.Models
         }
 
         public static int idProducto;
+        public static string valor;
     }
 }

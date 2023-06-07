@@ -14,7 +14,7 @@
     <style>
         .navbar {
             width: 1290px;
-            margin-top: 10px;
+            margin-top: 10px;            
         }
 
         .container {
@@ -76,90 +76,87 @@
 
 </head>
 <body>
-    <nav id="menu" class="navbar navbar-expand-lg navbar-light bg-white container-fluid">
-        <div class="container-fluid">
-            @Html.ActionLink("Everyday", "Home", "Home", null, new { @class = "navbar-brand" })
-            <img src="~/Image/Logo.png" style="margin-top:10px;" />
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav me-5 my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-                    <li style="margin-left: 30px;">@Html.ActionLink("Principal", "Home", "Home", null, new { @class = "nav-link" })</li>
-                    <li style="margin-left: 30px;">
-                        @Html.Partial("_LayoutPartial")
-                    </li>
-                    <li style="margin-left:30px;">
-                        @Html.ActionLink("Nosotros", "Contact", "Home", null, new { @class = "nav-link" })
-                    </li>
-                </ul>
-                <form style="margin-left:-10px;">
-                    <input class="form-control" type="search" style="width:350px;" placeholder="Buscar" aria-label="Search">
-                    @*<button class="btn btn-outline-success" type="submit">Search</button>*@
-                </form>
-                <a href="@Url.Action("Index","Carrito")" style="text-decoration:none; display:flex; margin-left:15px; margin-right:15px; justify-content:center; align-items:center;">
-                    <img src="~/Image/carro-de-la-compra.png" style="width: 30px; height:30px;" />
-                    @{
-                        string role = "";
-                        int numProd = 0;
+    @{
+        string cmd = "SELECT roleUser FROM Usuario WHERE idUser=" + Session["user"] + "";
+        System.Data.DataSet ds = Everyday.Models.Utilities.Ejecutar(cmd);
+        string rol = ds.Tables[0].Rows[0][0].ToString();
 
-                        if (Session["user"] != null)
-                        {
-                            string cmd = "SELECT COUNT(*) FROM Carrito WHERE idUser=" + Session["user"] + "";
-                            System.Data.DataSet ds = Everyday.Models.Utilities.Ejecutar(cmd);
-                            numProd = int.Parse(ds.Tables[0].Rows[0][0].ToString());
-
-                            cmd = "SELECT roleUser FROM Usuario WHERE idUser=" + Session["user"] + "";
-                            ds = Everyday.Models.Utilities.Ejecutar(cmd);
-                            role = ds.Tables[0].Rows[0][0].ToString();
-                        }
-
-                        <span style="text-decoration:none;" class="badge bg-dark text-white ms-1 rounded-pill contador-carrito">
-                            @numProd
-                        </span>
-                    }
-                </a>
-                @Html.Partial("_LoginPartial")
-            </div>
-        </div>
-    </nav>
-    @if (role == "Admin")
-    {
-        <!--<nav class="navbar navbar-expand-lg navbar-light bg-white container-fluid">
-            <div class="container-fluid">
-                @Html.ActionLink("Everyday", "Home", "Home", null, new { @class = "navbar-brand" })
-                <img src="~/Image/Logo.png" style="margin-top:10px;" />
-                <div class="collapse navbar-collapse">
-                    <ul class="navbar-nav me-5 my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-                        <li style="margin-left: 30px;">@Html.ActionLink("Principal", "Home", "Home", null, new { @class = "nav-link" })</li>-->
-        @*<li style="margin-left: 30px;">
-                @Html.Partial("_LayoutPartial")
-            </li>*@
-        <!--<li style="margin-left:30px;">
-                            @Html.ActionLink("Productos", "Index", "Producto", null, new { @class = "nav-link" })
-                        </li>
-                        <li style="margin-left:30px;">
-                            @Html.ActionLink("Tienda", "Index", "Categoria", null, new { @class = "nav-link" })
-                        </li>
-                        <li style="margin-left:30px;">
-                            @Html.ActionLink("Marcas", "Index", "Marca", null, new { @class = "nav-link" })
-                        </li>
-                    </ul>
-                    @Html.Partial("_LoginPartial")
+        if (rol == "Admin")
+        {
+            <nav class="navbar navbar-expand-lg navbar-light bg-white container-fluid">
+                <div class="container-fluid">
+                    @Html.ActionLink("Everyday", "Home", "Home", null, new { @class = "navbar-brand" })
+                    <img src="~/Image/Logo.png" style="margin-top:10px;" />
+                    <div class="collapse navbar-collapse">
+                        <ul class="navbar-nav me-5 my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                            <li style="margin-left: 30px;">
+                                @Html.ActionLink("Principal", "Home", "Home", null, new { @class = "nav-link" })
+                            </li>
+                            <li style="margin-left:30px;">
+                                @Html.ActionLink("Productos", "Index", "Producto", null, new { @class = "nav-link" })
+                            </li>
+                            <li style="margin-left:30px;">
+                                @Html.ActionLink("Categorias", "Index", "Categoria", null, new { @class = "nav-link" })
+                            </li>
+                            <li style="margin-left:30px;">
+                                @Html.ActionLink("Marcas", "Index", "Marca", null, new { @class = "nav-link" })
+                            </li>
+                            <li style="margin-left: 30px;">
+                                @Html.Partial("_LayoutPartial")
+                            </li>
+                        </ul>
+                        @Html.Partial("_LoginPartial")
+                    </div>
                 </div>
-            </div>
-        </nav>-->
+            </nav>
+        }
+        else
+        {
+            <nav id="menu" class="navbar navbar-expand-lg navbar-light bg-white container-fluid">
+                <div class="container-fluid">
+                    @Html.ActionLink("Everyday", "Home", "Home", null, new { @class = "navbar-brand" })
+                    <img src="~/Image/Logo.png" style="margin-top:10px;" />
+                    <div class="collapse navbar-collapse">
+                        <ul class="navbar-nav me-5 my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                            <li style="margin-left: 30px;">@Html.ActionLink("Principal", "Home", "Home", null, new { @class = "nav-link" })</li>
+                            <li style="margin-left: 30px;">
+                                @Html.Partial("_LayoutPartial")
+                            </li>
+                            <li style="margin-left:30px;">
+                                @Html.ActionLink("Nosotros", "Contact", "Home", null, new { @class = "nav-link" })
+                            </li>
+                        </ul>
 
-        @*<button id="btnOpciones" onclick="desplegar()" class="btn btn-dark"><i style="font-weight:bold;">+</i></button>
-        <div id="menuOpcs" style="z-index: 2;  display: none;" class="card">
-            <div id="btns" style="width: 150px">
-                @Html.ActionLink("Categorias", "Index", "Categoria", null, new { @class = "btn nav-link", id = "btnC" })
-                @Html.ActionLink("Marcas", "Create", "Marca", null, new { @class = "btn nav-link", id = "btnM" })
-                @Html.ActionLink("Productos", "Index", "Producto", null, new { @class = "btn nav-link", id = "btnP" })
-                @Html.ActionLink("Usuarios", "Index", "Account", null, new { @class = "btn nav-link", id = "btnP" })
-            </div>
-        </div>*@
-    }
-    else
-    {
-       
+                        @using (Html.BeginForm("Show", "Home", FormMethod.Get))
+                        {
+                            <input class="form-control" name="data" type="search" style="margin-left:-15px; width:350px;" placeholder="Buscar" aria-label="Search">
+                            
+                            <input style="display:none" class="form-control" type="submit" placeholder="Buscar">
+                        }
+                        <a href="@Url.Action("Index","Carrito")" style="text-decoration:none; display:flex; margin-left:15px; margin-right:15px; justify-content:center; align-items:center;">
+                            <img src="~/Image/carro-de-la-compra.png" style="width: 30px; height:30px;" />
+                            @{
+
+                                int numProd = 0;
+
+                                if (Session["user"] != null)
+                                {
+                                    cmd = "SELECT COUNT(*) FROM Carrito WHERE idUser=" + Session["user"] + "";
+                                    ds = Everyday.Models.Utilities.Ejecutar(cmd);
+                                    numProd = int.Parse(ds.Tables[0].Rows[0][0].ToString());
+
+                                }
+
+                                <span style="text-decoration:none;" class="badge bg-dark text-white ms-1 rounded-pill contador-carrito">
+                                    @numProd
+                                </span>
+                            }
+                        </a>
+                        @Html.Partial("_LoginPartial")
+                    </div>
+                </div>
+            </nav>
+        }
     }
 
     <script>

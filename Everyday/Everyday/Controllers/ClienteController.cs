@@ -14,54 +14,6 @@ namespace Everyday.Controllers
     {
         private EverydayDB db = new EverydayDB();
 
-        public ActionResult Register()
-        {
-            if (Session["user"] != null)
-            {     
-                string cmd = string.Format("select count(*) from Cliente where idUser = '{0}'", Session["user"]);
-                DataSet ds = Utilities.Ejecutar(cmd);
-
-                int filas = (int)ds.Tables[0].Rows[0][0];
-
-                if (filas > 0)
-                {
-                    return RedirectToAction("Pagos", "Tarjeta");
-                }
-            }
-            else
-            {
-                return RedirectToAction("Login", "Account");
-            }
-
-            ViewBag.idCity = new SelectList(db.Ciudad, "idCity", "nameCity");
-            ViewBag.idDepa = new SelectList(db.Departamento, "idDepa", "nameDepa");
-            ViewBag.idPais = new SelectList(db.Pais, "idPais", "namePais");
-            ViewBag.idUser = new SelectList(db.Usuario, "idUser", "photo");
-            return View();
-        }
-
-        public ActionResult Register([Bind(Include = "idClient,nameClient,lastnameClient,nitClient,addressClient,phone,idPais,idDepa,idCity,idUser,createdAt")] Cliente cliente,int id)
-        {            
-            if (Session["user"] != null)
-            {
-                cliente.idUser = int.Parse(Session["user"].ToString());
-                cliente.createdAt = DateTime.Now;
-
-                if (ModelState.IsValid)
-                {
-                    db.Cliente.Add(cliente);
-                    db.SaveChanges();
-                    return RedirectToAction("Pagos", "Tarjeta");
-                }
-            }
-
-            ViewBag.idCity = new SelectList(db.Ciudad, "idCity", "nameCity", cliente.idCity);
-            ViewBag.idDepa = new SelectList(db.Departamento, "idDepa", "nameDepa", cliente.idDepa);
-            ViewBag.idPais = new SelectList(db.Pais, "idPais", "namePais", cliente.idPais);
-            return View(cliente);
-        }
-
-
         // GET: Cliente
         public ActionResult Index()
         {
@@ -120,9 +72,6 @@ namespace Everyday.Controllers
         {
             if (Session["user"] != null)
             {
-                Carrito c = new Carrito();
-                //c.quantity = ;
-
                 cliente.idUser = int.Parse(Session["user"].ToString());
                 cliente.createdAt = DateTime.Now;
 
