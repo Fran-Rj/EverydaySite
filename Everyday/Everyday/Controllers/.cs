@@ -39,7 +39,8 @@ namespace Everyday.Controllers
             return View();
         }
 
-        public ActionResult Registrar([Bind(Include = "idClient,nameClient,lastnameClient,nitClient,addressClient,phone,idPais,idDepa,idCity,idUser,createdAt")] Cliente cliente)
+        [HttpPost]
+        public ActionResult Registrar([Bind(Include = "idClient,nameClient,lastnameClient,nitClient,addressClient,phone,idPais,idDepa,idCity,idUser,createdAt")] Cliente cliente, int id)
         {
             if (Session["user"] != null)
             {

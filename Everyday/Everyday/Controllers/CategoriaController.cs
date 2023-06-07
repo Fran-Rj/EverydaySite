@@ -27,9 +27,9 @@ namespace Everyday.Controllers
 
         public ActionResult Show()
         {
-            var producto = db.Producto.ToList();
+            var producto = db.Producto.OrderBy(p => p.idCateg);
 
-            return View(producto);
+            return View(producto.ToList());
         }
 
         public ActionResult Index()

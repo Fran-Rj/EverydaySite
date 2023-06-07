@@ -115,9 +115,10 @@
         </div>
         <br />
         <div style="display:flex; background-color: transparent;">
-            <form action="@Url.Action("Registrar", "Client", null, null)" method="get">
-                <input style="width:100px; height:40px; border:none; border-radius: 5px; background-color: black; color: white;" value="Comprar" type="submit" />
-            </form>
+
+            <div style="margin-left: -100px;">
+                @Html.ActionLink("Volver", "Show", "Categoria", null, new { @class = "btn btn-warning", @style = "margin-left: 100px;" })
+            </div>
             <form action="@Url.Action("AddToCarrito", "Carrito", new { Id = Model.idProd})" method="post" style="width:500px;">
                 <button style="height: 40px; margin-left:20px;" class="btn btn-success" type="submit">
                     Añadir al carrito
@@ -125,9 +126,7 @@
             </form>
         </div>
         <br />
-        <div>
-            @Html.ActionLink("Volver", "Show", "Categoria", null, new { @class = "btn btn-warning", @style = "margin-left: 100px;" })
-        </div>
+        
     </div>
     <span class="text-danger">
         @ViewBag.Error
