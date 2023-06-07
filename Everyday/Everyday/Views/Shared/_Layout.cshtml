@@ -92,6 +92,9 @@
                             <li style="margin-left: 30px;">
                                 @Html.ActionLink("Principal", "Home", "Home", null, new { @class = "nav-link" })
                             </li>
+                            <li style="margin-left: 30px;">
+                                @Html.Partial("_LayoutPartial")
+                            </li>
                             <li style="margin-left:30px;">
                                 @Html.ActionLink("Productos", "Index", "Producto", null, new { @class = "nav-link" })
                             </li>
@@ -101,9 +104,7 @@
                             <li style="margin-left:30px;">
                                 @Html.ActionLink("Marcas", "Index", "Marca", null, new { @class = "nav-link" })
                             </li>
-                            <li style="margin-left: 30px;">
-                                @Html.Partial("_LayoutPartial")
-                            </li>
+
                         </ul>
                         @Html.Partial("_LoginPartial")
                     </div>

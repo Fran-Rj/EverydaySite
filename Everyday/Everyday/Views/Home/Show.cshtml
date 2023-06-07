@@ -9,18 +9,33 @@
     ul {
         list-style-type: none;
     }
+
+    a {
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    a:hover {
+        color: blue;
+    }
 </style>
 
 <br />
-<div class="container" style="display: flex; margin:auto; width: 100%; background-color: transparent; justify-content: space-between; overflow: auto;">
+<div class="container" style="display: flex; margin:auto; flex-wrap: wrap; width: 100%; background-color: transparent; justify-content: space-between; overflow: auto;">
     @{
         foreach (var item in Model)
         {
-            <div style="margin-top: 10px;">
+            <div style="text-align:center; margin-top: 10px;">
                 <ul>
                     <li>
                         <div>
+                            <a href="@Url.Action("Description", "Categoria", new { Id = item.idProd })">
                             <img id="imgProd" src="@Url.Action("MostrarImagen",  "Producto", new { Id = item.idProd })" style="width: 200px; height:200px; border-radius: 5px;" alt="None..." />
+                        </a>
+                        </div>
+                        <br />
+                        <div>
+                            @Html.ActionLink(item.nameProd, "Description", "Categoria", new { Id = item.idProd }, null)
                         </div>
                     </li>
                 </ul>
@@ -28,9 +43,3 @@
         }
     }
 </div>
-<div>
-    <span>
-        @ViewBag.Data
-    </span>
-</div>
-

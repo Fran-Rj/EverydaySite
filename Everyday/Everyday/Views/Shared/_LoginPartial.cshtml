@@ -38,7 +38,7 @@
                         <img id="imagen" onclick="desplegarM()" src="@Url.Action("MostrarImagen", "Account", new { id = id })" style="width: 30px; height: 30px; border-radius: 50%;" alt="None" />
                         <div id="menuPerfil" style="z-index: 2; text-align:center; display: none;" class="card">
                             <div style="width: 150px">
-                                @Html.ActionLink("Perfil", "Profil", "Account", null, new { @class = "nav-link" })
+                                @Html.ActionLink("Perfil", "Profil", "Account", new { Id = id }, new { @class = "nav-link" })
                                 <a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a>
                             </div>
                         </div>
@@ -52,7 +52,7 @@
                         <img id="imagen" onclick="desplegarM1()" src="@Url.Action("MostrarImagen", "Account", new { id = id })" style="width: 30px; height: 30px; border-radius: 50%;" alt="None" />
                         <div id="menuPerfil1" style="z-index: 2; text-align:center; display: none;" class="card">
                             <div style="width: 150px">
-                                @Html.ActionLink("Perfil", "Profil", "Account", null, new { @class = "nav-link" })
+                                @Html.ActionLink("Perfil", "Profil", "Account", new { Id = id }, new { @class = "nav-link" })
                                 @Html.ActionLink("Mis compras", "Index", "Compras", null, new { @class = "nav-link" })
                                 <a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a>
                             </div>

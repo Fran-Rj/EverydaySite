@@ -32,21 +32,26 @@ namespace Everyday.Controllers
 
         [HttpPost]
         public ActionResult Profil(Usuario usuario) 
-        {
-            if (Session["user"] != null)
+        { 
+            if (usuario != null)
             {
-                if (usuario != null)
+                using (EverydayDB db = new EverydayDB())
                 {
-                    using (EverydayDB db = new EverydayDB())
+                    Usuario user = db.Usuario.Find(usuario.idUser);
+
+                    if (user.email == usuario.email || user.keyUser == usuario.keyUser)
                     {
-                        Usuario user = db.Usuario.Find(usuario.idUser);
-                        user.nameUser = usuario.nameUser;
-                        user.gender = usuario.gender;
-                        user.email = usuario.email;
-                        user.keyUser = usuario.keyUser;
-                        db.SaveChanges();
+                        ViewBag.Error = "El usuario o contraseña ya existe!";
+
+                        return View(usuario);
                     }
-                }
+
+                    user.nameUser = usuario.nameUser;
+                    user.gender = usuario.gender;
+                    user.email = usuario.email;
+                    user.keyUser = usuario.keyUser;
+                    db.SaveChanges();
+                }            
             }
 
             return RedirectToAction("Home", "Home");
@@ -116,15 +121,6 @@ namespace Everyday.Controllers
                     if (LogUser != null)
                     {
                         Session["user"] = LogUser.idUser;
-
-                        string cmd = string.Format("select roleUser from Usuario where idUser = '{0}'", Session["user"]);
-                        DataSet ds = Utilities.Ejecutar(cmd);
-                        string rol = ds.Tables[0].Rows[0][0].ToString();
-
-                        if (rol == "Admin")
-                        {
-                            return RedirectToAction("Everyday", "Home");
-                        }
 
                         return RedirectToAction("Home", "Home");
                     }

@@ -1,7 +1,7 @@
 ﻿@model Everyday.Models.Usuario
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Profil";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -28,6 +28,11 @@
 </style>
 
 <br />
+<div style="text-align: center">
+    <span class="text-danger">
+        @ViewBag.Error
+    </span>
+</div>
 <div class="container" style="margin: auto;">
     <br />
     <div style="justify-content:center;  display:flex; background-color: transparent">

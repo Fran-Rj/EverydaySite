@@ -8,13 +8,6 @@
 @{ 
     if(Session["user"] != null)
     {
-        //string cmd = "select p.description, d.price, quantity, subTotal, v.total, v.createdAt " +
-        //"from DetalleVenta as d inner join Venta as v on d.idVent = v.idVent " +
-        //"inner join Producto as p on p.idProd = d.idProd " +
-        //" where c.idUser = " + Session["user"] + "";
-
-        //System.Data.DataSet ds = Everyday.Models.Utilities.Ejecutar(cmd);
-
         <br />
         <div class="container" style="margin:auto;">
             <table class="table table-bordered">
@@ -42,8 +35,13 @@
                     foreach (var item in Model)
                     {
                         <tr>
-                            <td>
-                                @item.Producto.description
+                            <td> 
+                                <div style="display: flex;">
+                                    <img id="imgProd" src="@Url.Action("MostrarImagen",  "Producto", new { Id = item.idProd })" style="width: 100px; height:100px; border-radius: 5px;" alt="None..." />
+                                    <div style="margin-left: 20px;">
+                                        @item.Producto.description
+                                    </div>
+                                </div>
                             </td>
                             <td>
                                 @item.price

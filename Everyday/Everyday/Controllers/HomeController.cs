@@ -14,33 +14,14 @@ namespace Everyday.Controllers
 
         public ActionResult Show(string data)
         {
-            int id = 0;
-            string cmd = "";
-            DataSet ds;
-
-            if (data == "Adidas" || data == "adidas")
-            {
-                id = 4;
-            }
-
-            if (data == "Nike" || data == "nike")
-            {
-                id = 2;
-            }
-
-            if (data == "Gucci" || data == "gucci")
-            {
-                id = 1;
-            }
-
             if (Session["user"] != null)
             {
-                var producto = db.Producto.Where(p => p.color == data || p.idMarc == id);
+                var producto = db.Producto.Where(p => p.color == data || p.Tipo.nameType == data ||
+                p.Marca.nameMarc == data || p.Categoria.nameCateg == data);
 
                 return View(producto.ToList());
             }
 
-            ViewBag.Data = data;
             return View();
         }
 
