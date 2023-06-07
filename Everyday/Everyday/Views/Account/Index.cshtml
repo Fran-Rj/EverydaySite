@@ -1,0 +1,84 @@
+﻿@model IEnumerable<Everyday.Models.Usuario>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<div class="container" style="margin:auto;">
+    <p>
+        @Html.ActionLink("Nuevo", "Create", null, new { @class = "btn btn-success" })
+    </p>
+    <table class="table table-bordered">
+        <tr>
+            <th>
+                Foto
+            </th>
+            <th>
+                Usuario
+            </th>
+            <th>
+                Género
+            </th>
+            <th>
+                Correo
+            </th>
+            <th>
+                Contraseña
+            </th>
+            <th>
+                Rol
+            </th>
+            <th>
+                Creado
+            </th>
+            <th>
+                Estado
+            </th>
+            <th>
+                Acciones
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <div>
+                        <img id="imgProd" src="@Url.Action("MostrarImagen",  "Account", new { Id = item.idUser })" style="width: 100px; height:100px; border-radius: 5px;" alt="None..." />
+                    </div>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nameUser)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.gender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.keyUser)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.roleUser)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.createdAt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.state)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.idUser })
+                    <br />
+                    @Html.ActionLink("Details", "Details", new { id = item.idUser })
+                    <br />
+                    @Html.ActionLink("Delete", "Delete", new { id = item.idUser })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

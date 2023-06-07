@@ -51,8 +51,8 @@
             height: 30px;
             position: absolute;
             top: 5%;
-            left: 97%;
-            transform: translate(-5% -97%)
+            left: 95%;
+            transform: translate(-5% -95%)
         }
 
         #menuOpcs {
@@ -76,7 +76,7 @@
 
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-white container-fluid">
+    <nav id="menu" class="navbar navbar-expand-lg navbar-light bg-white container-fluid">
         <div class="container-fluid">
             @Html.ActionLink("Everyday", "Home", "Home", null, new { @class = "navbar-brand" })
             <img src="~/Image/Logo.png" style="margin-top:10px;" />
@@ -106,9 +106,9 @@
                             System.Data.DataSet ds = Everyday.Models.Utilities.Ejecutar(cmd);
                             numProd = int.Parse(ds.Tables[0].Rows[0][0].ToString());
 
-                            cmd = "SELECT * FROM Usuario WHERE idUser=" + Session["user"] + "";
+                            cmd = "SELECT roleUser FROM Usuario WHERE idUser=" + Session["user"] + "";
                             ds = Everyday.Models.Utilities.Ejecutar(cmd);
-                            role = ds.Tables[0].Rows[0]["roleUser"].ToString();
+                            role = ds.Tables[0].Rows[0][0].ToString();
                         }
 
                         <span style="text-decoration:none;" class="badge bg-dark text-white ms-1 rounded-pill contador-carrito">
@@ -122,14 +122,44 @@
     </nav>
     @if (role == "Admin")
     {
-        <button id="btnOpciones" onclick="desplegar()" class="btn btn-dark"><i class="fa fa-bars"></i></button>
+        <!--<nav class="navbar navbar-expand-lg navbar-light bg-white container-fluid">
+            <div class="container-fluid">
+                @Html.ActionLink("Everyday", "Home", "Home", null, new { @class = "navbar-brand" })
+                <img src="~/Image/Logo.png" style="margin-top:10px;" />
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav me-5 my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                        <li style="margin-left: 30px;">@Html.ActionLink("Principal", "Home", "Home", null, new { @class = "nav-link" })</li>-->
+        @*<li style="margin-left: 30px;">
+                @Html.Partial("_LayoutPartial")
+            </li>*@
+        <!--<li style="margin-left:30px;">
+                            @Html.ActionLink("Productos", "Index", "Producto", null, new { @class = "nav-link" })
+                        </li>
+                        <li style="margin-left:30px;">
+                            @Html.ActionLink("Tienda", "Index", "Categoria", null, new { @class = "nav-link" })
+                        </li>
+                        <li style="margin-left:30px;">
+                            @Html.ActionLink("Marcas", "Index", "Marca", null, new { @class = "nav-link" })
+                        </li>
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
+            </div>
+        </nav>-->
+
+        @*<button id="btnOpciones" onclick="desplegar()" class="btn btn-dark"><i style="font-weight:bold;">+</i></button>
         <div id="menuOpcs" style="z-index: 2;  display: none;" class="card">
             <div id="btns" style="width: 150px">
                 @Html.ActionLink("Categorias", "Index", "Categoria", null, new { @class = "btn nav-link", id = "btnC" })
                 @Html.ActionLink("Marcas", "Create", "Marca", null, new { @class = "btn nav-link", id = "btnM" })
                 @Html.ActionLink("Productos", "Index", "Producto", null, new { @class = "btn nav-link", id = "btnP" })
+                @Html.ActionLink("Usuarios", "Index", "Account", null, new { @class = "btn nav-link", id = "btnP" })
             </div>
-        </div>
+        </div>*@
+    }
+    else
+    {
+       
     }
 
     <script>
@@ -143,12 +173,12 @@
             }
         }
 
-                //document.getElementById("menuOpcs").addEventListener("mo", function () {
-                //    this.style.display = "none";
-                //});
+        function ocultar() {
+            document.getElementById("menuPerfil").style.display = "none";
+        }
     </script>
 
-    <div>
+    <div onclick="ocultar()">
         @RenderBody()
         @*<hr />
             <footer>

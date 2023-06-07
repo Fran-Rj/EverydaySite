@@ -25,6 +25,7 @@ namespace Everyday.Models
         public byte[] imagen { get; set; }
         public string nameProd { get; set; }
         public string description { get; set; }
+        public string color { get; set; }
         public decimal price { get; set; }
         public int stock { get; set; }
         public string state { get; set; }

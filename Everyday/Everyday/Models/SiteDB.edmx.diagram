@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="051586aeb3dd4b6784a1d6dd89b1549d" Name="Diagram1">
+        <EntityTypeShape EntityType="EverydayDBModel.Carrito" Width="1.5" PointX="3" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EverydayDBModel.Categoria" Width="1.5" PointX="1.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EverydayDBModel.Ciudad" Width="1.5" PointX="3.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EverydayDBModel.Cliente" Width="1.5" PointX="6" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EverydayDBModel.Departamento" Width="1.5" PointX="3.75" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EverydayDBModel.DetalleVenta" Width="1.5" PointX="5.25" PointY="24.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EverydayDBModel.Envio" Width="1.5" PointX="3" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EverydayDBModel.Marca" Width="1.5" PointX="1.5" PointY="28.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EverydayDBModel.Pago" Width="1.5" PointX="3" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EverydayDBModel.Pais" Width="1.5" PointX="3.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EverydayDBModel.Producto" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EverydayDBModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EverydayDBModel.Tarjeta" Width="1.5" PointX="3" PointY="20.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EverydayDBModel.Tipo" Width="1.5" PointX="1.5" PointY="31" IsExpanded="true" />
+        <EntityTypeShape EntityType="EverydayDBModel.Usuario" Width="1.5" PointX="0.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EverydayDBModel.Venta" Width="1.5" PointX="3" PointY="24.5" IsExpanded="true" />
+        <AssociationConnector Association="EverydayDBModel.FK__Carrito__idProd__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="EverydayDBModel.FK__Carrito__idUser__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="EverydayDBModel.FK__Producto__idCate__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="EverydayDBModel.FK__Cliente__idCity__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="EverydayDBModel.FK__Cliente__idDepa__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="EverydayDBModel.FK__Cliente__idPais__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="EverydayDBModel.FK__Cliente__idUser__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="EverydayDBModel.FK__DetalleVe__idPro__76969D2E" ManuallyRouted="false" />
+        <AssociationConnector Association="EverydayDBModel.FK__DetalleVe__idVen__75A278F5" ManuallyRouted="false" />
+        <AssociationConnector Association="EverydayDBModel.FK__Envio__idUser__6477ECF3" ManuallyRouted="false" />
+        <AssociationConnector Association="EverydayDBModel.FK__Producto__idMarc__37A5467C" ManuallyRouted="false" />
+        <AssociationConnector Association="EverydayDBModel.FK__Pago__idUser__7A672E12" ManuallyRouted="false" />
+        <AssociationConnector Association="EverydayDBModel.FK__Producto__idType__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="EverydayDBModel.FK__Tarjeta__idUser__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="EverydayDBModel.FK__Venta__idUser__72C60C4A" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

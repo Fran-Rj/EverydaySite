@@ -1,0 +1,77 @@
+﻿@model List<Everyday.Models.DetalleVenta>
+
+@{
+    ViewBag.Title = "Compras";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{ 
+    if(Session["user"] != null)
+    {
+        //string cmd = "select p.description, d.price, quantity, subTotal, v.total, v.createdAt " +
+        //"from DetalleVenta as d inner join Venta as v on d.idVent = v.idVent " +
+        //"inner join Producto as p on p.idProd = d.idProd " +
+        //" where c.idUser = " + Session["user"] + "";
+
+        //System.Data.DataSet ds = Everyday.Models.Utilities.Ejecutar(cmd);
+
+        <br />
+        <div class="container" style="margin:auto;">
+            <table class="table table-bordered">
+                <tr>
+                    <th>
+                        Descripción
+                    </th>
+                    <th>
+                        Precio
+                    </th>
+                    <th>
+                        Cantidad
+                    </th>
+                    <th>
+                        Sub Total
+                    </th>
+                    <th>
+                        Total
+                    </th>
+                    <th>
+                        Fecha
+                    </th>
+                </tr>
+                @{
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @item.Producto.description
+                            </td>
+                            <td>
+                                @item.price
+                            </td>
+                            <td>
+                                @item.quantity
+                            </td>
+                            <td>
+                                @item.subTotal
+                            </td>
+                            <td>
+                                @item.Venta.total
+                            </td>
+                            <td>
+                                @item.Venta.createdAt
+                            </td>
+                        </tr>
+                    }
+                }
+
+            </table>
+        </div>
+    }
+    else
+    {
+        <div class="container" style="text-align: center; margin: 200px auto;">
+            <h3>Inicia sesión</h3>
+        </div>
+    }
+    
+}

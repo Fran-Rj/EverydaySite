@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -14,6 +15,36 @@ namespace Everyday.Controllers
     public class MarcaController : Controller
     {
         private EverydayDB db = new EverydayDB();
+
+        [HttpPost]
+        public ActionResult ChangeImage(Marca m)
+        {
+            if (Request.Files.Count > 0)
+            {
+                HttpPostedFileBase File = Request.Files[0];
+                if (File.ContentLength > 0 && File.ContentType.Contains("image"))
+                {
+                    WebImage image = new WebImage(File.InputStream);
+                    m.imagen = image.GetBytes();
+
+                    Marca marca = db.Marca.Find(m.idMarc);
+                    marca.imagen = m.imagen;
+                    db.SaveChanges();
+                }
+                else
+                {
+                    string fileName = Server.MapPath("~/Image/Ev.jpg");
+                    FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
+                    BinaryReader br = new BinaryReader(fs);
+                    byte[] image = br.ReadBytes((int)fs.Length);
+                    br.Close();
+                    fs.Close();
+                    m.imagen = image;
+                }                
+            }
+
+            return RedirectToAction("Index");
+        }
 
         // GET: Marca
         public ActionResult Index()
@@ -64,23 +95,37 @@ namespace Everyday.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "idMarc,nameMarc,createdAt")] Marca marca, HttpPostedFileBase File)
+        public ActionResult Create([Bind(Include = "idMarc,nameMarc,createdAt")] Marca marca)
         {
-            if (File.ContentLength > 0)
+            if (Request.Files.Count > 0)
             {
-                WebImage image = new WebImage(File.InputStream);
-                marca.imagen = image.GetBytes();
-            } 
+                HttpPostedFileBase File = Request.Files[0];
+                if (File.ContentLength > 0 && File.ContentType.Contains("image"))
+                {
+                    WebImage image = new WebImage(File.InputStream);
+                    marca.imagen = image.GetBytes();
+                }
+                else
+                {
+                    string fileName = Server.MapPath("~/Image/Ev.jpg");
+                    FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
+                    BinaryReader br = new BinaryReader(fs);
+                    byte[] image = br.ReadBytes((int)fs.Length);
+                    br.Close();
+                    fs.Close();
 
+                    marca.imagen = image;
+                }
+            }
+        
             if (marca != null)
             {
                 marca.createdAt = DateTime.Now;
                 db.Marca.Add(marca);
                 db.SaveChanges();
-                return RedirectToAction("Index");
             }
 
-            return View(marca);
+            return RedirectToAction("Index");
         }
 
         // GET: Marca/Edit/5
@@ -103,14 +148,20 @@ namespace Everyday.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "idMarc,nameMarc,createdAt")] Marca marca)
+        public ActionResult Edit(Marca marca)
         {
-            if (ModelState.IsValid)
+            if (marca != null)
             {
-                db.Entry(marca).State = EntityState.Modified;
-                db.SaveChanges();
+                using (EverydayDB db = new EverydayDB())
+                {
+                    Marca m = db.Marca.Find(marca.idMarc);
+                    m.nameMarc = marca.nameMarc;
+                    db.SaveChanges();
+                }
+
                 return RedirectToAction("Index");
             }
+
             return View(marca);
         }
 

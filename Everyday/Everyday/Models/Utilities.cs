@@ -24,11 +24,6 @@ namespace Everyday.Models
             return ds;
         }
 
-        //public class MiModelo
-        //{
-        //    [Range(18, int.MaxValue, ErrorMessage = "Debes ser mayor de 18 años.")]
-        //    public int Edad { get; set; }
-        //}
-
+        public static int idProducto;
     }
 }

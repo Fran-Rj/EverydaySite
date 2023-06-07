@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -9,7 +9,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{888AFFCD-9D28-4689-997A-49F56D6DB364}</ProjectGuid>
+    <ProjectGuid>{E40AC0AA-E69E-4B16-BB8E-8DC222E6D78B}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -19,7 +19,7 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44344</IISExpressSSLPort>
+    <IISExpressSSLPort>44378</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -46,6 +46,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -115,51 +121,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNet.Identity.Core">
-      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNet.Identity.Owin">
-      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.3\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
-      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.3\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="Owin">
-      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin">
-      <HintPath>..\packages\Microsoft.Owin.4.2.2\lib\net45\Microsoft.Owin.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Host.SystemWeb">
-      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.2.2\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Security">
-      <HintPath>..\packages\Microsoft.Owin.Security.4.2.2\lib\net45\Microsoft.Owin.Security.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Security.Cookies">
-      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.4.2.2\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Security.Cookies">
-      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.4.2.2\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Security.Google">
-      <HintPath>..\packages\Microsoft.Owin.Security.Google.4.2.2\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Security.Twitter">
-      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.4.2.2\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
-      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.4.2.2\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Security.OAuth">
-      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.2.2\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -167,91 +128,84 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AccounController.cs" />
     <Compile Include="Controllers\CarritoController.cs" />
     <Compile Include="Controllers\CategoriaController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
+    <Compile Include="Controllers\ComprasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MarcaController.cs" />
-    <Compile Include="Controllers\ProdController.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
     <Compile Include="Controllers\TarjetaController.cs" />
-    <Compile Include="Controllers\TiendaController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Carrito.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>SiteDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CarritoItem.cs" />
     <Compile Include="Models\Categoria.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>SiteDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Ciudad.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>SiteDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Cliente.cs">
-      <DependentUpon>DB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DB.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DB.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DB.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DB.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DB.edmx</DependentUpon>
+      <DependentUpon>SiteDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Departamento.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>SiteDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DetalleVenta.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>SiteDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Envio.cs">
+      <DependentUpon>SiteDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Marca.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>SiteDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Pago.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>SiteDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Pais.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>SiteDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Producto.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>SiteDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SiteDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SiteDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SiteDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SiteDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SiteDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SiteDB.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>SiteDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Tarjeta.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>SiteDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Tipo.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>SiteDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Usuario.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>SiteDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Utilities.cs" />
     <Compile Include="Models\Venta.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>SiteDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
@@ -270,35 +224,37 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Image\Avatar.png" />
     <Content Include="Image\carro-de-la-compra.png" />
+    <Content Include="Image\Ev.jpg" />
     <Content Include="Image\Home.jpeg" />
+    <Content Include="Image\Icono.png" />
     <Content Include="Image\Logo.png" />
-    <Content Include="Image\ropa.jpg" />
-    <Content Include="Models\DB.Context.tt">
+    <Content Include="Models\SiteDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DB.edmx</DependentUpon>
-      <LastGenOutput>DB.Context.cs</LastGenOutput>
+      <DependentUpon>SiteDB.edmx</DependentUpon>
+      <LastGenOutput>SiteDB.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\DB.tt">
+    <Content Include="Models\SiteDB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DB.edmx</DependentUpon>
-      <LastGenOutput>DB.cs</LastGenOutput>
+      <DependentUpon>SiteDB.edmx</DependentUpon>
+      <LastGenOutput>SiteDB.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\JavaScript.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\DB.edmx">
+    <EntityDeploy Include="Models\SiteDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DB.Designer.cs</LastGenOutput>
+      <LastGenOutput>SiteDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\DB.edmx.diagram">
-      <DependentUpon>DB.edmx</DependentUpon>
+    <Content Include="Models\SiteDB.edmx.diagram">
+      <DependentUpon>SiteDB.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -318,87 +274,58 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
+    <Content Include="Views\Shared\Design.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_LayoutPartial.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_MyLayout.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Home.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Accoun\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Accoun\ConfirmEmail.cshtml" />
-    <Content Include="Views\Accoun\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Accoun\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Accoun\ForgotPassword.cshtml" />
-    <Content Include="Views\Accoun\ForgotPasswordConfirmation.cshtml" />
-    <Content Include="Views\Accoun\Login.cshtml" />
-    <Content Include="Views\Accoun\Register.cshtml" />
-    <Content Include="Views\Accoun\ResetPassword.cshtml" />
-    <Content Include="Views\Accoun\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Views\Accoun\SendCode.cshtml" />
-    <Content Include="Views\Accoun\VerifyCode.cshtml" />
-    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
-    <Content Include="Views\Manage\ChangePassword.cshtml" />
-    <Content Include="Views\Manage\Index.cshtml" />
-    <Content Include="Views\Manage\ManageLogins.cshtml" />
-    <Content Include="Views\Manage\SetPassword.cshtml" />
-    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
-    <Content Include="Views\Shared\Lockout.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Carrito\Index.cshtml" />
+    <Content Include="Views\Categoria\Create.cshtml" />
+    <Content Include="Views\Categoria\Description.cshtml" />
+    <Content Include="Views\Categoria\Index.cshtml" />
+    <Content Include="Views\Categoria\See.cshtml" />
+    <Content Include="Views\Categoria\Show.cshtml" />
     <Content Include="Views\Marca\Create.cshtml" />
     <Content Include="Views\Marca\Delete.cshtml" />
     <Content Include="Views\Marca\Details.cshtml" />
     <Content Include="Views\Marca\Edit.cshtml" />
-    <Content Include="Views\Shared\_MyLayout.cshtml" />
     <Content Include="Views\Marca\Index.cshtml" />
-    <Content Include="Views\Home\Home.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Prod\Create.cshtml" />
-    <Content Include="Views\Prod\Delete.cshtml" />
-    <Content Include="Views\Prod\Details.cshtml" />
-    <Content Include="Views\Prod\Edit.cshtml" />
-    <Content Include="Views\Prod\Index.cshtml" />
-    <Content Include="Views\Categoria\Create.cshtml" />
-    <Content Include="Views\Categoria\Delete.cshtml" />
-    <Content Include="Views\Categoria\Details.cshtml" />
-    <Content Include="Views\Categoria\Edit.cshtml" />
-    <Content Include="Views\Categoria\Index.cshtml" />
-    <Content Include="Views\Categoria\Show.cshtml" />
-    <Content Include="Views\Categoria\See.cshtml" />
-    <Content Include="Views\X\Pantalones.cshtml" />
-    <Content Include="Views\Shared\_LayoutPartial.cshtml" />
-    <Content Include="Views\Shared\Design.cshtml" />
-    <Content Include="Views\Categoria\Description.cshtml" />
-    <Content Include="Views\X\Shirts.cshtml" />
-    <Content Include="Views\X\Pants.cshtml" />
+    <Content Include="Views\Marca\Show.cshtml" />
+    <Content Include="Views\Cliente\Create.cshtml" />
+    <Content Include="Views\Cliente\Delete.cshtml" />
+    <Content Include="Views\Cliente\Details.cshtml" />
+    <Content Include="Views\Cliente\Edit.cshtml" />
+    <Content Include="Views\Cliente\Index.cshtml" />
+    <Content Include="Views\Producto\Create.cshtml" />
+    <Content Include="Views\Producto\Delete.cshtml" />
+    <Content Include="Views\Producto\Details.cshtml" />
+    <Content Include="Views\Producto\Edit.cshtml" />
+    <Content Include="Views\Producto\Index.cshtml" />
     <Content Include="Views\Tarjeta\Create.cshtml" />
     <Content Include="Views\Tarjeta\Delete.cshtml" />
     <Content Include="Views\Tarjeta\Details.cshtml" />
     <Content Include="Views\Tarjeta\Edit.cshtml" />
     <Content Include="Views\Tarjeta\Index.cshtml" />
     <Content Include="Views\Tarjeta\Pagos.cshtml" />
-    <Content Include="Views\Carrito\Create.cshtml" />
-    <Content Include="Views\Carrito\Delete.cshtml" />
-    <Content Include="Views\Carrito\Details.cshtml" />
-    <Content Include="Views\Carrito\Edit.cshtml" />
-    <Content Include="Views\Carrito\Carrito.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\SignUp.cshtml" />
-    <Content Include="Views\Prod\Carrito.cshtml" />
-    <Content Include="Views\Prod\FinalizarCompra.cshtml" />
-    <Content Include="Views\Carrito\Index.cshtml" />
-    <Content Include="Views\Tienda\Description.cshtml" />
-    <Content Include="Views\Producto\Create.cshtml" />
-    <Content Include="Views\Producto\Delete.cshtml" />
-    <Content Include="Views\Producto\Details.cshtml" />
-    <Content Include="Views\Producto\Edit.cshtml" />
-    <Content Include="Views\Producto\Index.cshtml" />
-    <Content Include="Views\Marca\Show.cshtml" />
-    <Content Include="Views\Shared\_LayoutPartial - Copia.cshtml" />
-    <Content Include="Views\Cliente\Create.cshtml" />
-    <Content Include="Views\Cliente\Delete.cshtml" />
-    <Content Include="Views\Cliente\Details.cshtml" />
-    <Content Include="Views\Cliente\Edit.cshtml" />
-    <Content Include="Views\Cliente\Index.cshtml" />
+    <Content Include="Views\Account\Profil.cshtml" />
+    <Content Include="Views\Account\Create.cshtml" />
+    <Content Include="Views\Account\Delete.cshtml" />
+    <Content Include="Views\Account\Details.cshtml" />
+    <Content Include="Views\Account\Edit.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Account\ChangeImage.cshtml" />
+    <Content Include="Views\Compras\Index.cshtml" />
+    <Content Include="Views\Tarjeta\Pago.cshtml" />
+    <Content Include="Views\Cliente\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -449,9 +376,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>50627</DevelopmentServerPort>
+          <DevelopmentServerPort>56212</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44344/</IISUrl>
+          <IISUrl>https://localhost:44378/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
@@ -465,9 +392,9 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
-    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
   <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

@@ -1,0 +1,89 @@
+﻿@model Everyday.Models.Usuario
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Usuario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.photo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.photo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nameUser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nameUser)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.keyUser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.keyUser)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.roleUser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.roleUser)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.createdAt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.createdAt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.state)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.state)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

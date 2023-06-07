@@ -6,69 +6,42 @@
 }
 
 <style>
-    body {
-        background-color: white;
-    }
-
     .caja {
-        background-color: transparent;
-        margin: 50px auto;
-        width: 51%;
+        background-image: url(../../Image/Icono.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100%;
+        height: 575px;
         display: flex;
         justify-content: center;
     }
 
-    .Imagen {
-        box-sizing: border-box;
-        background-color: #171617;
-        width: 340px;
-        height: 420px;
-    }
-
-    #imagen {
-        background-color: #171617;
-        width: 340px;
-        height: 420px;
-        margin-right: 100px;
-    }
-
     /* LOGIN */
-    .texto {
-        margin-top: 0;
-        font-weight: bold;
-        text-align: center;
-        font-family: 'Book Antiqua';
-        color: white;
-        margin-bottom: 30px;
-    }
-
     .login-box {
         border-radius: 7px;
         box-sizing: border-box;
-        background-color: #171617;
-        font-family: 'Book Antiqua';
-        font-size: 1.5rem;
-        color: white;
-        width: 320px;
-        height: 420px;
+        background-color: #FFFFFF;
+        width: 500px;
+        height: 550px;
         text-align: center;
         justify-content: center;
         padding: 35px 0px 35px 0px;
+        margin: auto;
     }
 
-    label {
-        font-size: 1.5rem;
-        font-weight: bold;
+    #email, #keyUser, #enviar, select, textarea {
+        max-width: 400px;
     }
 
     #email, #keyUser {
         padding: 15px 0px 15px 0px;
-        background-color: gray; /*rgba(47, 47, 47, 0.35);*/
-        color: white;
+        background-color: #FFFFFF;
+        box-shadow: 6px 8px 4px rgba(0, 0, 0, 0.1);
+        color: #636262;
         text-align: center;
         border: none;
         border-radius: 5px;
-        width: 120%;
+        width: 370px;
         height: 50px;
         outline: none;
         font-size: 20px;
@@ -76,73 +49,68 @@
     }
 
     input::placeholder {
-        color: white;
+        color: #636262;
     }
 
     #enviar {
         cursor: pointer;
         border-radius: 5px;
-        background-color: #FECA76;
-        color: black;
-        width: 175px;
-        height: 43px;
-        font-weight: bold;
-        font-size: 1.4rem;
+        background-color: #3994FF;
+        color: white;
+        width: 370px;
+        height: 50px;
+        font-size: 20px;
         border: none;
         margin: 0px 0px 15px 0px; /* 0px Arriba, 0px Izquierda, 10px Abajo, 0px Derecha*/
     }
 
     #btnRegistrarse {
         cursor: pointer;
-        background-color: limegreen;
-        color: white;
-        font-weight: bold;
-        width: 140px;
-        border-radius: 5px;
-        font-size: 1.3rem;
-        border: none;
+        color: #868686;
+        font-size: 20px;
         margin-top: 15px;
+        text-decoration: none;
     }
 
     #box-linea {
-        padding: 0px 25px 0px 25px;
+        padding: 0px 65px;
     }
 
-    #box-linea hr {
-        background-color: white;
+    hr {
+        background-color: black;
     }
 
-    /* MENSAJE DE ERROR */
-    .alert {
-        margin: auto;
-        width: 30%;
+    h2 {
+        margin-top: -10px;
+        color: black;
+        font-weight: bold;
     }
 </style>
 
 <body>
     <div class="caja">
         <div class="login-box">
-            <h3 class="texto">Iniciar Sesión</h3>
+            <h2>Iniciar sesión</h2>
+            <h5 style="color: #868686; margin-top: 20px;">¡Bienvenido a nuestra tienda online!</h5>
             @using (Html.BeginForm("Login", "Account", FormMethod.Post))
             {
-                @*<label>Usuario</label>*@
-                @*<input type="text" name="email" id="email" autocomplete="off" placeholder="Correo electrónico" required="" />*@
-                @Html.TextBoxFor(u => u.email, htmlAttributes: new { placeholder = "Correo", autocomplete = "off" })
-                @*<label>Contraseña</label>*@
-                @Html.TextBoxFor(u => u.keyUser, htmlAttributes: new { type = "password", placeholder = "Contraseña", autocomplete = "off" })
-                @*<input type="password" name="clave" id="clave" placeholder="Contraseña" required="" />*@
+                <br />
+                @Html.TextBoxFor(u => u.email, htmlAttributes: new { required = "", type = "email", placeholder = "Correo", autocomplete = "off" })
+                <br /><br />
+                @Html.TextBoxFor(u => u.keyUser, htmlAttributes: new { required = "", type = "password", placeholder = "Contraseña", autocomplete = "off" })
+                <br /><br />
                 <input type="submit" value="Iniciar sesión" id="enviar" />
+                <div id="box-linea">
+                    <hr />
+                    <span class="text-bg-danger">
+                        @ViewBag.Error
+                    </span>
+                </div>
             }
-            <div id="box-linea">
-                <hr runat="server" class="dropdown-divider" />
-            </div>
-            <a href="https://localhost:44344/Account/SignUp">
-                <button id="btnRegistrarse">Registrarse</button>
-            </a>
+            @Html.ActionLink("Registrarse", "Create", "Account", null, new { id = "btnRegistrarse" })
+            <footer style="color: #868686; margin-top: 20px;">
+                <p style="">Copyright&copy; Everyday @DateTime.Now.Year</p>
+            </footer>
         </div>
-    </div>
-    <div style="text-align:center;">
-        <h4 class="text-danger">@ViewBag.Error</h4>
-    </div>
+    </div>    
 </body>
-

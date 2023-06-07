@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="EverydayDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="EverydayModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="Carrito">
     <Key>
       <PropertyRef Name="idCarrito" />
@@ -9,8 +9,11 @@
     <Property Name="quantity" Type="Int32" Nullable="false" />
     <Property Name="subTotal" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
     <Property Name="idUser" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Producto" Relationship="Self.FK__Carrito__idProd__70DDC3D8" FromRole="Carrito" ToRole="Producto" />
-    <NavigationProperty Name="Usuario" Relationship="Self.FK__Carrito__idUser__71D1E811" FromRole="Carrito" ToRole="Usuario" />
+    <Property Name="idVent" Type="Int32" Nullable="false" />
+    <Property Name="price" Type="Decimal" Precision="6" Scale="2" />
+    <NavigationProperty Name="Producto" Relationship="Self.FK__Carrito__idProd__75A278F5" FromRole="Carrito" ToRole="Producto" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK__Carrito__idUser__76969D2E" FromRole="Carrito" ToRole="Usuario" />
+    <NavigationProperty Name="Venta" Relationship="Self.FK__Carrito__idVent__778AC167" FromRole="Carrito" ToRole="Venta" />
   </EntityType>
   <EntityType Name="Categoria">
     <Key>
@@ -19,7 +22,7 @@
     <Property Name="idCateg" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="nameCateg" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="createdAt" Type="DateTime" Nullable="false" Precision="3" />
-    <NavigationProperty Name="Producto" Relationship="Self.FK__Producto__idCate__36B12243" FromRole="Categoria" ToRole="Producto" />
+    <NavigationProperty Name="Producto" Relationship="Self.FK__Producto__idCate__59FA5E80" FromRole="Categoria" ToRole="Producto" />
   </EntityType>
   <EntityType Name="Ciudad">
     <Key>
@@ -27,7 +30,7 @@
     </Key>
     <Property Name="idCity" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="nameCity" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Cliente" Relationship="Self.FK__Cliente__idCity__45F365D3" FromRole="Ciudad" ToRole="Cliente" />
+    <NavigationProperty Name="Cliente" Relationship="Self.FK__Cliente__idCity__534D60F1" FromRole="Ciudad" ToRole="Cliente" />
   </EntityType>
   <EntityType Name="Cliente">
     <Key>
@@ -44,11 +47,11 @@
     <Property Name="idCity" Type="Int32" Nullable="false" />
     <Property Name="idUser" Type="Int32" Nullable="false" />
     <Property Name="createdAt" Type="DateTime" Nullable="false" Precision="3" />
-    <NavigationProperty Name="Ciudad" Relationship="Self.FK__Cliente__idCity__45F365D3" FromRole="Cliente" ToRole="Ciudad" />
-    <NavigationProperty Name="Departamento" Relationship="Self.FK__Cliente__idDepa__44FF419A" FromRole="Cliente" ToRole="Departamento" />
-    <NavigationProperty Name="Pais" Relationship="Self.FK__Cliente__idPais__440B1D61" FromRole="Cliente" ToRole="Pais" />
-    <NavigationProperty Name="Usuario" Relationship="Self.FK__Cliente__idUser__46E78A0C" FromRole="Cliente" ToRole="Usuario" />
-    <NavigationProperty Name="Venta" Relationship="Self.FK__Venta__idClient__5165187F" FromRole="Cliente" ToRole="Venta" />
+    <NavigationProperty Name="Ciudad" Relationship="Self.FK__Cliente__idCity__534D60F1" FromRole="Cliente" ToRole="Ciudad" />
+    <NavigationProperty Name="Departamento" Relationship="Self.FK__Cliente__idDepa__52593CB8" FromRole="Cliente" ToRole="Departamento" />
+    <NavigationProperty Name="Pais" Relationship="Self.FK__Cliente__idPais__5165187F" FromRole="Cliente" ToRole="Pais" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK__Cliente__idUser__5441852A" FromRole="Cliente" ToRole="Usuario" />
+    <NavigationProperty Name="Venta" Relationship="Self.FK__Venta__idClient__5BE2A6F2" FromRole="Cliente" ToRole="Venta" />
   </EntityType>
   <EntityType Name="Departamento">
     <Key>
@@ -56,21 +59,21 @@
     </Key>
     <Property Name="idDepa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="nameDepa" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Cliente" Relationship="Self.FK__Cliente__idDepa__44FF419A" FromRole="Departamento" ToRole="Cliente" />
+    <NavigationProperty Name="Cliente" Relationship="Self.FK__Cliente__idDepa__52593CB8" FromRole="Departamento" ToRole="Cliente" />
   </EntityType>
   <EntityType Name="DetalleVenta">
     <Key>
-      <PropertyRef Name="idDetail" />
+      <PropertyRef Name="idDetalle" />
     </Key>
-    <Property Name="idDetail" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idDetalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="idVent" Type="Int32" Nullable="false" />
-    <Property Name="iProd" Type="Int32" Nullable="false" />
+    <Property Name="idProd" Type="Int32" Nullable="false" />
     <Property Name="price" Type="Decimal" Precision="6" Scale="2" />
     <Property Name="quantity" Type="Int32" Nullable="false" />
     <Property Name="subTotal" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
     <Property Name="createdAt" Type="DateTime" Nullable="false" Precision="3" />
-    <NavigationProperty Name="Venta" Relationship="Self.FK__DetalleVe__idVen__619B8048" FromRole="DetalleVenta" ToRole="Venta" />
-    <NavigationProperty Name="Producto" Relationship="Self.FK__DetalleVe__iProd__628FA481" FromRole="DetalleVenta" ToRole="Producto" />
+    <NavigationProperty Name="Producto" Relationship="Self.FK__DetalleVe__idPro__6C190EBB" FromRole="DetalleVenta" ToRole="Producto" />
+    <NavigationProperty Name="Venta" Relationship="Self.FK__DetalleVe__idVen__6B24EA82" FromRole="DetalleVenta" ToRole="Venta" />
   </EntityType>
   <EntityType Name="Marca">
     <Key>
@@ -80,7 +83,7 @@
     <Property Name="imagen" Type="Binary" MaxLength="Max" FixedLength="false" />
     <Property Name="nameMarc" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="createdAt" Type="DateTime" Nullable="false" Precision="3" />
-    <NavigationProperty Name="Producto" Relationship="Self.FK__Producto__idMarc__35BCFE0A" FromRole="Marca" ToRole="Producto" />
+    <NavigationProperty Name="Producto" Relationship="Self.FK__Producto__idMarc__59063A47" FromRole="Marca" ToRole="Producto" />
   </EntityType>
   <EntityType Name="Pago">
     <Key>
@@ -90,7 +93,7 @@
     <Property Name="idUser" Type="Int32" Nullable="false" />
     <Property Name="quantity" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
     <Property Name="createdAt" Type="DateTime" Nullable="false" Precision="3" />
-    <NavigationProperty Name="Usuario" Relationship="Self.FK__Pago__idUser__74AE54BC" FromRole="Pago" ToRole="Usuario" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK__Pago__idUser__571DF1D5" FromRole="Pago" ToRole="Usuario" />
   </EntityType>
   <EntityType Name="Pais">
     <Key>
@@ -98,7 +101,7 @@
     </Key>
     <Property Name="idPais" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="namePais" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Cliente" Relationship="Self.FK__Cliente__idPais__440B1D61" FromRole="Pais" ToRole="Cliente" />
+    <NavigationProperty Name="Cliente" Relationship="Self.FK__Cliente__idPais__5165187F" FromRole="Pais" ToRole="Cliente" />
   </EntityType>
   <EntityType Name="Producto">
     <Key>
@@ -115,21 +118,11 @@
     <Property Name="idMarc" Type="Int32" Nullable="false" />
     <Property Name="idCateg" Type="Int32" Nullable="false" />
     <Property Name="createdAt" Type="DateTime" Nullable="false" Precision="3" />
-    <NavigationProperty Name="Carrito" Relationship="Self.FK__Carrito__idProd__70DDC3D8" FromRole="Producto" ToRole="Carrito" />
-    <NavigationProperty Name="Categoria" Relationship="Self.FK__Producto__idCate__36B12243" FromRole="Producto" ToRole="Categoria" />
-    <NavigationProperty Name="DetalleVenta" Relationship="Self.FK__DetalleVe__iProd__628FA481" FromRole="Producto" ToRole="DetalleVenta" />
-    <NavigationProperty Name="Marca" Relationship="Self.FK__Producto__idMarc__35BCFE0A" FromRole="Producto" ToRole="Marca" />
-    <NavigationProperty Name="Tipo" Relationship="Self.FK__Producto__idType__34C8D9D1" FromRole="Producto" ToRole="Tipo" />
-  </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Carrito" Relationship="Self.FK__Carrito__idProd__75A278F5" FromRole="Producto" ToRole="Carrito" />
+    <NavigationProperty Name="Categoria" Relationship="Self.FK__Producto__idCate__59FA5E80" FromRole="Producto" ToRole="Categoria" />
+    <NavigationProperty Name="DetalleVenta" Relationship="Self.FK__DetalleVe__idPro__6C190EBB" FromRole="Producto" ToRole="DetalleVenta" />
+    <NavigationProperty Name="Marca" Relationship="Self.FK__Producto__idMarc__59063A47" FromRole="Producto" ToRole="Marca" />
+    <NavigationProperty Name="Tipo" Relationship="Self.FK__Producto__idType__5812160E" FromRole="Producto" ToRole="Tipo" />
   </EntityType>
   <EntityType Name="Tarjeta">
     <Key>
@@ -145,7 +138,7 @@
     <Property Name="expireDate" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="state" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="idUser" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Usuario" Relationship="Self.FK__Tarjeta__idUser__4E88ABD4" FromRole="Tarjeta" ToRole="Usuario" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK__Tarjeta__idUser__5AEE82B9" FromRole="Tarjeta" ToRole="Usuario" />
   </EntityType>
   <EntityType Name="Tipo">
     <Key>
@@ -154,7 +147,7 @@
     <Property Name="idType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="nameType" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="createdAt" Type="DateTime" Nullable="false" Precision="3" />
-    <NavigationProperty Name="Producto" Relationship="Self.FK__Producto__idType__34C8D9D1" FromRole="Tipo" ToRole="Producto" />
+    <NavigationProperty Name="Producto" Relationship="Self.FK__Producto__idType__5812160E" FromRole="Tipo" ToRole="Producto" />
   </EntityType>
   <EntityType Name="Usuario">
     <Key>
@@ -169,10 +162,10 @@
     <Property Name="roleUser" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="createdAt" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="state" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Carrito" Relationship="Self.FK__Carrito__idUser__71D1E811" FromRole="Usuario" ToRole="Carrito" />
-    <NavigationProperty Name="Cliente" Relationship="Self.FK__Cliente__idUser__46E78A0C" FromRole="Usuario" ToRole="Cliente" />
-    <NavigationProperty Name="Pago" Relationship="Self.FK__Pago__idUser__74AE54BC" FromRole="Usuario" ToRole="Pago" />
-    <NavigationProperty Name="Tarjeta" Relationship="Self.FK__Tarjeta__idUser__4E88ABD4" FromRole="Usuario" ToRole="Tarjeta" />
+    <NavigationProperty Name="Carrito" Relationship="Self.FK__Carrito__idUser__76969D2E" FromRole="Usuario" ToRole="Carrito" />
+    <NavigationProperty Name="Cliente" Relationship="Self.FK__Cliente__idUser__5441852A" FromRole="Usuario" ToRole="Cliente" />
+    <NavigationProperty Name="Pago" Relationship="Self.FK__Pago__idUser__571DF1D5" FromRole="Usuario" ToRole="Pago" />
+    <NavigationProperty Name="Tarjeta" Relationship="Self.FK__Tarjeta__idUser__5AEE82B9" FromRole="Usuario" ToRole="Tarjeta" />
   </EntityType>
   <EntityType Name="Venta">
     <Key>
@@ -182,10 +175,11 @@
     <Property Name="idClient" Type="Int32" Nullable="false" />
     <Property Name="total" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
     <Property Name="createdAt" Type="DateTime" Nullable="false" Precision="3" />
-    <NavigationProperty Name="Cliente" Relationship="Self.FK__Venta__idClient__5165187F" FromRole="Venta" ToRole="Cliente" />
-    <NavigationProperty Name="DetalleVenta" Relationship="Self.FK__DetalleVe__idVen__619B8048" FromRole="Venta" ToRole="DetalleVenta" />
+    <NavigationProperty Name="Carrito" Relationship="Self.FK__Carrito__idVent__778AC167" FromRole="Venta" ToRole="Carrito" />
+    <NavigationProperty Name="Cliente" Relationship="Self.FK__Venta__idClient__5BE2A6F2" FromRole="Venta" ToRole="Cliente" />
+    <NavigationProperty Name="DetalleVenta" Relationship="Self.FK__DetalleVe__idVen__6B24EA82" FromRole="Venta" ToRole="DetalleVenta" />
   </EntityType>
-  <Association Name="FK__Carrito__idProd__70DDC3D8">
+  <Association Name="FK__Carrito__idProd__75A278F5">
     <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
     <End Role="Carrito" Type="Self.Carrito" Multiplicity="*" />
     <ReferentialConstraint>
@@ -197,7 +191,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Carrito__idUser__71D1E811">
+  <Association Name="FK__Carrito__idUser__76969D2E">
     <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
     <End Role="Carrito" Type="Self.Carrito" Multiplicity="*" />
     <ReferentialConstraint>
@@ -209,7 +203,19 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Producto__idCate__36B12243">
+  <Association Name="FK__Carrito__idVent__778AC167">
+    <End Role="Venta" Type="Self.Venta" Multiplicity="1" />
+    <End Role="Carrito" Type="Self.Carrito" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Venta">
+        <PropertyRef Name="idVent" />
+      </Principal>
+      <Dependent Role="Carrito">
+        <PropertyRef Name="idVent" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Producto__idCate__59FA5E80">
     <End Role="Categoria" Type="Self.Categoria" Multiplicity="1" />
     <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
     <ReferentialConstraint>
@@ -221,7 +227,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Cliente__idCity__45F365D3">
+  <Association Name="FK__Cliente__idCity__534D60F1">
     <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="1" />
     <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
     <ReferentialConstraint>
@@ -233,7 +239,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Cliente__idDepa__44FF419A">
+  <Association Name="FK__Cliente__idDepa__52593CB8">
     <End Role="Departamento" Type="Self.Departamento" Multiplicity="1" />
     <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
     <ReferentialConstraint>
@@ -245,7 +251,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Cliente__idPais__440B1D61">
+  <Association Name="FK__Cliente__idPais__5165187F">
     <End Role="Pais" Type="Self.Pais" Multiplicity="1" />
     <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
     <ReferentialConstraint>
@@ -257,7 +263,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Cliente__idUser__46E78A0C">
+  <Association Name="FK__Cliente__idUser__5441852A">
     <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
     <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
     <ReferentialConstraint>
@@ -269,7 +275,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Venta__idClient__5165187F">
+  <Association Name="FK__Venta__idClient__5BE2A6F2">
     <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
     <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
     <ReferentialConstraint>
@@ -281,7 +287,19 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__DetalleVe__idVen__619B8048">
+  <Association Name="FK__DetalleVe__idPro__6C190EBB">
+    <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+    <End Role="DetalleVenta" Type="Self.DetalleVenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producto">
+        <PropertyRef Name="idProd" />
+      </Principal>
+      <Dependent Role="DetalleVenta">
+        <PropertyRef Name="idProd" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DetalleVe__idVen__6B24EA82">
     <End Role="Venta" Type="Self.Venta" Multiplicity="1" />
     <End Role="DetalleVenta" Type="Self.DetalleVenta" Multiplicity="*" />
     <ReferentialConstraint>
@@ -293,19 +311,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__DetalleVe__iProd__628FA481">
-    <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
-    <End Role="DetalleVenta" Type="Self.DetalleVenta" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Producto">
-        <PropertyRef Name="idProd" />
-      </Principal>
-      <Dependent Role="DetalleVenta">
-        <PropertyRef Name="iProd" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Producto__idMarc__35BCFE0A">
+  <Association Name="FK__Producto__idMarc__59063A47">
     <End Role="Marca" Type="Self.Marca" Multiplicity="1" />
     <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
     <ReferentialConstraint>
@@ -317,7 +323,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Pago__idUser__74AE54BC">
+  <Association Name="FK__Pago__idUser__571DF1D5">
     <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
     <End Role="Pago" Type="Self.Pago" Multiplicity="*" />
     <ReferentialConstraint>
@@ -329,7 +335,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Producto__idType__34C8D9D1">
+  <Association Name="FK__Producto__idType__5812160E">
     <End Role="Tipo" Type="Self.Tipo" Multiplicity="1" />
     <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
     <ReferentialConstraint>
@@ -341,7 +347,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Tarjeta__idUser__4E88ABD4">
+  <Association Name="FK__Tarjeta__idUser__5AEE82B9">
     <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
     <End Role="Tarjeta" Type="Self.Tarjeta" Multiplicity="*" />
     <ReferentialConstraint>
@@ -364,64 +370,67 @@
     <EntitySet Name="Pago" EntityType="Self.Pago" />
     <EntitySet Name="Pais" EntityType="Self.Pais" />
     <EntitySet Name="Producto" EntityType="Self.Producto" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
     <EntitySet Name="Tarjeta" EntityType="Self.Tarjeta" />
     <EntitySet Name="Tipo" EntityType="Self.Tipo" />
     <EntitySet Name="Usuario" EntityType="Self.Usuario" />
     <EntitySet Name="Venta" EntityType="Self.Venta" />
-    <AssociationSet Name="FK__Carrito__idProd__70DDC3D8" Association="Self.FK__Carrito__idProd__70DDC3D8">
+    <AssociationSet Name="FK__Carrito__idProd__75A278F5" Association="Self.FK__Carrito__idProd__75A278F5">
       <End Role="Producto" EntitySet="Producto" />
       <End Role="Carrito" EntitySet="Carrito" />
     </AssociationSet>
-    <AssociationSet Name="FK__Carrito__idUser__71D1E811" Association="Self.FK__Carrito__idUser__71D1E811">
+    <AssociationSet Name="FK__Carrito__idUser__76969D2E" Association="Self.FK__Carrito__idUser__76969D2E">
       <End Role="Usuario" EntitySet="Usuario" />
       <End Role="Carrito" EntitySet="Carrito" />
     </AssociationSet>
-    <AssociationSet Name="FK__Producto__idCate__36B12243" Association="Self.FK__Producto__idCate__36B12243">
+    <AssociationSet Name="FK__Carrito__idVent__778AC167" Association="Self.FK__Carrito__idVent__778AC167">
+      <End Role="Venta" EntitySet="Venta" />
+      <End Role="Carrito" EntitySet="Carrito" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Producto__idCate__59FA5E80" Association="Self.FK__Producto__idCate__59FA5E80">
       <End Role="Categoria" EntitySet="Categoria" />
       <End Role="Producto" EntitySet="Producto" />
     </AssociationSet>
-    <AssociationSet Name="FK__Cliente__idCity__45F365D3" Association="Self.FK__Cliente__idCity__45F365D3">
+    <AssociationSet Name="FK__Cliente__idCity__534D60F1" Association="Self.FK__Cliente__idCity__534D60F1">
       <End Role="Ciudad" EntitySet="Ciudad" />
       <End Role="Cliente" EntitySet="Cliente" />
     </AssociationSet>
-    <AssociationSet Name="FK__Cliente__idDepa__44FF419A" Association="Self.FK__Cliente__idDepa__44FF419A">
+    <AssociationSet Name="FK__Cliente__idDepa__52593CB8" Association="Self.FK__Cliente__idDepa__52593CB8">
       <End Role="Departamento" EntitySet="Departamento" />
       <End Role="Cliente" EntitySet="Cliente" />
     </AssociationSet>
-    <AssociationSet Name="FK__Cliente__idPais__440B1D61" Association="Self.FK__Cliente__idPais__440B1D61">
+    <AssociationSet Name="FK__Cliente__idPais__5165187F" Association="Self.FK__Cliente__idPais__5165187F">
       <End Role="Pais" EntitySet="Pais" />
       <End Role="Cliente" EntitySet="Cliente" />
     </AssociationSet>
-    <AssociationSet Name="FK__Cliente__idUser__46E78A0C" Association="Self.FK__Cliente__idUser__46E78A0C">
+    <AssociationSet Name="FK__Cliente__idUser__5441852A" Association="Self.FK__Cliente__idUser__5441852A">
       <End Role="Usuario" EntitySet="Usuario" />
       <End Role="Cliente" EntitySet="Cliente" />
     </AssociationSet>
-    <AssociationSet Name="FK__Venta__idClient__5165187F" Association="Self.FK__Venta__idClient__5165187F">
+    <AssociationSet Name="FK__Venta__idClient__5BE2A6F2" Association="Self.FK__Venta__idClient__5BE2A6F2">
       <End Role="Cliente" EntitySet="Cliente" />
       <End Role="Venta" EntitySet="Venta" />
     </AssociationSet>
-    <AssociationSet Name="FK__DetalleVe__idVen__619B8048" Association="Self.FK__DetalleVe__idVen__619B8048">
-      <End Role="Venta" EntitySet="Venta" />
-      <End Role="DetalleVenta" EntitySet="DetalleVenta" />
-    </AssociationSet>
-    <AssociationSet Name="FK__DetalleVe__iProd__628FA481" Association="Self.FK__DetalleVe__iProd__628FA481">
+    <AssociationSet Name="FK__DetalleVe__idPro__6C190EBB" Association="Self.FK__DetalleVe__idPro__6C190EBB">
       <End Role="Producto" EntitySet="Producto" />
       <End Role="DetalleVenta" EntitySet="DetalleVenta" />
     </AssociationSet>
-    <AssociationSet Name="FK__Producto__idMarc__35BCFE0A" Association="Self.FK__Producto__idMarc__35BCFE0A">
+    <AssociationSet Name="FK__DetalleVe__idVen__6B24EA82" Association="Self.FK__DetalleVe__idVen__6B24EA82">
+      <End Role="Venta" EntitySet="Venta" />
+      <End Role="DetalleVenta" EntitySet="DetalleVenta" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Producto__idMarc__59063A47" Association="Self.FK__Producto__idMarc__59063A47">
       <End Role="Marca" EntitySet="Marca" />
       <End Role="Producto" EntitySet="Producto" />
     </AssociationSet>
-    <AssociationSet Name="FK__Pago__idUser__74AE54BC" Association="Self.FK__Pago__idUser__74AE54BC">
+    <AssociationSet Name="FK__Pago__idUser__571DF1D5" Association="Self.FK__Pago__idUser__571DF1D5">
       <End Role="Usuario" EntitySet="Usuario" />
       <End Role="Pago" EntitySet="Pago" />
     </AssociationSet>
-    <AssociationSet Name="FK__Producto__idType__34C8D9D1" Association="Self.FK__Producto__idType__34C8D9D1">
+    <AssociationSet Name="FK__Producto__idType__5812160E" Association="Self.FK__Producto__idType__5812160E">
       <End Role="Tipo" EntitySet="Tipo" />
       <End Role="Producto" EntitySet="Producto" />
     </AssociationSet>
-    <AssociationSet Name="FK__Tarjeta__idUser__4E88ABD4" Association="Self.FK__Tarjeta__idUser__4E88ABD4">
+    <AssociationSet Name="FK__Tarjeta__idUser__5AEE82B9" Association="Self.FK__Tarjeta__idUser__5AEE82B9">
       <End Role="Usuario" EntitySet="Usuario" />
       <End Role="Tarjeta" EntitySet="Tarjeta" />
     </AssociationSet>

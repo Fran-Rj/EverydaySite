@@ -5,26 +5,49 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<hr />
-<div style="margin:auto; background-color:transparent;" class="container card">
-    @using ((Html.BeginForm("Edit", "Producto", FormMethod.Post, new { enctype = "multipart/form-data" })))
+<style>
+    #btnX {
+        position: absolute;
+        top: 16%;
+        left: 93%;
+        transform: translate(-16% -93%)
+    }
+
+    #btnBack {
+        text-decoration: none;
+        font-weight: bold;
+    }
+</style>
+
+<br />
+<div style="margin:auto; border-radius: 10px; justify-content:space-between; display:flex; background-color:transparent;" class="container">
+
+    @using (Html.BeginForm("ChangeImage", "Producto", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.HiddenFor(model => model.idProd)
+        <div id="box-img" style="text-align: center; background-color: transparent; padding: 10px; width:400px; height: 500px">
+            <div>
+                <img id="imgProd" src="@Url.Action("MostrarImagen",  "Producto", new { Id = Model.idProd })" style="border-radius:10px; width: 350px; height:350px;" alt="None..." />
+            </div>
+            <br />
+            <div id="box-btnFile">
+                <input id="uploadImg" type="file" name="File" />
+            </div>
+            <br />
+            <input type="submit" class="btn btn-success g-lg-4" value="Aplicar" />
+        </div>
+    }
+
+
+    @using ((Html.BeginForm("Edit", "Producto", FormMethod.Post)))
     {
         @Html.AntiForgeryToken()
         @Html.HiddenFor(model => model.idProd)
-        <div style="justify-content: space-between; display: flex; background-color: transparent; height: 560px;">
+        <br />
+        <div style="justify-content: center; display: flex; background-color: transparent; width: 650px; height: 500px;">
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div id="box-img" style="background-color: transparent; width:500px; height: 500px">
+            <div style="justify-content:space-between; width: 400px; height: 400px; border-radius: 7px; background-color: transparent;">
                 <div>
-                    <img id="imgProd" src="@Url.Action("MostrarImagen",  "Producto", new { Id = Model.idProd })" style="width: 400px; height:400px;" alt="None..." />
-                </div>
-                <br />
-                <div id="box-btnFile">
-                    <input id="uploadImg" type="file" name="File" />
-                </div>
-            </div>
-            <div style="width: 400px; height: 500px; border-radius: 7px; background-color: transparent;">
-                <div>
-                    <br />
                     <label>Nombre</label>
                     <div>
                         @Html.EditorFor(model => model.nameProd, new { htmlAttributes = new { @class = "form-control" } })
@@ -42,7 +65,7 @@
                 <div>
                     <br />
                     <label>Precio</label>
-                    <div class="col-md-10">
+                    <div>
                         @Html.EditorFor(model => model.price, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.price, "", new { @class = "text-danger" })
                     </div>
@@ -56,17 +79,8 @@
                     </div>
                 </div>
             </div>
-            <div style="background-color: transparent; border-radius: 7px; width: 400px; height: 500px; ">
+            <div style="background-color: transparent; border-radius: 7px; width: 400px; height: 400px; ">
                 <div>
-                    <br />
-                    <label>Estado</label>
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.state, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.state, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div>
-                    <br />
                     <label>Tipo</label>
                     <div>
                         @Html.DropDownList("idType", null, htmlAttributes: new { @class = "form-control" })
@@ -89,15 +103,23 @@
                         @Html.ValidationMessageFor(model => model.idCateg, "", new { @class = "text-danger" })
                     </div>
                 </div>
+                <div>
+                    <br />
+                    <label>Estado</label>
+                    <div>
+                        @Html.EditorFor(model => model.state, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.state, "", new { @class = "text-danger" })
+                    </div>
+                </div>
             </div>
         </div>
-        <div style="padding:15px; margin-top:-90px; justify-content: space-between; display: flex;">
+        <div style="padding:15px; margin-top:-100px; justify-content:center; display: flex;">
             <div>
                 <input type="submit" value="Actualizar" class="btn btn-success" />
             </div>
-            <div>
-                @Html.ActionLink("Volver", "Index", null, htmlAttributes: new { @class = "btn btn-warning" })
-            </div>
+        </div>
+        <div id="btnX">
+            @Html.ActionLink("x", "Index", null, htmlAttributes: new { id = "btnBack" })
         </div>
     }
 </div>

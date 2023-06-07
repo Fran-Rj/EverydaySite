@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -14,6 +15,38 @@ namespace Everyday.Controllers
     public class ProductoController : Controller
     {
         private EverydayDB db = new EverydayDB();
+
+        [HttpPost]
+        public ActionResult ChangeImage(Producto producto)
+        {
+            if (Request.Files.Count > 0)
+            {
+                HttpPostedFileBase File = Request.Files[0];
+                if (File.ContentLength > 0 && File.ContentType.Contains("image"))
+                {
+                    WebImage image = new WebImage(File.InputStream);
+                    producto.imagen = image.GetBytes();
+
+                    Producto p = db.Producto.Find(producto.idProd);
+                    p.imagen = producto.imagen;
+                    db.SaveChanges();
+                }
+                else
+                {
+                    string fileName = Server.MapPath("~/Image/Ev.jpg");
+                    FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
+                    BinaryReader br = new BinaryReader(fs);
+                    byte[] image = br.ReadBytes((int)fs.Length);
+                    br.Close();
+                    fs.Close();
+
+                    producto.imagen = image;
+                }                
+            }
+
+            return RedirectToAction("Index");
+        }
+
 
         // GET: Producto
         public ActionResult Index()
@@ -51,14 +84,31 @@ namespace Everyday.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "idProd,imagen,nameProd,description,price,stock,state,idType,idMarc,idCateg,createdAt")] Producto producto, HttpPostedFileBase File)
+        public ActionResult Create(Producto producto)
         {
-            if (File.ContentLength > 0)
+
+            if (Request.Files.Count > 0)
             {
-                WebImage image = new WebImage(File.InputStream);
-                producto.imagen = image.GetBytes();
+                HttpPostedFileBase File = Request.Files[0];
+                if (File.ContentLength > 0 && File.ContentType.Contains("image"))
+                {
+                    WebImage image = new WebImage(File.InputStream);
+                    producto.imagen = image.GetBytes();
+                }
+                else
+                {
+                    string fileName = Server.MapPath("~/Image/Ev.jpg");
+                    FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
+                    BinaryReader br = new BinaryReader(fs);
+                    byte[] image = br.ReadBytes((int)fs.Length);
+                    br.Close();
+                    fs.Close();
+
+                    producto.imagen = image;
+                }
             }
 
+            producto.state = "Activo";
             producto.createdAt = DateTime.Now;
 
             if (ModelState.IsValid)
@@ -109,22 +159,24 @@ namespace Everyday.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "idProd,imagen,nameProd,description,price,stock,state,idType,idMarc,idCateg,createdAt")] Producto producto, HttpPostedFileBase File)
+        public ActionResult Edit(Producto producto)
         {
-            if (File.ContentLength > 0)
+            if (producto != null)
             {
-                WebImage image = new WebImage(File.InputStream);
-                producto.imagen = image.GetBytes();
-            }
+                using (EverydayDB db = new EverydayDB())
+                {
+                    Producto p = db.Producto.Find(producto.idProd);
+                    p.nameProd = producto.nameProd;
+                    p.description = producto.description;
+                    p.price = producto.price;
+                    p.stock = producto.stock;
+                    p.state = producto.state;
+                    db.SaveChanges();
+                }
 
-            producto.createdAt = DateTime.Now;
-
-            if (ModelState.IsValid)
-            {
-                db.Entry(producto).State = EntityState.Modified;
-                db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
             ViewBag.idCateg = new SelectList(db.Categoria, "idCateg", "nameCateg", producto.idCateg);
             ViewBag.idMarc = new SelectList(db.Marca, "idMarc", "nameMarc", producto.idMarc);
             ViewBag.idType = new SelectList(db.Tipo, "idType", "nameType", producto.idType);

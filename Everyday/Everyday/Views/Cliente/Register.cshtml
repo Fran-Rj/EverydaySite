@@ -1,0 +1,105 @@
+﻿@model Everyday.Models.Cliente
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("Register", "Cliente", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div style="margin:auto;" class="container">
+
+        <br />
+        <hr />
+        <div style="justify-content: space-between; display: flex;">
+            <div style="width: 400px;">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <label>Nombre</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.nameClient, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.nameClient, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label>Apellidos</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.lastnameClient, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.lastnameClient, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label>NIT</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.nitClient, new { htmlAttributes = new { placeholder = "000000000", maxlength = "9", onkeypress = "return isNumberKey(event)", @class = "form-control", type = "text" } })
+                        @Html.ValidationMessageFor(model => model.nitClient, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label>Dirección</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.addressClient, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.addressClient, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div style="width: 400px;">
+                <div class="form-group">
+                    <label>Teléfono</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.phone, new { htmlAttributes = new { placeholder = "00000000", maxlength = "8", onkeypress = "return isNumberKey(event)", @class = "form-control", type = "text" } })
+                        @Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label>Pais</label>
+                    <div class="col-md-10">
+                        @Html.DropDownList("idPais", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.idPais, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label>Departamento</label>
+                    <div class="col-md-10">
+                        @Html.DropDownList("idDepa", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.idDepa, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label>Ciudad</label>
+                    <div class="col-md-10">
+                        @Html.DropDownList("idCity", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.idCity, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div style=" display: flex; justify-content: space-between;">
+            <div>
+                @Html.ActionLink("Volver", "Index", "Carrito", null, new { @class = "btn btn-warning" })
+            </div>
+            <div>
+                <input type="submit" value="Continuar" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+<script>
+    function isNumberKey(evt) {
+        var charCode = (evt.which) ? evt.which : event.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            return false;
+        }
+        return true;
+    }
+</script>

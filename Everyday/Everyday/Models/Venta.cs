@@ -21,12 +21,12 @@ namespace Everyday.Models
         }
     
         public int idVent { get; set; }
-        public int idClient { get; set; }
         public decimal total { get; set; }
         public System.DateTime createdAt { get; set; }
+        public int idUser { get; set; }
     
-        public virtual Cliente Cliente { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DetalleVenta> DetalleVenta { get; set; }
+        public virtual Usuario Usuario { get; set; }
     }
 }

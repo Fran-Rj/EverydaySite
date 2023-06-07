@@ -16,13 +16,13 @@ namespace Everyday.Models
     {
         public int idDetail { get; set; }
         public int idVent { get; set; }
-        public int iProd { get; set; }
+        public int idProd { get; set; }
         public Nullable<decimal> price { get; set; }
         public int quantity { get; set; }
         public decimal subTotal { get; set; }
         public System.DateTime createdAt { get; set; }
     
-        public virtual Venta Venta { get; set; }
         public virtual Producto Producto { get; set; }
+        public virtual Venta Venta { get; set; }
     }
 }

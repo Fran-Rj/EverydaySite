@@ -3,31 +3,56 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_MyLayout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-<div class="container" style="display: flex; flex-wrap: wrap; width: 100%; background-color: transparent; justify-content: space-between; overflow: auto;">
-    @foreach (var item in Model)
-    { 
-        <div style="margin-top: 10px;">
-            <ul>
-                <a style="cursor:pointer;" href="@Url.Action("Show", "Marca", new { Id = item.idMarc })">
-                    <img style="margin-left:-30px;" src="@Url.Action("MostrarImagen", "Marca", new { Id = item.idMarc })" alt="None..." />
-                </a>
-            </ul>
-        </div>
+<style>
+    a {
+        text-decoration: none;
     }
+</style>
+
+<br />
+<div class="container" style="margin: auto;">
+    <p>
+        @Html.ActionLink("Nuevo", "Create", null, new { @class = "btn btn-success" })
+    </p>
+    <table class="table table-bordered" style="text-align:center;">
+        <tr>
+            <th>
+                Imagen
+            </th>
+            <th>
+                Marca
+            </th>
+            <th>
+                Creado
+            </th>
+            <th>
+                Acciones
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img class="" style="width: 100px; height: 100px; border-radius: 50%;" src="@Url.Action("MostrarImagen", "Marca", new { Id = item.idMarc })" alt="None..." />
+                </td>
+                <td>
+                    @item.nameMarc
+                </td>
+                <td>
+                    @item.createdAt
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.idMarc }, new { style = "color: #0094ff" })
+                    <br />
+                    @Html.ActionLink("Detalles", "Details", new { id = item.idMarc }, new { style = "color: #08cb4e" })
+                    <br />
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.idMarc }, new { style = "color: red" })
+                </td>
+            </tr>
+        }
+
+    </table>
 </div>
-@*<div>
-    @Html.ActionLink("Create", "Create", null, new { @class = "btn btn-success" })
-</div>*@
-
-@*<script>
-    // REDIRECCIONAR
-var menu = document.getElementById("menuDesple");
-var urlBase = "https://localhost:44344/Marca/";
-
-    menu.addEventListener("change", function () {
-    window.location.href = urlBase + opcionSeleccionada;
-</script>*@

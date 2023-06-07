@@ -1,29 +1,52 @@
 ﻿
+<style>
+    #menuPerfil {
+        border-radius: 5px;
+        background-color: white;
+        position: absolute;
+        top: 90%;
+        left: 84%;
+        transform: translate(-90% -84%);
+    }
+</style>
+
 @if (Session["user"] != null)
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
         @Html.AntiForgeryToken()
+        int id = (int)Session["user"];
 
-        System.Data.SqlClient.SqlConnection connection = new System.Data.SqlClient.SqlConnection("data source=FRANK; initial catalog=EverydayDB; integrated security=True");
-        string query = "SELECT nameUser FROM Usuario WHERE idUser="+ Session["user"] + "";
-        connection.Open();
-        System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand(query, connection);
-        string usuario= cmd.ExecuteScalar().ToString();
-        connection.Close();
-
-        <ul class="navbar-nav navbar-right">
-            <li>
-                @Html.ActionLink("Hola " + usuario + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class="nav-link" })
+        <ul style="margin-left: 150px" class="navbar-nav">
+            <li style="margin-top: 3px;">
+                <img id="imagen" onclick="desplegarM()" src="@Url.Action("MostrarImagen", "Account", new { id = id  })" style="width: 30px; height: 30px; border-radius: 50%;" alt="None" />
+                <div id="menuPerfil" style="z-index: 2; text-align:center; display: none;" class="card">
+                    <div style="width: 150px">
+                        @Html.ActionLink("Perfil", "Profil", "Account", null, new { @class = "nav-link" })
+                        @Html.ActionLink("Mis compras", "Index", "Compras", null, new { @class = "nav-link" })                   
+                        <a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a>
+                    </div>
+                </div>
             </li>
-            <li><a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">Salir</a></li>
         </ul>
     }
 }
 else
 {
     <ul class="navbar-nav navbar-right">
-        <li>@Html.ActionLink("Registrarse", "SignUp", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class="nav-link" })</li>
+        <li>@Html.ActionLink("Registrarse", "Create", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class="nav-link" })</li>
         <li>@Html.ActionLink("Logearse", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class="nav-link" })</li>
     </ul>
 }
+
+<script>
+    function desplegarM() {
+        var elemento = document.getElementById("menuPerfil");
+        if (elemento.style.display === "block") {
+            elemento.style.display = "none";
+        }
+        else {
+            elemento.style.display = "block";
+        }
+    } 
+</script>

@@ -5,42 +5,85 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
+<style>
+    #nameMarc, select, textarea {
+        max-width: 400px;
+    }
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Marca</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.idMarc)
+    #nameMarc {
+        width: 400px;
+        height: 40px;
+        font-size: 18px;
+    }
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.nameMarc, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.nameMarc, new { htmlAttributes = new { @class = "form-control" } })
+    #nameMarc:focus {
+        outline: none;
+    }
+
+    label {
+        font-size: 20px;
+        font-weight: bold;
+    }
+</style>
+
+<br /><br />
+<div style="align-items:center; background-color: transparent; margin: auto; justify-content:center; display:flex;" class="container">
+
+    @using (Html.BeginForm("ChangeImage", "Marca", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.HiddenFor(m => m.idMarc)
+        <div style="text-align: center; background-color: transparent;">
+            <div>
+                <div>
+                    <img id="imgMarca" src="@Url.Action("MostrarImagen", "Marca", new { Id = Model.idMarc })" style="border-radius: 10px; width: 250px; height:250px;" alt="None..." />
+                </div>
+                <br />
+                <div id="box-btnFile">
+                    <input id="uploadImg" type="file" name="File" />
+                </div>
+            </div>
+            <br />
+             <input type="submit" value="Aplicar" class="btn btn-success"/>
+        </div>
+    }
+
+    @using ((Html.BeginForm("Edit", "Marca", FormMethod.Post)))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.idMarc)
+        <div style="margin-left: 200px; height: 315px; background-color: transparent; padding: 10px;">
+            <br /><br />
+            <label>Marca</label>
+            <div style="width:400px; background-color: transparent;">
+                @Html.EditorFor(model => model.nameMarc, new { htmlAttributes = new { required = "", @autocomplete = "off", @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.nameMarc, "", new { @class = "text-danger" })
+                <br /><br /><br />
+                <div style="display:flex; justify-content: space-between;">
+                    <div>
+                        @Html.ActionLink("Ver", "Index", null, new { @class = "btn btn-warning" })
+                    </div>
+                    <div>
+                        <input type="submit" value="Guardar" class="btn btn-success" />
+                    </div>
+                </div>
             </div>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.createdAt, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.createdAt, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.createdAt, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
+    }
+    <br /><br />
 </div>
+
+<script>
+    const input = document.getElementById('uploadImg');
+    const img = document.getElementById('imgMarca');
+
+    input.addEventListener('change', () => {
+        const file = input.files[0];
+        const reader = new FileReader();
+
+        reader.addEventListener('load', () => {
+            img.src = reader.result;
+        });
+
+        reader.readAsDataURL(file);
+    });
+</script>

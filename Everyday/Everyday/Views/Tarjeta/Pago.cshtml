@@ -1,0 +1,97 @@
+﻿@model Everyday.Models.Tarjeta
+
+@{
+    ViewBag.Title = "Pago";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+
+<style>
+    body {
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    #box-Tarjeta {
+        width: 600px;
+        height: 450px;
+        background-color: white;
+        border-radius: 15px;
+        text-align: center;
+        margin: auto;
+    }
+
+    #btnDirec, #numTarjet, #expireDate, #cvv {
+        width: 400px;
+        height: 50px;
+        border: none;
+        border-radius: 5px;
+        text-align: center;
+        box-shadow: 6px 8px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    #btnDirec, #expireDate, #numTarjet, #cvv:focus {
+        outline: none;
+    }
+
+    #expireDate, #cvv {
+        width: 200px;
+        margin-left: 65px;
+    }
+
+    input, select, textarea {
+        max-width: 400px;
+    }
+
+    #btnCerrar {
+        border: none;
+        top: 17%;
+        left: 70%;
+        text-decoration: none;
+        position: absolute;
+        transform: translate(-17% -70%);
+        background-color: transparent;
+        font-weight: bold;
+        font-size: 20px;
+        color: black;
+    }
+</style>
+
+
+<div style="margin:100px auto;" class="container">
+    @using (Html.BeginForm("Pago", "Tarjeta", FormMethod.Post))
+    {
+        <div id="box-Tarjeta">
+            <label style="margin-top: 20px; font-weight:bold; font-size: 30px;">Ya casi...</label>
+            <br /><br />
+            <label style="font-size: 20px;">Método de pago</label>
+            <br /><br />
+            @Html.TextBoxFor(t => t.numTarjet, new { required = "", onkeypress = "return isNumberKey(event)", placeholder = "0000000", maxlength = "7" })
+            <br /><br /><br />
+            <div style="display: flex; text-align: center;">
+                @Html.TextBoxFor(t => t.expireDate, new { required = "", placeholder = "2024-01-01", onkeypress = "return isNumberKey(event)" })
+
+                @Html.TextBoxFor(t => t.cvv, new { required = "", placeholder = "234", maxlength = "3", onkeypress = "return isNumberKey(event)" })
+            </div>
+            <br />
+            <span style="font-weight:bold;" class="text-danger">
+                @ViewBag.Error
+            </span>
+            <br /><br />
+            <input type="submit" value="Aceptar" style="font-size: 20px; border:none; border-radius:5px; width: 200px; height: 50px; background-color: dodgerblue;" />
+            <br /><br />
+            <div>
+                @Html.ActionLink("x", "Index", "Carrito", null, new { id = "btnCerrar" })
+            </div>
+        </div>
+    }
+</div>
+
+
+<script>
+    function isNumberKey(evt) {
+        var charCode = (evt.which) ? evt.which : event.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            return false;
+        }
+        return true;
+    }
+</script>

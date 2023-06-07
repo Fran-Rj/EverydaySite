@@ -1,19 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="EverydayDBModelStoreContainer" CdmEntityContainer="EverydayDB">
+  <EntityContainerMapping StorageEntityContainer="EverydayModelStoreContainer" CdmEntityContainer="EverydayDB">
     <EntitySetMapping Name="Carrito">
-      <EntityTypeMapping TypeName="EverydayDBModel.Carrito">
+      <EntityTypeMapping TypeName="EverydayModel.Carrito">
         <MappingFragment StoreEntitySet="Carrito">
           <ScalarProperty Name="idCarrito" ColumnName="idCarrito" />
           <ScalarProperty Name="idProd" ColumnName="idProd" />
           <ScalarProperty Name="quantity" ColumnName="quantity" />
           <ScalarProperty Name="subTotal" ColumnName="subTotal" />
           <ScalarProperty Name="idUser" ColumnName="idUser" />
+          <ScalarProperty Name="idVent" ColumnName="idVent" />
+          <ScalarProperty Name="price" ColumnName="price" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Categoria">
-      <EntityTypeMapping TypeName="EverydayDBModel.Categoria">
+      <EntityTypeMapping TypeName="EverydayModel.Categoria">
         <MappingFragment StoreEntitySet="Categoria">
           <ScalarProperty Name="idCateg" ColumnName="idCateg" />
           <ScalarProperty Name="nameCateg" ColumnName="nameCateg" />
@@ -22,7 +24,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Ciudad">
-      <EntityTypeMapping TypeName="EverydayDBModel.Ciudad">
+      <EntityTypeMapping TypeName="EverydayModel.Ciudad">
         <MappingFragment StoreEntitySet="Ciudad">
           <ScalarProperty Name="idCity" ColumnName="idCity" />
           <ScalarProperty Name="nameCity" ColumnName="nameCity" />
@@ -30,7 +32,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Cliente">
-      <EntityTypeMapping TypeName="EverydayDBModel.Cliente">
+      <EntityTypeMapping TypeName="EverydayModel.Cliente">
         <MappingFragment StoreEntitySet="Cliente">
           <ScalarProperty Name="idClient" ColumnName="idClient" />
           <ScalarProperty Name="nameClient" ColumnName="nameClient" />
@@ -47,7 +49,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Departamento">
-      <EntityTypeMapping TypeName="EverydayDBModel.Departamento">
+      <EntityTypeMapping TypeName="EverydayModel.Departamento">
         <MappingFragment StoreEntitySet="Departamento">
           <ScalarProperty Name="idDepa" ColumnName="idDepa" />
           <ScalarProperty Name="nameDepa" ColumnName="nameDepa" />
@@ -55,11 +57,11 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="DetalleVenta">
-      <EntityTypeMapping TypeName="EverydayDBModel.DetalleVenta">
+      <EntityTypeMapping TypeName="EverydayModel.DetalleVenta">
         <MappingFragment StoreEntitySet="DetalleVenta">
-          <ScalarProperty Name="idDetail" ColumnName="idDetail" />
+          <ScalarProperty Name="idDetalle" ColumnName="idDetalle" />
           <ScalarProperty Name="idVent" ColumnName="idVent" />
-          <ScalarProperty Name="iProd" ColumnName="iProd" />
+          <ScalarProperty Name="idProd" ColumnName="idProd" />
           <ScalarProperty Name="price" ColumnName="price" />
           <ScalarProperty Name="quantity" ColumnName="quantity" />
           <ScalarProperty Name="subTotal" ColumnName="subTotal" />
@@ -68,7 +70,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Marca">
-      <EntityTypeMapping TypeName="EverydayDBModel.Marca">
+      <EntityTypeMapping TypeName="EverydayModel.Marca">
         <MappingFragment StoreEntitySet="Marca">
           <ScalarProperty Name="idMarc" ColumnName="idMarc" />
           <ScalarProperty Name="imagen" ColumnName="imagen" />
@@ -78,7 +80,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Pago">
-      <EntityTypeMapping TypeName="EverydayDBModel.Pago">
+      <EntityTypeMapping TypeName="EverydayModel.Pago">
         <MappingFragment StoreEntitySet="Pago">
           <ScalarProperty Name="idPay" ColumnName="idPay" />
           <ScalarProperty Name="idUser" ColumnName="idUser" />
@@ -88,7 +90,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Pais">
-      <EntityTypeMapping TypeName="EverydayDBModel.Pais">
+      <EntityTypeMapping TypeName="EverydayModel.Pais">
         <MappingFragment StoreEntitySet="Pais">
           <ScalarProperty Name="idPais" ColumnName="idPais" />
           <ScalarProperty Name="namePais" ColumnName="namePais" />
@@ -96,7 +98,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Producto">
-      <EntityTypeMapping TypeName="EverydayDBModel.Producto">
+      <EntityTypeMapping TypeName="EverydayModel.Producto">
         <MappingFragment StoreEntitySet="Producto">
           <ScalarProperty Name="idProd" ColumnName="idProd" />
           <ScalarProperty Name="imagen" ColumnName="imagen" />
@@ -112,19 +114,8 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="EverydayDBModel.sysdiagrams">
-        <MappingFragment StoreEntitySet="sysdiagrams">
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-          <ScalarProperty Name="version" ColumnName="version" />
-          <ScalarProperty Name="definition" ColumnName="definition" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Tarjeta">
-      <EntityTypeMapping TypeName="EverydayDBModel.Tarjeta">
+      <EntityTypeMapping TypeName="EverydayModel.Tarjeta">
         <MappingFragment StoreEntitySet="Tarjeta">
           <ScalarProperty Name="idTarjet" ColumnName="idTarjet" />
           <ScalarProperty Name="numTarjet" ColumnName="numTarjet" />
@@ -140,7 +131,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Tipo">
-      <EntityTypeMapping TypeName="EverydayDBModel.Tipo">
+      <EntityTypeMapping TypeName="EverydayModel.Tipo">
         <MappingFragment StoreEntitySet="Tipo">
           <ScalarProperty Name="idType" ColumnName="idType" />
           <ScalarProperty Name="nameType" ColumnName="nameType" />
@@ -149,7 +140,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Usuario">
-      <EntityTypeMapping TypeName="EverydayDBModel.Usuario">
+      <EntityTypeMapping TypeName="EverydayModel.Usuario">
         <MappingFragment StoreEntitySet="Usuario">
           <ScalarProperty Name="idUser" ColumnName="idUser" />
           <ScalarProperty Name="photo" ColumnName="photo" />
@@ -164,7 +155,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Venta">
-      <EntityTypeMapping TypeName="EverydayDBModel.Venta">
+      <EntityTypeMapping TypeName="EverydayModel.Venta">
         <MappingFragment StoreEntitySet="Venta">
           <ScalarProperty Name="idVent" ColumnName="idVent" />
           <ScalarProperty Name="idClient" ColumnName="idClient" />

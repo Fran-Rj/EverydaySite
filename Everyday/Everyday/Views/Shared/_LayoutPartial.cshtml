@@ -9,7 +9,7 @@
 
 <ul class="navbar-nav" style="margin-top: 8px; text-decoration:none; border:none;">
     <li style="background-color:transparent; color: black; font-size: 20px;">
-        <input id="btnCategorias" style="background-color: transparent; font-size: 20px; border: none;" type="button" value="Categorias" />
+        <input id="btnCategorias" style="background-color: transparent; font-size: 20px; border: none;" type="button" value="Tienda" />
         <select onchange="location = this.value;" id="menuDesplegable" style="background-color: transparent; width: 15px; border: none; text-decoration: none;">
             <option style="display: none; background-color: rgba(240, 240, 240, 0.5);" value="">Categorias</option>
             @{
@@ -30,6 +30,6 @@
     var boton = document.getElementById("btnCategorias");
 
     boton.addEventListener("click", function () {
-        window.location.href = "https://localhost:44344/Categoria/Show";
-    });
+        window.location.href = "https://localhost:44378/Categoria/Show";
+    });    
 </script>

@@ -11,6 +11,10 @@
         border: none;
         text-decoration: none;
     }
+ 
+    ul {
+        list-style-type: none;
+    }
 </style>
 
 
@@ -23,14 +27,16 @@
     </div>
     <div id="box-marcas">
         <div id="newPage2" style="width:100%;">
-            <div class="container" style="display: flex; flex-wrap: wrap; margin:auto; width: 100%; background-color: transparent; justify-content: space-between; overflow: auto;">
+            <div class="container" style="display: flex; flex-wrap: wrap; margin:auto; width: 100%; height: 200px; background-color: transparent; justify-content: space-between; overflow: auto;">
                 @foreach (var item in Model)
                 {
                     <div style="margin-top: 10px;">
                         <ul>
-                            <a style="cursor:pointer;" href="@Url.Action("Show", "Marca", new { Id = item.idMarc })">
-                                <img style="margin-left:-30px;" src="@Url.Action("MostrarImagen", "Marca", new { Id = item.idMarc })" alt="None..." />
-                            </a>
+                            <li>
+                                <a style="cursor:pointer;" href="@Url.Action("Show", "Marca", new { Id = item.idMarc })">
+                                    <img style="margin-left: -30px; border-radius: 50%; width: 100px; height: 100px;" src="@Url.Action("MostrarImagen", "Marca", new { Id = item.idMarc })" alt="None..." />
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 }

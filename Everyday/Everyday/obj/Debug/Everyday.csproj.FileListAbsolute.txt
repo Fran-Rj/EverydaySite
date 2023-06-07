@@ -1,118 +1,180 @@
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\Everyday.dll.config
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\Everyday.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\Everyday.pdb
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\roslyn\csc.exe
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\roslyn\csc.exe.config
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\roslyn\csc.rsp
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\roslyn\csi.exe
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\roslyn\csi.exe.config
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\roslyn\csi.rsp
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\roslyn\Microsoft.CodeAnalysis.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\roslyn\Microsoft.CSharp.Core.targets
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\roslyn\Microsoft.Managed.Core.targets
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\roslyn\Microsoft.VisualBasic.Core.targets
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\roslyn\Microsoft.Win32.Primitives.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\roslyn\System.AppContext.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\roslyn\System.Collections.Immutable.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\roslyn\System.Console.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\roslyn\System.Diagnostics.StackTrace.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\roslyn\System.Globalization.Calendars.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\roslyn\System.IO.Compression.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\roslyn\System.IO.Compression.ZipFile.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\roslyn\System.IO.FileSystem.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\roslyn\System.IO.FileSystem.Primitives.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\roslyn\System.Net.Http.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\roslyn\System.Net.Sockets.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\roslyn\System.Reflection.Metadata.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\roslyn\System.Security.Cryptography.Algorithms.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\roslyn\System.Security.Cryptography.Encoding.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\roslyn\System.Security.Cryptography.Primitives.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\roslyn\System.Text.Encoding.CodePages.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\roslyn\System.Threading.Tasks.Extensions.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\roslyn\System.ValueTuple.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\roslyn\System.Xml.ReaderWriter.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\roslyn\System.Xml.XmlDocument.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\roslyn\System.Xml.XPath.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\roslyn\System.Xml.XPath.XDocument.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\roslyn\vbc.exe
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\roslyn\vbc.exe.config
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\roslyn\vbc.rsp
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\roslyn\VBCSCompiler.exe
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\roslyn\VBCSCompiler.exe.config
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\Antlr3.Runtime.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\EntityFramework.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\EntityFramework.SqlServer.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\Microsoft.AspNet.Identity.Core.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\Microsoft.AspNet.Identity.EntityFramework.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\Microsoft.AspNet.Identity.Owin.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\Microsoft.Owin.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\Microsoft.Owin.Host.SystemWeb.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\Microsoft.Owin.Security.Cookies.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\Microsoft.Owin.Security.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\Microsoft.Owin.Security.Facebook.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\Microsoft.Owin.Security.Google.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\Microsoft.Owin.Security.OAuth.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\Microsoft.Owin.Security.Twitter.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\Microsoft.Web.Infrastructure.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\Newtonsoft.Json.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\Owin.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\System.Web.Helpers.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\System.Web.Mvc.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\System.Web.Optimization.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\System.Web.Razor.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\System.Web.WebPages.Deployment.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\System.Web.WebPages.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\System.Web.WebPages.Razor.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\WebGrease.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\System.Web.Helpers.xml
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\System.Web.Mvc.xml
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\System.Web.Optimization.xml
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\System.Web.Razor.xml
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\System.Web.WebPages.xml
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\System.Web.WebPages.Deployment.xml
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\System.Web.WebPages.Razor.xml
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\Newtonsoft.Json.xml
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\Antlr3.Runtime.pdb
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\EntityFramework.xml
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\EntityFramework.SqlServer.xml
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\Microsoft.AspNet.Identity.Core.xml
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\Microsoft.AspNet.Identity.Owin.xml
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\Microsoft.AspNet.Identity.EntityFramework.xml
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\Microsoft.Owin.xml
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\Microsoft.Owin.Host.SystemWeb.xml
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\Microsoft.Owin.Security.xml
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\Microsoft.Owin.Security.Facebook.xml
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\Microsoft.Owin.Security.Cookies.xml
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\Microsoft.Owin.Security.Google.xml
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\Microsoft.Owin.Security.Twitter.xml
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\Microsoft.Owin.Security.OAuth.xml
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\es\System.Web.Helpers.resources.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\es\System.Web.Mvc.resources.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\es\System.Web.Optimization.resources.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\es\System.Web.Razor.resources.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\es\System.Web.WebPages.resources.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\es\System.Web.WebPages.Deployment.resources.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\es\System.Web.WebPages.Razor.resources.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\es\Microsoft.AspNet.Identity.Core.resources.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\es\Microsoft.AspNet.Identity.Owin.resources.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\bin\es\Microsoft.AspNet.Identity.EntityFramework.resources.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\obj\Debug\Everyday.csproj.AssemblyReference.cache
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\obj\Debug\Everyday.csproj.CoreCompileInputs.cache
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\obj\Debug\Everyday.csproj.CopyComplete
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\obj\Debug\Everyday.dll
-D:\+UNAB+\Ciclo - V\Program III\Everyday\Everyday\obj\Debug\Everyday.pdb
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\Everyday.dll.config
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\Everyday.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\Everyday.pdb
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\roslyn\csc.exe
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\roslyn\csc.exe.config
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\roslyn\csc.rsp
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\roslyn\csi.exe
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\roslyn\csi.exe.config
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\roslyn\csi.rsp
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\roslyn\System.AppContext.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\roslyn\System.Console.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\roslyn\System.IO.Compression.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\roslyn\System.Net.Http.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\roslyn\System.Net.Sockets.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\roslyn\System.ValueTuple.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\roslyn\System.Xml.XPath.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\roslyn\vbc.exe
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\roslyn\vbc.exe.config
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\roslyn\vbc.rsp
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\roslyn\VBCSCompiler.exe
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\Antlr3.Runtime.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\EntityFramework.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\EntityFramework.SqlServer.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\Newtonsoft.Json.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\System.Web.Helpers.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\System.Web.Mvc.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\System.Web.Optimization.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\System.Web.Razor.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\System.Web.WebPages.Deployment.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\System.Web.WebPages.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\System.Web.WebPages.Razor.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\WebGrease.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\EntityFramework.xml
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\EntityFramework.SqlServer.xml
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\System.Web.Helpers.xml
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\System.Web.Mvc.xml
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\System.Web.Optimization.xml
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\System.Web.Razor.xml
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\System.Web.WebPages.xml
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\System.Web.WebPages.Deployment.xml
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\System.Web.WebPages.Razor.xml
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\Newtonsoft.Json.xml
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\Antlr3.Runtime.pdb
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\es\System.Web.Helpers.resources.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\es\System.Web.Mvc.resources.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\es\System.Web.Optimization.resources.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\es\System.Web.Razor.resources.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\es\System.Web.WebPages.resources.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\es\System.Web.WebPages.Deployment.resources.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\bin\es\System.Web.WebPages.Razor.resources.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\obj\Debug\Everyday.csproj.AssemblyReference.cache
+C:\Users\frank\Downloads\X\Everyday\Everyday\obj\Debug\Everyday.csproj.CoreCompileInputs.cache
+C:\Users\frank\Downloads\X\Everyday\Everyday\obj\Debug\Everyday.csproj.CopyComplete
+C:\Users\frank\Downloads\X\Everyday\Everyday\obj\Debug\Everyday.dll
+C:\Users\frank\Downloads\X\Everyday\Everyday\obj\Debug\Everyday.pdb
+C:\Users\frank\Downloads\Everyday\Everyday\obj\Debug\Everyday.csproj.AssemblyReference.cache
+C:\Users\frank\Downloads\Everyday\Everyday\obj\Debug\Everyday.csproj.CoreCompileInputs.cache
+C:\Users\frank\Downloads\Everyday\Everyday\obj\Debug\Everyday.dll
+C:\Users\frank\Downloads\Everyday\Everyday\obj\Debug\Everyday.pdb
+C:\Users\frank\Downloads\Everyday\Everyday\bin\Everyday.dll.config
+C:\Users\frank\Downloads\Everyday\Everyday\bin\Everyday.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\Everyday.pdb
+C:\Users\frank\Downloads\Everyday\Everyday\bin\roslyn\csc.exe
+C:\Users\frank\Downloads\Everyday\Everyday\bin\roslyn\csc.exe.config
+C:\Users\frank\Downloads\Everyday\Everyday\bin\roslyn\csc.rsp
+C:\Users\frank\Downloads\Everyday\Everyday\bin\roslyn\csi.exe
+C:\Users\frank\Downloads\Everyday\Everyday\bin\roslyn\csi.exe.config
+C:\Users\frank\Downloads\Everyday\Everyday\bin\roslyn\csi.rsp
+C:\Users\frank\Downloads\Everyday\Everyday\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\frank\Downloads\Everyday\Everyday\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\frank\Downloads\Everyday\Everyday\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\frank\Downloads\Everyday\Everyday\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\roslyn\System.AppContext.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\roslyn\System.Console.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\roslyn\System.IO.Compression.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\roslyn\System.Net.Http.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\roslyn\System.Net.Sockets.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\roslyn\System.ValueTuple.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\roslyn\System.Xml.XPath.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\roslyn\vbc.exe
+C:\Users\frank\Downloads\Everyday\Everyday\bin\roslyn\vbc.exe.config
+C:\Users\frank\Downloads\Everyday\Everyday\bin\roslyn\vbc.rsp
+C:\Users\frank\Downloads\Everyday\Everyday\bin\roslyn\VBCSCompiler.exe
+C:\Users\frank\Downloads\Everyday\Everyday\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\frank\Downloads\Everyday\Everyday\bin\Antlr3.Runtime.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\EntityFramework.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\EntityFramework.SqlServer.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\Newtonsoft.Json.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\System.Web.Helpers.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\System.Web.Mvc.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\System.Web.Optimization.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\System.Web.Razor.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\System.Web.WebPages.Deployment.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\System.Web.WebPages.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\System.Web.WebPages.Razor.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\WebGrease.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\EntityFramework.xml
+C:\Users\frank\Downloads\Everyday\Everyday\bin\EntityFramework.SqlServer.xml
+C:\Users\frank\Downloads\Everyday\Everyday\bin\System.Web.Helpers.xml
+C:\Users\frank\Downloads\Everyday\Everyday\bin\System.Web.Mvc.xml
+C:\Users\frank\Downloads\Everyday\Everyday\bin\System.Web.Optimization.xml
+C:\Users\frank\Downloads\Everyday\Everyday\bin\System.Web.Razor.xml
+C:\Users\frank\Downloads\Everyday\Everyday\bin\System.Web.WebPages.xml
+C:\Users\frank\Downloads\Everyday\Everyday\bin\System.Web.WebPages.Deployment.xml
+C:\Users\frank\Downloads\Everyday\Everyday\bin\System.Web.WebPages.Razor.xml
+C:\Users\frank\Downloads\Everyday\Everyday\bin\Newtonsoft.Json.xml
+C:\Users\frank\Downloads\Everyday\Everyday\bin\Antlr3.Runtime.pdb
+C:\Users\frank\Downloads\Everyday\Everyday\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\frank\Downloads\Everyday\Everyday\bin\es\System.Web.Helpers.resources.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\es\System.Web.Mvc.resources.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\es\System.Web.Optimization.resources.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\es\System.Web.Razor.resources.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\es\System.Web.WebPages.resources.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\es\System.Web.WebPages.Deployment.resources.dll
+C:\Users\frank\Downloads\Everyday\Everyday\bin\es\System.Web.WebPages.Razor.resources.dll
+C:\Users\frank\Downloads\Everyday\Everyday\obj\Debug\Everyday.csproj.CopyComplete

@@ -6,7 +6,7 @@
     </Key>
     <Property Name="idCarrito" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="idProd" Type="int" Nullable="false" />
-    <Property Name="quantity" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+    <Property Name="quantity" Type="int" Nullable="false" />
     <Property Name="subTotal" Type="decimal" Precision="6" Scale="2" Nullable="false" />
     <Property Name="idUser" Type="int" Nullable="false" />
   </EntityType>
@@ -32,9 +32,9 @@
     <Property Name="idClient" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="nameClient" Type="varchar" MaxLength="300" Nullable="false" />
     <Property Name="lastnameClient" Type="varchar" MaxLength="300" Nullable="false" />
-    <Property Name="nitClient" Type="int" Nullable="false" />
+    <Property Name="nitClient" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="addressClient" Type="varchar" MaxLength="1000" Nullable="false" />
-    <Property Name="phone" Type="int" Nullable="false" />
+    <Property Name="phone" Type="varchar" MaxLength="11" Nullable="false" />
     <Property Name="idPais" Type="int" Nullable="false" />
     <Property Name="idDepa" Type="int" Nullable="false" />
     <Property Name="idCity" Type="int" Nullable="false" />
@@ -54,11 +54,19 @@
     </Key>
     <Property Name="idDetail" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="idVent" Type="int" Nullable="false" />
-    <Property Name="iProd" Type="int" Nullable="false" />
+    <Property Name="idProd" Type="int" Nullable="false" />
     <Property Name="price" Type="decimal" Precision="6" Scale="2" />
     <Property Name="quantity" Type="int" Nullable="false" />
     <Property Name="subTotal" Type="decimal" Precision="6" Scale="2" Nullable="false" />
     <Property Name="createdAt" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Envio">
+    <Key>
+      <PropertyRef Name="idEnvio" />
+    </Key>
+    <Property Name="idEnvio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="address" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="idUser" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Marca">
     <Key>
@@ -75,7 +83,7 @@
     </Key>
     <Property Name="idPay" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="idUser" Type="int" Nullable="false" />
-    <Property Name="quantity" Type="int" Nullable="false" />
+    <Property Name="quantity" Type="decimal" Precision="6" Scale="2" Nullable="false" />
     <Property Name="createdAt" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="Pais">
@@ -93,6 +101,7 @@
     <Property Name="imagen" Type="image" />
     <Property Name="nameProd" Type="varchar" MaxLength="300" />
     <Property Name="description" Type="varchar(max)" />
+    <Property Name="color" Type="varchar" MaxLength="200" Nullable="false" />
     <Property Name="price" Type="decimal" Precision="6" Scale="2" Nullable="false" />
     <Property Name="stock" Type="int" Nullable="false" />
     <Property Name="state" Type="varchar" MaxLength="15" Nullable="false" />
@@ -123,7 +132,7 @@
     <Property Name="saldo" Type="decimal" Precision="6" Scale="2" Nullable="false" />
     <Property Name="createdAt" Type="datetime" Nullable="false" />
     <Property Name="expireDate" Type="date" Nullable="false" />
-    <Property Name="state" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="state" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="idUser" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Tipo">
@@ -139,7 +148,7 @@
       <PropertyRef Name="idUser" />
     </Key>
     <Property Name="idUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="photo" Type="varchar(max)" />
+    <Property Name="photo" Type="image" />
     <Property Name="nameUser" Type="varchar" MaxLength="300" Nullable="false" />
     <Property Name="gender" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="email" Type="varchar" MaxLength="300" Nullable="false" />
@@ -153,9 +162,9 @@
       <PropertyRef Name="idVent" />
     </Key>
     <Property Name="idVent" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="idClient" Type="int" Nullable="false" />
     <Property Name="total" Type="decimal" Precision="6" Scale="2" Nullable="false" />
     <Property Name="createdAt" Type="datetime" Nullable="false" />
+    <Property Name="idUser" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="FK__Carrito__idProd__5DCAEF64">
     <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
@@ -229,7 +238,19 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__DetalleVe__idVen__619B8048">
+  <Association Name="FK__DetalleVe__idPro__76969D2E">
+    <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+    <End Role="DetalleVenta" Type="Self.DetalleVenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producto">
+        <PropertyRef Name="idProd" />
+      </Principal>
+      <Dependent Role="DetalleVenta">
+        <PropertyRef Name="idProd" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DetalleVe__idVen__75A278F5">
     <End Role="Venta" Type="Self.Venta" Multiplicity="1" />
     <End Role="DetalleVenta" Type="Self.DetalleVenta" Multiplicity="*" />
     <ReferentialConstraint>
@@ -241,19 +262,19 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__DetalleVe__iProd__628FA481">
-    <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
-    <End Role="DetalleVenta" Type="Self.DetalleVenta" Multiplicity="*" />
+  <Association Name="FK__Envio__idUser__6477ECF3">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="Envio" Type="Self.Envio" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Producto">
-        <PropertyRef Name="idProd" />
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUser" />
       </Principal>
-      <Dependent Role="DetalleVenta">
-        <PropertyRef Name="iProd" />
+      <Dependent Role="Envio">
+        <PropertyRef Name="idUser" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Pago__idUser__59FA5E80">
+  <Association Name="FK__Pago__idUser__7A672E12">
     <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
     <End Role="Pago" Type="Self.Pago" Multiplicity="*" />
     <ReferentialConstraint>
@@ -265,7 +286,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Producto__idCate__36B12243">
+  <Association Name="FK__Producto__idCate__38996AB5">
     <End Role="Categoria" Type="Self.Categoria" Multiplicity="1" />
     <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
     <ReferentialConstraint>
@@ -277,7 +298,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Producto__idMarc__35BCFE0A">
+  <Association Name="FK__Producto__idMarc__37A5467C">
     <End Role="Marca" Type="Self.Marca" Multiplicity="1" />
     <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
     <ReferentialConstraint>
@@ -289,7 +310,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Producto__idType__34C8D9D1">
+  <Association Name="FK__Producto__idType__36B12243">
     <End Role="Tipo" Type="Self.Tipo" Multiplicity="1" />
     <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
     <ReferentialConstraint>
@@ -313,15 +334,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Venta__idClient__5165187F">
-    <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+  <Association Name="FK__Venta__idUser__72C60C4A">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
     <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Cliente">
-        <PropertyRef Name="idClient" />
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUser" />
       </Principal>
       <Dependent Role="Venta">
-        <PropertyRef Name="idClient" />
+        <PropertyRef Name="idUser" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -332,6 +353,7 @@
     <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Departamento" EntityType="Self.Departamento" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DetalleVenta" EntityType="Self.DetalleVenta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Envio" EntityType="Self.Envio" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Marca" EntityType="Self.Marca" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Pago" EntityType="Self.Pago" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Pais" EntityType="Self.Pais" Schema="dbo" store:Type="Tables" />
@@ -365,27 +387,31 @@
       <End Role="Usuario" EntitySet="Usuario" />
       <End Role="Cliente" EntitySet="Cliente" />
     </AssociationSet>
-    <AssociationSet Name="FK__DetalleVe__idVen__619B8048" Association="Self.FK__DetalleVe__idVen__619B8048">
+    <AssociationSet Name="FK__DetalleVe__idPro__76969D2E" Association="Self.FK__DetalleVe__idPro__76969D2E">
+      <End Role="Producto" EntitySet="Producto" />
+      <End Role="DetalleVenta" EntitySet="DetalleVenta" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DetalleVe__idVen__75A278F5" Association="Self.FK__DetalleVe__idVen__75A278F5">
       <End Role="Venta" EntitySet="Venta" />
       <End Role="DetalleVenta" EntitySet="DetalleVenta" />
     </AssociationSet>
-    <AssociationSet Name="FK__DetalleVe__iProd__628FA481" Association="Self.FK__DetalleVe__iProd__628FA481">
-      <End Role="Producto" EntitySet="Producto" />
-      <End Role="DetalleVenta" EntitySet="DetalleVenta" />
+    <AssociationSet Name="FK__Envio__idUser__6477ECF3" Association="Self.FK__Envio__idUser__6477ECF3">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Envio" EntitySet="Envio" />
     </AssociationSet>
-    <AssociationSet Name="FK__Pago__idUser__59FA5E80" Association="Self.FK__Pago__idUser__59FA5E80">
+    <AssociationSet Name="FK__Pago__idUser__7A672E12" Association="Self.FK__Pago__idUser__7A672E12">
       <End Role="Usuario" EntitySet="Usuario" />
       <End Role="Pago" EntitySet="Pago" />
     </AssociationSet>
-    <AssociationSet Name="FK__Producto__idCate__36B12243" Association="Self.FK__Producto__idCate__36B12243">
+    <AssociationSet Name="FK__Producto__idCate__38996AB5" Association="Self.FK__Producto__idCate__38996AB5">
       <End Role="Categoria" EntitySet="Categoria" />
       <End Role="Producto" EntitySet="Producto" />
     </AssociationSet>
-    <AssociationSet Name="FK__Producto__idMarc__35BCFE0A" Association="Self.FK__Producto__idMarc__35BCFE0A">
+    <AssociationSet Name="FK__Producto__idMarc__37A5467C" Association="Self.FK__Producto__idMarc__37A5467C">
       <End Role="Marca" EntitySet="Marca" />
       <End Role="Producto" EntitySet="Producto" />
     </AssociationSet>
-    <AssociationSet Name="FK__Producto__idType__34C8D9D1" Association="Self.FK__Producto__idType__34C8D9D1">
+    <AssociationSet Name="FK__Producto__idType__36B12243" Association="Self.FK__Producto__idType__36B12243">
       <End Role="Tipo" EntitySet="Tipo" />
       <End Role="Producto" EntitySet="Producto" />
     </AssociationSet>
@@ -393,8 +419,8 @@
       <End Role="Usuario" EntitySet="Usuario" />
       <End Role="Tarjeta" EntitySet="Tarjeta" />
     </AssociationSet>
-    <AssociationSet Name="FK__Venta__idClient__5165187F" Association="Self.FK__Venta__idClient__5165187F">
-      <End Role="Cliente" EntitySet="Cliente" />
+    <AssociationSet Name="FK__Venta__idUser__72C60C4A" Association="Self.FK__Venta__idUser__72C60C4A">
+      <End Role="Usuario" EntitySet="Usuario" />
       <End Role="Venta" EntitySet="Venta" />
     </AssociationSet>
   </EntityContainer>

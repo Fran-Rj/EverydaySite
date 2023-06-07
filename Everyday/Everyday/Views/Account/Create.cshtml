@@ -1,0 +1,111 @@
+﻿@model Everyday.Models.Usuario
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    #box-img {
+        text-align: center;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    .elements {
+        margin-left: 50px;
+    }
+
+    #nameUser, #gender, #email, #keyUser, select, textarea {
+        max-width: 400px;
+    }
+</style>
+
+<br />
+
+@using (Html.BeginForm("Create", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container card" style="margin: auto;">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <br />
+        <div style="justify-content: center; display:flex;">
+            <div>
+            <div id="box-img" style="background-color: transparent; width:320px; height: 410px">
+                <br />
+                <div>
+                    <img id="imgUser" src="~/Image/Avatar.png" style="border-radius:7px; width: 300px; height:300px;" alt="None..." />
+                </div>
+                <br />
+                <div id="box-btnFile">
+                    <input id="uploadImg" type="file" name="File" />
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-left: 90px; background-color: transparent; width: 500px;">
+            <br /><br />
+            <div class="elements">
+                <label>Usuario</label>
+                <div>
+                    @Html.EditorFor(model => model.nameUser, new { htmlAttributes = new { required = "", @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.nameUser, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <br />
+            <div class="elements">
+                <label>Género</label>
+                <div>
+                    @Html.EditorFor(model => model.gender, new { htmlAttributes = new { required = "", @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.gender, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <br />
+            <div class="elements">
+                <label>Correo</label>
+                <div>
+                    @Html.EditorFor(model => model.email, new { htmlAttributes = new { required = "", @class = "form-control", type = "email" } })
+                    @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <br />
+            <div class="elements">
+                <label>Contraseña</label>
+                <div>
+                    @Html.EditorFor(model => model.keyUser, new { htmlAttributes = new { required = "", @class = "form-control", type = "password" } })
+                    @Html.ValidationMessageFor(model => model.keyUser, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        </div>
+        <br />
+        <div class="container" style="background-color: transparent; justify-content: center; display:flex;">
+            <div style="margin-left: -100px;">
+                @Html.ActionLink("Volver", "Login", "Account", null, new { @class = "btn btn-warning" })
+            </div>
+            <div style="margin-left: 400px;">
+                <input type="submit" value="Agregar" class="btn btn-success" />
+            </div>
+        </div>
+        <br />
+    </div>   
+}
+
+<script>
+    const input = document.getElementById('uploadImg');
+    const img = document.getElementById('imgUser');
+
+    input.addEventListener('change', () => {
+        const file = input.files[0];
+        const reader = new FileReader();
+
+        reader.addEventListener('load', () => {
+            img.src = reader.result;
+        });
+
+        reader.readAsDataURL(file);
+    });
+</script>

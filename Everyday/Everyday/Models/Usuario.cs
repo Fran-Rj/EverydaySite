@@ -19,12 +19,14 @@ namespace Everyday.Models
         {
             this.Carrito = new HashSet<Carrito>();
             this.Cliente = new HashSet<Cliente>();
+            this.Envio = new HashSet<Envio>();
             this.Pago = new HashSet<Pago>();
             this.Tarjeta = new HashSet<Tarjeta>();
+            this.Venta = new HashSet<Venta>();
         }
     
         public int idUser { get; set; }
-        public string photo { get; set; }
+        public byte[] photo { get; set; }
         public string nameUser { get; set; }
         public string gender { get; set; }
         public string email { get; set; }
@@ -38,8 +40,12 @@ namespace Everyday.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cliente> Cliente { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Envio> Envio { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Pago> Pago { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tarjeta> Tarjeta { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Venta> Venta { get; set; }
     }
 }

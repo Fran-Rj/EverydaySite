@@ -25,19 +25,6 @@ namespace Everyday.Controllers
             return View(producto.ToList());
         }
 
-        public ActionResult Shirts()
-        {
-            var producto = db.Producto.Where(p => p.idType == 1);
-            ViewBag.vistaActual = "Shirts";
-            return View(producto.ToList());
-        }
-
-        public ActionResult Pants()
-        {
-            var producto = db.Producto.Where(p => p.idType == 2);
-            return View(producto.ToList());
-        }
-
         public ActionResult Show()
         {
             var producto = db.Producto.ToList();
@@ -51,20 +38,6 @@ namespace Everyday.Controllers
             return View(datos);
         }
 
-        // GET: Categoria/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Categoria categoria = db.Categoria.Find(id);
-            if (categoria == null)
-            {
-                return HttpNotFound();
-            }
-            return View(categoria);
-        }
 
         public ActionResult Description(int? id)
         {
@@ -100,62 +73,13 @@ namespace Everyday.Controllers
             {
                 db.Categoria.Add(categoria);
                 db.SaveChanges();
-                return RedirectToAction("Index");
             }
 
-            return View(categoria);
+            return RedirectToAction("Index");
         }
 
-        // GET: Categoria/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Categoria categoria = db.Categoria.Find(id);
-            if (categoria == null)
-            {
-                return HttpNotFound();
-            }
-            return View(categoria);
-        }
 
-        // POST: Categoria/Edit/5
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
-        // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "idCateg,nameCateg,createdAt")] Categoria categoria)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(categoria).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(categoria);
-        }
-
-        // GET: Categoria/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Categoria categoria = db.Categoria.Find(id);
-            if (categoria == null)
-            {
-                return HttpNotFound();
-            }
-            return View(categoria);
-        }
-
-        // POST: Categoria/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult Delete(int id)
         {
             Categoria categoria = db.Categoria.Find(id);
             db.Categoria.Remove(categoria);
